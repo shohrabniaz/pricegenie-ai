@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PriceMate Australia
 
-## Getting Started
+**AI Shopping Agent that finds the true lowest price anywhere in Australia.**
 
-First, run the development server:
+Compare JB Hi-Fi, Harvey Norman, The Good Guys, Amazon AU & more — with coupons, student discounts, cashback, and shipping included.
+
+Built by **Shohrab Niaz**.
+
+## Features
+
+| Feature | Description |
+|---------|-------------|
+| **True Price** | Final cost after coupons, student discounts, cashback & shipping |
+| **Student Mode** | Auto-applies education pricing across retailers |
+| **Coupon Finder** | Working codes with success rates |
+| **AI Shopping Advisor** | Ask what to buy, when to wait, budget recommendations |
+| **Wait or Buy** | Sale timing advice based on price history |
+| **Price Alerts** | Local alerts — no account, no cost |
+| **PWA Ready** | Install on phone from browser (no app store fee for MVP) |
+
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack (100% Free Tier)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js 16** — React framework
+- **TypeScript** — Type safety
+- **Tailwind CSS 4** — Styling
+- **LocalStorage** — Price alerts (no backend cost)
+- **PWA** — Mobile install without app store fees
 
-## Learn More
+### Optional (Free with Student Pack)
 
-To learn more about Next.js, take a look at the following resources:
+- **Vercel** — Free hosting
+- **Firebase** — Auth & database when you scale
+- **Groq / Ollama** — Free AI API (see `.env.example`)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/           # Pages (search, product, coupons, student, advisor, alerts)
+├── components/    # UI components
+├── context/       # Student mode state
+├── data/          # Product, coupon, retailer data (MVP seed data)
+├── lib/           # Pricing engine, search, AI advisor, alerts
+└── types/         # TypeScript types
+```
 
-## Deploy on Vercel
+## Roadmap
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [x] MVP — Search, compare, coupons, student mode, AI advisor
+- [ ] Live price scraping / retailer APIs
+- [ ] Firebase auth & cloud price alerts
+- [ ] ShopBack / Cashrewards API integration
+- [ ] Flutter or Capacitor native app
+- [ ] NZ, UK, US expansion
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Marketing
+
+See [`marketing/STRATEGY.md`](marketing/STRATEGY.md) for the full go-to-market plan.
+
+## License
+
+**Proprietary — All Rights Reserved.**
+
+Copyright © 2026 Shohrab Niaz. See [LICENSE](LICENSE).
+
+Unauthorized copying, distribution, or commercial use is prohibited.
+
+## Author
+
+**Shohrab Niaz**  
+Email: shohrab.niaz@gmail.com  
+GitHub: [@shohrabniaz](https://github.com/shohrabniaz)

@@ -1,6 +1,9 @@
 {
   "name": "pricemate-australia",
   "version": "0.1.0",
+  "description": "AI Shopping Agent — true lowest price finder for Australia",
+  "author": "Shohrab Niaz <shohrab.niaz@gmail.com>",
+  "license": "SEE LICENSE IN LICENSE",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,6 +12,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "lucide-react": "^1.17.0",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4"

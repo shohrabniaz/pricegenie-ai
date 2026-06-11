@@ -1,0 +1,18 @@
+{
+  "name": "PriceMate Australia",
+  "short_name": "PriceMate",
+  "description": "AI Shopping Agent — true lowest price in Australia",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060a12",
+  "theme_color": "#0D9488",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
