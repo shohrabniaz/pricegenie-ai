@@ -83,7 +83,7 @@ CD skips deploy gracefully when secrets are not configured.
 
 ## Docker
 
-Multi-stage build using Next.js `standalone` output:
+Multi-stage build using Next.js `standalone` output (enabled via `DOCKER_BUILD=1` in the Dockerfile only):
 
 ```bash
 docker build -t pricegenie-ai:local .

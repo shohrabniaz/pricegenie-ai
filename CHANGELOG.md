@@ -2,6 +2,13 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.3.1] - 2026-06-12
+
+### Fixed
+- CI E2E: unique header/footer logo test IDs; `next start` works outside Docker builds
+- Docker workflow: valid Trivy action version; standalone output only in Docker builds
+- Dependabot: group `react` and `react-dom` to avoid peer dependency conflicts
+
 ## [0.3.0] - 2026-06-12
 
 ### Added

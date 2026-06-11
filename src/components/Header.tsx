@@ -34,7 +34,7 @@ export function Header() {
           href="/"
           className="group flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90"
         >
-          <Logo />
+          <Logo testId="header-logo" />
           <p className="hidden max-w-[10rem] text-[10px] font-medium leading-tight text-slate-500 lg:block group-hover:text-slate-400">
             Your wish for the best price granted
           </p>

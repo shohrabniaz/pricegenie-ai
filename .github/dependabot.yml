@@ -7,6 +7,10 @@ updates:
       day: monday
     open-pull-requests-limit: 10
     groups:
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
       nextjs:
         patterns:
           - "next"

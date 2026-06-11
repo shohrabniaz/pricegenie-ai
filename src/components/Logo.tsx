@@ -2,6 +2,7 @@ interface LogoProps {
   variant?: "full" | "icon";
   className?: string;
   showWordmark?: boolean;
+  testId?: string;
 }
 
 function LogoMark({ className = "h-8 w-8" }: { className?: string }) {
@@ -49,10 +50,11 @@ export function Logo({
   variant = "full",
   className = "",
   showWordmark = true,
+  testId = "logo",
 }: LogoProps) {
   if (variant === "icon") {
     return (
-      <span data-testid="logo" className={`inline-flex ${className}`}>
+      <span data-testid={testId} className={`inline-flex ${className}`}>
         <LogoMark />
       </span>
     );
@@ -60,7 +62,7 @@ export function Logo({
 
   return (
     <span
-      data-testid="logo"
+      data-testid={testId}
       className={`inline-flex items-center gap-2 ${className}`}
     >
       <LogoMark className="h-7 w-7 sm:h-8 sm:w-8" />
