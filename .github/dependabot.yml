@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 10
+    groups:
+      nextjs:
+        patterns:
+          - "next"
+          - "eslint-config-next"
+      playwright:
+        patterns:
+          - "@playwright/*"
+          - "playwright"
+      dev-tools:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+          - "typescript"
+          - "eslint*"
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5

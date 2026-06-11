@@ -1,5 +1,9 @@
 # PriceGenie AI
 
+[![CI](https://github.com/shohrabniaz/pricegenie-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/shohrabniaz/pricegenie-ai/actions/workflows/ci.yml)
+[![Security](https://github.com/shohrabniaz/pricegenie-ai/actions/workflows/security.yml/badge.svg)](https://github.com/shohrabniaz/pricegenie-ai/actions/workflows/security.yml)
+[![Docker](https://github.com/shohrabniaz/pricegenie-ai/actions/workflows/docker.yml/badge.svg)](https://github.com/shohrabniaz/pricegenie-ai/actions/workflows/docker.yml)
+
 **Your wish for the best price granted.**
 
 AI shopping genie that finds the true lowest price in Australia — compare JB Hi-Fi, Harvey Norman, The Good Guys, Amazon AU & more with coupons, student discounts, cashback, and shipping included.
@@ -26,6 +30,26 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000)
+
+Requires **Node 22** (see `.nvmrc`).
+
+## Development & CI
+
+```bash
+npm run check        # lint + typecheck + unit tests + sanity + build
+npm run check:all    # above + Playwright E2E
+npm run test:coverage
+npm run docker:up    # production container on :3000
+```
+
+| Workflow | Purpose |
+|----------|---------|
+| [CI](.github/workflows/ci.yml) | Lint, typecheck, unit tests, coverage, sanity, build, E2E |
+| [Security](.github/workflows/security.yml) | npm audit + CodeQL |
+| [Docker](.github/workflows/docker.yml) | Image build + Trivy scan + GHCR push |
+| [CD](.github/workflows/cd.yml) | Vercel deploy (when secrets configured) |
+
+Full details: [`docs/DEVOPS.md`](docs/DEVOPS.md) · [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`SECURITY.md`](SECURITY.md)
 
 ## Tech Stack (100% Free Tier)
 

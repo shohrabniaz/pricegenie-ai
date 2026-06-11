@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+npm-audit.json
 /test-results/
 /playwright-report/
 /blob-report/

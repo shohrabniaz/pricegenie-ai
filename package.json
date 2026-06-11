@@ -1,20 +1,35 @@
 {
   "name": "pricegenie-ai",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "PriceGenie AI — Your wish for the best price granted",
   "author": "Shohrab Niaz <shohrab.niaz@gmail.com>",
   "license": "SEE LICENSE IN LICENSE",
   "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
     "sanity": "tsx scripts/sanity-check.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:unit": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "check": "npm run lint && npm run sanity && npm run build",
-    "check:all": "npm run check && npm run test:e2e"
+    "audit": "npm audit --audit-level=high",
+    "audit:fix": "npm audit fix",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run sanity && npm run build",
+    "check:all": "npm run check && npm run test:e2e",
+    "ci": "npm run lint && npm run typecheck && npm run test:coverage && npm run sanity && npm run build",
+    "docker:build": "docker build -t pricegenie-ai:local .",
+    "docker:up": "docker compose up --build -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f app"
   },
   "dependencies": {
     "lucide-react": "^1.17.0",
@@ -28,10 +43,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^3.2.4",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",
     "tsx": "^4.22.4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.4"
   }
 }

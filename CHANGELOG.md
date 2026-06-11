@@ -2,6 +2,19 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.3.0] - 2026-06-12
+
+### Added
+- Vitest unit test framework with code coverage thresholds
+- Docker multi-stage build (`Dockerfile`, `docker-compose.yml`)
+- GitHub Actions: expanded CI, security (npm audit + CodeQL), Docker (Trivy + GHCR), CD (Vercel)
+- Dependabot for npm and GitHub Actions
+- DevOps documentation (`docs/DEVOPS.md`, `CONTRIBUTING.md`, `SECURITY.md`)
+
+### Changed
+- `npm run check` now includes typecheck and unit tests
+- Next.js `standalone` output for container deployments
+
 ## [0.2.2] - 2026-06-12
 
 ### Changed
