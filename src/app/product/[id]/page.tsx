@@ -77,7 +77,10 @@ export default function ProductPage({
             </dl>
 
             <div className="mt-6">
-              <PriceAlertButton product={product} />
+              <PriceAlertButton
+                key={`${product.id}-${studentMode}`}
+                product={product}
+              />
             </div>
           </div>
         </div>

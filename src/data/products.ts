@@ -1,6 +1,7 @@
 import type { Product } from "@/types";
+import { CATALOG_EXTRA } from "@/data/catalog-extra";
 
-export const PRODUCTS: Product[] = [
+const CORE_PRODUCTS: Product[] = [
   {
     id: "iphone-17-pro-256",
     name: "iPhone 17 Pro 256GB",
@@ -453,6 +454,8 @@ export const PRODUCTS: Product[] = [
     ],
   },
 ];
+
+export const PRODUCTS: Product[] = [...CORE_PRODUCTS, ...CATALOG_EXTRA];
 
 export function getProductById(id: string): Product | undefined {
   return PRODUCTS.find((p) => p.id === id);

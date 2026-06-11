@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Bell, BellOff } from "lucide-react";
 import type { Product } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
-import { getBestOffer, formatAud } from "@/lib/pricing";
+import { getBestOffer } from "@/lib/pricing";
 import {
   getAlerts,
   saveAlert,
@@ -18,17 +18,16 @@ interface PriceAlertButtonProps {
 
 export function PriceAlertButton({ product }: PriceAlertButtonProps) {
   const { studentMode } = useStudentMode();
-  const [active, setActive] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-  const [targetPrice, setTargetPrice] = useState("");
+  const best = getBestOffer(product.offers, studentMode);
+  const suggestedTarget = best
+    ? String(Math.round(best.breakdown.truePrice * 0.9))
+    : "";
 
-  useEffect(() => {
-    setActive(hasAlert(product.id));
-    const best = getBestOffer(product.offers, studentMode);
-    if (best) {
-      setTargetPrice(String(Math.round(best.breakdown.truePrice * 0.9)));
-    }
-  }, [product.id, product.offers, studentMode]);
+  const [active, setActive] = useState(
+    () => typeof window !== "undefined" && hasAlert(product.id)
+  );
+  const [showForm, setShowForm] = useState(false);
+  const [targetPrice, setTargetPrice] = useState(suggestedTarget);
 
   function handleToggle() {
     if (active) {

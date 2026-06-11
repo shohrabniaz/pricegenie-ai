@@ -4,8 +4,8 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useState,
+  useSyncExternalStore,
 } from "react";
 
 interface StudentModeContextValue {
@@ -23,14 +23,15 @@ export function StudentModeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [studentMode, setStudentMode] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "true") setStudentMode(true);
-    setHydrated(true);
-  }, []);
+  const [studentMode, setStudentMode] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return localStorage.getItem(STORAGE_KEY) === "true";
+  });
+  const hydrated = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   const toggleStudentMode = useCallback(() => {
     setStudentMode((prev) => {

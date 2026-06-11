@@ -9,7 +9,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sanity": "tsx scripts/sanity-check.ts",
+    "check": "npm run lint && npm run sanity && npm run build"
   },
   "dependencies": {
     "lucide-react": "^1.17.0",
@@ -25,6 +27,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",
+    "tsx": "^4.22.4",
     "typescript": "^5"
   }
 }

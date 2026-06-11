@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { SearchBar } from "@/components/SearchBar";
 import { ProductCard } from "@/components/ProductCard";
 import { useStudentMode } from "@/context/StudentModeContext";
+import { PRODUCTS } from "@/data/products";
 import { searchProducts, getCategories } from "@/lib/search";
 
 function SearchResults() {
@@ -68,9 +69,16 @@ function SearchResults() {
       </div>
 
       {!query && (
-        <div className="mt-12 text-center text-slate-500">
-          <p>Search for any product to compare prices across Australian stores.</p>
-        </div>
+        <>
+          <p className="mt-8 text-sm text-slate-500">
+            Browse all {PRODUCTS.length} products or search above
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {PRODUCTS.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

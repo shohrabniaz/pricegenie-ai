@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Bell, Trash2 } from "lucide-react";
 import type { PriceAlert } from "@/types";
@@ -8,11 +8,9 @@ import { getAlerts, removeAlert } from "@/lib/alerts-storage";
 import { formatAud } from "@/lib/pricing";
 
 export default function AlertsPage() {
-  const [alerts, setAlerts] = useState<PriceAlert[]>([]);
-
-  useEffect(() => {
-    setAlerts(getAlerts());
-  }, []);
+  const [alerts, setAlerts] = useState<PriceAlert[]>(() =>
+    typeof window !== "undefined" ? getAlerts() : []
+  );
 
   function handleRemove(id: string) {
     removeAlert(id);
