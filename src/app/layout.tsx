@@ -17,12 +17,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "PriceMate Australia — AI Shopping Agent",
-    template: "%s | PriceMate Australia",
+    default: "PriceGenie AI — Your wish for the best price granted",
+    template: "%s | PriceGenie AI",
   },
   description:
-    "Find the true lowest price in Australia. Compare JB Hi-Fi, Harvey Norman, Amazon AU & more. Coupons, student discounts, cashback & AI buying advice.",
+    "PriceGenie AI finds the true lowest price in Australia. Compare JB Hi-Fi, Harvey Norman, Amazon AU & more. Coupons, student discounts, cashback & AI buying advice.",
   keywords: [
+    "PriceGenie AI",
     "price comparison Australia",
     "student discounts Australia",
     "coupon codes Australia",
@@ -33,16 +34,16 @@ export const metadata: Metadata = {
   creator: "Shohrab Niaz",
   manifest: "/manifest.json",
   openGraph: {
-    title: "PriceMate Australia — True Lowest Price Finder",
+    title: "PriceGenie AI — Your wish for the best price granted",
     description:
-      "AI-powered shopping assistant for Australian students and savvy shoppers.",
+      "AI-powered shopping genie for Australian students and savvy shoppers.",
     locale: "en_AU",
     type: "website",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0D9488",
+  themeColor: "#7C3AED",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,

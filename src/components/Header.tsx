@@ -30,15 +30,15 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0B1220]/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-teal-400 to-emerald-600 text-lg font-bold text-white shadow-lg shadow-teal-500/20">
-            P
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-400 to-teal-500 text-lg font-bold text-white shadow-lg shadow-violet-500/20">
+            G
           </div>
           <div className="hidden sm:block">
             <p className="text-sm font-bold tracking-tight text-white">
-              PriceMate
+              PriceGenie AI
             </p>
-            <p className="text-[10px] font-medium uppercase tracking-widest text-teal-400">
-              Australia
+            <p className="text-[10px] font-medium text-violet-300/90">
+              Your wish for the best price granted
             </p>
           </div>
         </Link>
@@ -111,9 +111,9 @@ export function Header() {
 
 export function HeroBadge() {
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-teal-500/30 bg-teal-500/10 px-3 py-1 text-xs font-medium text-teal-300">
+    <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-300">
       <TrendingDown className="h-3.5 w-3.5" />
-      True lowest price — coupons, cashback & student discounts included
+      PriceGenie AI — true lowest price, coupons, cashback & student discounts
     </div>
   );
 }

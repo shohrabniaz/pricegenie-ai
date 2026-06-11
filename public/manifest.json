@@ -1,11 +1,11 @@
 {
-  "name": "PriceMate Australia",
-  "short_name": "PriceMate",
-  "description": "AI Shopping Agent — true lowest price in Australia",
+  "name": "PriceGenie AI",
+  "short_name": "PriceGenie",
+  "description": "Your wish for the best price granted — true lowest price in Australia",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#060a12",
-  "theme_color": "#0D9488",
+  "theme_color": "#7C3AED",
   "orientation": "portrait-primary",
   "icons": [
     {

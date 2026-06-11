@@ -9,8 +9,8 @@
 - [ ] Screenshot hero, search results, student mode, AI advisor
 
 ### Day 2 — Social Setup
-- [ ] Create @pricemate.au on TikTok and Instagram
-- [ ] Bio: "True lowest price in Australia 🛒 Student deals · AI advisor · Free"
+- [ ] Create @pricegenie.ai on TikTok and Instagram
+- [ ] Bio: "Your wish for the best price granted 🧞 Student deals · AI genie · Free"
 - [ ] Link to live site
 
 ### Day 3 — First Content

@@ -34,7 +34,7 @@ export function AiAdvisorChat() {
     {
       role: "assistant",
       content:
-        "Hi! I'm your AI Shopping Advisor for Australia. Ask me about the best deals, whether to wait for a sale, or what to buy on a student budget. 🎓",
+        "Hi! I'm PriceGenie, your AI shopping genie for Australia. Make a wish — best deals, wait-or-buy advice, or student budget picks. 🧞",
     },
   ]);
   const [input, setInput] = useState("");
@@ -76,7 +76,7 @@ export function AiAdvisorChat() {
         <div>
           <h2 className="font-semibold text-white">AI Shopping Advisor</h2>
           <p className="text-xs text-slate-500">
-            Powered by PriceMate intelligence · Australia retailers
+            Powered by PriceGenie AI · Australia retailers
           </p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 {
-  "name": "pricemate-australia",
+  "name": "pricegenie-ai",
   "version": "0.1.0",
-  "description": "AI Shopping Agent — true lowest price finder for Australia",
+  "description": "PriceGenie AI — Your wish for the best price granted",
   "author": "Shohrab Niaz <shohrab.niaz@gmail.com>",
   "license": "SEE LICENSE IN LICENSE",
   "private": true,

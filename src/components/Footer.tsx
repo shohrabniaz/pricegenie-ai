@@ -6,9 +6,9 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-bold text-white">PriceMate Australia</p>
+            <p className="font-bold text-white">PriceGenie AI</p>
             <p className="mt-1 text-sm text-slate-500">
-              AI Shopping Agent · True lowest price finder
+              Your wish for the best price granted
             </p>
             <p className="mt-2 text-xs text-slate-600">
               © {new Date().getFullYear()} Shohrab Niaz. All rights reserved.
@@ -28,7 +28,7 @@ export function Footer() {
               AI Advisor
             </Link>
             <a
-              href="https://github.com/shohrabniaz/pricemate-australia"
+              href="https://github.com/shohrabniaz/pricegenie-ai"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-teal-400"
@@ -38,7 +38,7 @@ export function Footer() {
           </div>
         </div>
         <p className="mt-6 text-xs text-slate-700">
-          Affiliate disclosure: PriceMate may earn commission when you purchase
+          Affiliate disclosure: PriceGenie AI may earn commission when you purchase
           through retailer links. Prices are indicative for MVP demo purposes.
         </p>
       </div>

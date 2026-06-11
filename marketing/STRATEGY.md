@@ -1,9 +1,9 @@
-# PriceMate Australia — Marketing Strategy (0 → Launch)
+# PriceGenie AI — Marketing Strategy (0 → Launch)
 
 ## Positioning
 
 **Don't say:** "Price comparison app"  
-**Say:** "AI Shopping Agent that finds the true lowest price — including coupons, student discounts, cashback & shipping."
+**Say:** "PriceGenie AI — your wish for the best price granted. True lowest price including coupons, student discounts, cashback & shipping."
 
 ### Target Audience (Phase 1)
 
@@ -18,7 +18,7 @@
 | Action | Cost | Goal |
 |--------|------|------|
 | Deploy to Vercel (free) | $0 | Live URL to share |
-| Create TikTok + Instagram accounts | $0 | @pricemate.au |
+| Create TikTok + Instagram accounts | $0 | @pricegenie.ai |
 | Post 3 demo videos (screen recordings) | $0 | "I built an app that finds true prices" |
 | Share in r/australia, r/Adelaide, r/unimelb | $0 | First 100 users |
 | Post in uni Facebook groups | $0 | Student acquisition |
@@ -63,7 +63,7 @@ These rank on Google and bring organic traffic forever.
 
 | Day | Content |
 |-----|---------|
-| 1 | Launch post: "I built PriceMate — true lowest price in Australia" |
+| 1 | Launch post: "I built PriceGenie AI — your wish for the best price granted" |
 | 2 | Demo: Student Mode saves $170 on MacBook |
 | 3 | Demo: "Wait or Buy" — should you buy iPhone now? |
 | 4 | Reddit post in r/AusFinance |
@@ -74,8 +74,9 @@ These rank on Google and bring organic traffic forever.
 
 ## ASO (When You Ship Native App)
 
-**App name:** PriceMate Australia — True Price Finder  
-**Subtitle:** Coupons, Student Deals & AI Advisor  
+**App name:** PriceGenie AI  
+**Subtitle:** Your wish for the best price granted  
+**Keywords line:** Coupons, Student Deals & AI Shopping Genie  
 **Keywords:** price comparison, student discount, coupon, JB Hi-Fi, Australia deals
 
 ## Metrics to Track

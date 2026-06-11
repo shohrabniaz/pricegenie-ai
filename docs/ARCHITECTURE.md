@@ -2,7 +2,7 @@
 
 ## Overview
 
-PriceMate Australia is a Next.js 16 App Router application with client-side state for student mode and price alerts. MVP uses seed data; production will add retailer APIs and scraping.
+PriceGenie AI is a Next.js 16 App Router application with client-side state for student mode and price alerts. MVP uses seed data; production will add retailer APIs and scraping.
 
 ```
 ┌─────────────┐     ┌──────────────────┐     ┌─────────────────┐

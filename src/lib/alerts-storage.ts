@@ -1,6 +1,6 @@
 import type { PriceAlert } from "@/types";
 
-const STORAGE_KEY = "pricemate-price-alerts";
+const STORAGE_KEY = "pricegenie-price-alerts";
 
 export function getAlerts(): PriceAlert[] {
   if (typeof window === "undefined") return [];

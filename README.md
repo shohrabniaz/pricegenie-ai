@@ -1,8 +1,8 @@
-# PriceMate Australia
+# PriceGenie AI
 
-**AI Shopping Agent that finds the true lowest price anywhere in Australia.**
+**Your wish for the best price granted.**
 
-Compare JB Hi-Fi, Harvey Norman, The Good Guys, Amazon AU & more — with coupons, student discounts, cashback, and shipping included.
+AI shopping genie that finds the true lowest price in Australia — compare JB Hi-Fi, Harvey Norman, The Good Guys, Amazon AU & more with coupons, student discounts, cashback, and shipping included.
 
 Built by **Shohrab Niaz**.
 
@@ -13,7 +13,7 @@ Built by **Shohrab Niaz**.
 | **True Price** | Final cost after coupons, student discounts, cashback & shipping |
 | **Student Mode** | Auto-applies education pricing across retailers |
 | **Coupon Finder** | Working codes with success rates |
-| **AI Shopping Advisor** | Ask what to buy, when to wait, budget recommendations |
+| **AI Shopping Genie** | Ask what to buy, when to wait, budget recommendations |
 | **Wait or Buy** | Sale timing advice based on price history |
 | **Price Alerts** | Local alerts — no account, no cost |
 | **PWA Ready** | Install on phone from browser (no app store fee for MVP) |

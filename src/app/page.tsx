@@ -60,15 +60,15 @@ export default function HomePage() {
         <div className="relative mx-auto max-w-3xl text-center">
           <HeroBadge />
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            The true lowest price
-            <span className="block bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
-              anywhere in Australia
+            Your wish for the best price
+            <span className="block bg-gradient-to-r from-violet-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
+              granted
             </span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base text-slate-400 sm:text-lg">
-            Compare prices across Australian retailers. We factor in coupons,
-            student discounts, cashback & shipping — so you see what you
-            actually pay.
+            PriceGenie AI compares Australian retailers and grants you the true
+            lowest price — with coupons, student discounts, cashback & shipping
+            included.
           </p>
           <div className="mx-auto mt-8 max-w-2xl">
             <SearchBar size="large" />
@@ -109,7 +109,7 @@ export default function HomePage() {
       <section className="border-t border-white/5 bg-white/[0.02] px-4 py-16">
         <div className="mx-auto max-w-6xl">
           <h2 className="text-center text-2xl font-bold text-white">
-            Why PriceMate beats manual searching
+            Why PriceGenie beats manual searching
           </h2>
           <p className="mx-auto mt-2 max-w-lg text-center text-sm text-slate-500">
             Most apps do one thing. We combine everything into one AI shopping

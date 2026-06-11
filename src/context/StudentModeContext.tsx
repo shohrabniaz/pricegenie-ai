@@ -16,7 +16,7 @@ interface StudentModeContextValue {
 
 const StudentModeContext = createContext<StudentModeContextValue | null>(null);
 
-const STORAGE_KEY = "pricemate-student-mode";
+const STORAGE_KEY = "pricegenie-student-mode";
 
 export function StudentModeProvider({
   children,
