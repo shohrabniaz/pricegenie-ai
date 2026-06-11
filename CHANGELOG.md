@@ -2,6 +2,13 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.3.2] - 2026-06-12
+
+### Fixed
+- Docker image: Alpine package upgrades for OpenSSL CVEs
+- Dependency override for picomatch ReDoS CVE (Trivy scan)
+- Trivy action uses `@v0.36.0` tag convention
+
 ## [0.3.1] - 2026-06-12
 
 ### Fixed

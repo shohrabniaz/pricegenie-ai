@@ -1,12 +1,15 @@
 {
   "name": "pricegenie-ai",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "PriceGenie AI — Your wish for the best price granted",
   "author": "Shohrab Niaz <shohrab.niaz@gmail.com>",
   "license": "SEE LICENSE IN LICENSE",
   "private": true,
   "engines": {
     "node": ">=22"
+  },
+  "overrides": {
+    "picomatch": "^4.0.4"
   },
   "scripts": {
     "dev": "next dev",
