@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="24" fill="#ffffff"/>
+  <!-- P -->
+  <path d="M28 22h22c14 0 22 8 22 19 0 8-4 14-11 17l16 28h-14L49 60h-9v30H28V22zm20 28c7 0 11-4 11-10s-4-10-11-10H40v20h8z" fill="#1B2D4A"/>
+  <!-- Genie lamp -->
+  <path d="M52 58c-2-8 4-16 12-16 6 0 11 4 12 10l14 4c2 1 3 3 2 5l-4 10c-1 2-3 3-5 2l-8-3c-3 6-10 9-17 7-5-2-8-7-6-12l-6-7z" fill="#1B2D4A"/>
+  <ellipse cx="66" cy="54" rx="10" ry="6" fill="#1B2D4A"/>
+  <path d="M78 52c6 0 10 2 10 5s-4 5-10 5" stroke="#1B2D4A" stroke-width="3" stroke-linecap="round"/>
+  <!-- Price tags -->
+  <path d="M82 28l8-6 6 8-8 6-6-8z" fill="#1B2D4A"/>
+  <path d="M92 22l7-5 5 7-7 5-5-7z" fill="#C9A227"/>
+  <path d="M100 32l6-4 4 6-6 4-4-6z" fill="#C9A227"/>
+  <path d="M88 38l7-5 5 7-7 5-5-7z" fill="#C9A227"/>
+  <circle cx="95" cy="35" r="2" fill="#ffffff"/>
+</svg>

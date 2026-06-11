@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/Logo";
 import { APP_VERSION } from "@/lib/version";
 
 export function Footer() {
@@ -7,8 +8,10 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-bold text-white">PriceGenie AI</p>
-            <p className="mt-1 text-sm text-slate-500">
+            <div className="inline-block rounded-lg bg-white px-2 py-1.5">
+              <Logo variant="full" className="h-8" />
+            </div>
+            <p className="mt-2 text-sm text-slate-500">
               Your wish for the best price granted
             </p>
             <p className="mt-2 text-xs text-slate-600">

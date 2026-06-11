@@ -6,6 +6,7 @@ test.describe("Smoke tests", () => {
     await expect(page).toHaveTitle(/PriceGenie AI/i);
     await expect(page.getByTestId("hero-title")).toBeVisible();
     await expect(page.getByTestId("hero-title")).toContainText("granted");
+    await expect(page.getByTestId("logo")).toBeVisible();
   });
 
   test("navigation links are reachable", async ({ page }) => {

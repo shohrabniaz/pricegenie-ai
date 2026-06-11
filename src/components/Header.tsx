@@ -12,6 +12,7 @@ import {
   TrendingDown,
 } from "lucide-react";
 import { useStudentMode } from "@/context/StudentModeContext";
+import { Logo } from "@/components/Logo";
 
 const NAV = [
   { href: "/", label: "Home", icon: Home },
@@ -29,18 +30,13 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0B1220]/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="flex items-center gap-2 shrink-0">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-400 to-teal-500 text-lg font-bold text-white shadow-lg shadow-violet-500/20">
-            G
+        <Link href="/" className="flex items-center gap-2.5 shrink-0">
+          <div className="rounded-lg bg-white px-1.5 py-1 shadow-sm">
+            <Logo variant="full" priority className="h-9 sm:h-10" />
           </div>
-          <div className="hidden sm:block">
-            <p className="text-sm font-bold tracking-tight text-white">
-              PriceGenie AI
-            </p>
-            <p className="text-[10px] font-medium text-violet-300/90">
-              Your wish for the best price granted
-            </p>
-          </div>
+          <p className="hidden text-[10px] font-medium text-amber-300/90 lg:block max-w-[11rem] leading-tight">
+            Your wish for the best price granted
+          </p>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

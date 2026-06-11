@@ -2,6 +2,12 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.2.1] - 2026-06-12
+
+### Changed
+- Replaced gradient placeholder with official PriceGenie AI logo (genie lamp + price tags)
+- Updated favicon, PWA icons, and theme color to navy & gold brand palette
+
 ## [0.2.0] - 2026-06-12
 
 ### Added

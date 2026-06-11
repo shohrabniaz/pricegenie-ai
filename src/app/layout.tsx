@@ -33,6 +33,10 @@ export const metadata: Metadata = {
   authors: [{ name: "Shohrab Niaz", url: "https://github.com/shohrabniaz" }],
   creator: "Shohrab Niaz",
   manifest: "/manifest.json",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/logo.png", type: "image/png" }],
+  },
   openGraph: {
     title: "PriceGenie AI — Your wish for the best price granted",
     description:
@@ -43,7 +47,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#7C3AED",
+  themeColor: "#1B2D4A",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
