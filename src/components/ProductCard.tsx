@@ -21,6 +21,7 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       href={`/product/${product.id}`}
+      data-testid={`product-card-${product.id}`}
       className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-teal-500/30 hover:bg-white/[0.06]"
     >
       <div className="mb-3 flex items-start justify-between gap-2">

@@ -15,7 +15,7 @@ export function PriceTable({ product }: PriceTableProps) {
   const ranked = rankOffers(product.offers, studentMode);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-white/10">
+    <div data-testid="price-table" className="overflow-hidden rounded-2xl border border-white/10">
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-white/10 bg-white/[0.03] text-left text-xs uppercase tracking-wide text-slate-500">
@@ -105,6 +105,7 @@ export function PriceTable({ product }: PriceTableProps) {
               <td className="px-4 py-3">
                 <a
                   href={offer.url}
+                  data-testid="view-product-link"
                   target="_blank"
                   rel="noopener noreferrer"
                   title={`View ${product.name} at ${offer.retailerName}`}

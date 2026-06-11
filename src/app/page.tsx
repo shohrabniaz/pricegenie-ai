@@ -59,7 +59,10 @@ export default function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-teal-500/10 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-3xl text-center">
           <HeroBadge />
-          <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1
+            data-testid="hero-title"
+            className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl"
+          >
             Your wish for the best price
             <span className="block bg-gradient-to-r from-violet-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
               granted

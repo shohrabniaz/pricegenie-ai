@@ -193,6 +193,7 @@ export function AiAdvisorChat() {
             className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
+              data-testid={msg.role === "assistant" ? "advisor-response" : "advisor-user-message"}
               className={`max-w-[90%] rounded-2xl px-4 py-3 text-sm ${
                 msg.role === "user"
                   ? "bg-teal-600 text-white"
@@ -233,6 +234,7 @@ export function AiAdvisorChat() {
         <form onSubmit={handleSubmit} className="flex gap-2">
           <input
             type="text"
+            data-testid="advisor-input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="e.g. Best Kmart headphones under $30?"
@@ -240,6 +242,7 @@ export function AiAdvisorChat() {
           />
           <button
             type="submit"
+            data-testid="advisor-send"
             disabled={loading || !input.trim()}
             className="rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 px-4 py-3 text-white transition hover:from-violet-500 hover:to-purple-500 disabled:opacity-50"
           >

@@ -11,7 +11,10 @@
     "start": "next start",
     "lint": "eslint",
     "sanity": "tsx scripts/sanity-check.ts",
-    "check": "npm run lint && npm run sanity && npm run build"
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "check": "npm run lint && npm run sanity && npm run build",
+    "check:all": "npm run check && npm run test:e2e"
   },
   "dependencies": {
     "lucide-react": "^1.17.0",
@@ -20,6 +23,7 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
