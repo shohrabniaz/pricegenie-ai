@@ -8,9 +8,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <div className="inline-block rounded-lg bg-white px-2 py-1.5">
-              <Logo variant="full" className="h-8" />
-            </div>
+            <Logo />
             <p className="mt-2 text-sm text-slate-500">
               Your wish for the best price granted
             </p>

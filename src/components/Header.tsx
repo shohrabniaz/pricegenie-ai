@@ -30,11 +30,12 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0B1220]/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <div className="rounded-lg bg-white px-1.5 py-1 shadow-sm">
-            <Logo variant="full" priority className="h-9 sm:h-10" />
-          </div>
-          <p className="hidden text-[10px] font-medium text-amber-300/90 lg:block max-w-[11rem] leading-tight">
+        <Link
+          href="/"
+          className="group flex shrink-0 items-center gap-2.5 transition-opacity hover:opacity-90"
+        >
+          <Logo />
+          <p className="hidden max-w-[10rem] text-[10px] font-medium leading-tight text-slate-500 lg:block group-hover:text-slate-400">
             Your wish for the best price granted
           </p>
         </Link>

@@ -5,7 +5,7 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#060a12",
-  "theme_color": "#1B2D4A",
+  "theme_color": "#0B1220",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -13,12 +13,6 @@
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
     }
   ]
 }

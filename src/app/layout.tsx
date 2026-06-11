@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/logo.png", type: "image/png" }],
+    apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
   openGraph: {
     title: "PriceGenie AI — Your wish for the best price granted",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1B2D4A",
+  themeColor: "#0B1220",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,

@@ -2,6 +2,12 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.2.2] - 2026-06-12
+
+### Changed
+- Minimal inline SVG logo that blends with the dark UI (no white box)
+- Wordmark uses site slate + teal accents; icon-only on small screens
+
 ## [0.2.1] - 2026-06-12
 
 ### Changed
