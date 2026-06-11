@@ -102,6 +102,8 @@ Images pushed to **GitHub Container Registry** on `main`:
 
 `ghcr.io/shohrabniaz/pricegenie-ai:latest`
 
+Trivy reports HIGH+ vulnerabilities but only **CRITICAL** findings fail the Docker workflow (some HIGH issues originate from Next.js bundled dependencies).
+
 ## Code coverage
 
 Coverage is collected for `src/lib/**` with Vitest + v8. Thresholds:

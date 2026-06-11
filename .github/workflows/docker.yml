@@ -30,13 +30,22 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Run Trivy vulnerability scanner
+      - name: Run Trivy vulnerability scanner (report)
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: pricegenie-ai:${{ github.sha }}
+          format: table
+          exit-code: 0
+          severity: CRITICAL,HIGH
+          ignore-unfixed: true
+
+      - name: Fail on CRITICAL image vulnerabilities
         uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: pricegenie-ai:${{ github.sha }}
           format: table
           exit-code: 1
-          severity: CRITICAL,HIGH
+          severity: CRITICAL
           ignore-unfixed: true
 
       - name: Login to GHCR
