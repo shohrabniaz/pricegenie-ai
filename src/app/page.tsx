@@ -34,8 +34,8 @@ const FEATURES = [
   },
   {
     icon: Bot,
-    title: "AI Advisor",
-    desc: "Ask what to buy, when to wait, and get personalised recommendations.",
+    title: "Niaz AI",
+    desc: "Chat with Niaz — personalised picks, wait-or-buy advice, and budget help.",
   },
   {
     icon: Zap,
@@ -149,7 +149,7 @@ export default function HomePage() {
             href="/advisor"
             className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 px-6 py-3 text-sm font-semibold text-white transition hover:from-violet-500 hover:to-purple-500"
           >
-            Try AI Advisor <ArrowRight className="h-4 w-4" />
+            Chat with Niaz <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>

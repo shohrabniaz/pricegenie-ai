@@ -25,7 +25,7 @@ export function Footer() {
               Student Deals
             </Link>
             <Link href="/advisor" className="hover:text-teal-400">
-              AI Advisor
+              Niaz
             </Link>
             <a
               href="https://github.com/shohrabniaz/pricegenie-ai"

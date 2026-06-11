@@ -130,7 +130,7 @@ export function AiAdvisorChat() {
       role: "assistant",
       content: JSON.stringify({
         summary: "Your wish for the best price — granted.",
-        body: "G'day! I'm **PriceGenie**, your AI shopping genie for Australia.\n\nI compare **true prices** across JB Hi-Fi, Harvey Norman, Amazon AU, **Kmart**, and more — including coupons, student discounts, cashback, and shipping.\n\nWhat are you looking for today?",
+        body: "G'day! I'm **Niaz**, your AI shopping assistant for Australia.\n\nI compare **true prices** across JB Hi-Fi, Harvey Norman, Amazon AU, **Kmart**, and more — including coupons, student discounts, cashback, and shipping.\n\nWhat are you looking for today?",
         suggestions: [
           "Best laptop under $1,200?",
           "Kmart dorm essentials",
@@ -179,9 +179,9 @@ export function AiAdvisorChat() {
           <Bot className="h-5 w-5 text-white" />
         </div>
         <div>
-          <h2 className="font-semibold text-white">PriceGenie AI Advisor</h2>
+          <h2 className="font-semibold text-white">Niaz</h2>
           <p className="text-xs text-slate-500">
-            True prices · Kmart · Student deals · Wait-or-buy advice
+            PriceGenie AI assistant · True prices · Kmart · Student deals
           </p>
         </div>
       </div>
@@ -211,7 +211,7 @@ export function AiAdvisorChat() {
         {loading && (
           <div className="flex items-center gap-2 text-sm text-slate-500">
             <Sparkles className="h-4 w-4 animate-pulse text-violet-400" />
-            Checking JB Hi-Fi, Kmart, Amazon AU & more...
+            Niaz is checking JB Hi-Fi, Kmart, Amazon AU & more...
             <ExternalLink className="h-3 w-3 opacity-50" />
           </div>
         )}

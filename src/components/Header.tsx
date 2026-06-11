@@ -18,7 +18,7 @@ const NAV = [
   { href: "/search", label: "Search", icon: Search },
   { href: "/coupons", label: "Coupons", icon: Tag },
   { href: "/student", label: "Student", icon: GraduationCap },
-  { href: "/advisor", label: "AI Advisor", icon: Bot },
+  { href: "/advisor", label: "Niaz", icon: Bot },
   { href: "/alerts", label: "Alerts", icon: Bell },
 ];
 

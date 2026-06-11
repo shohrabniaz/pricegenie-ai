@@ -18,7 +18,7 @@ test.describe("Smoke tests", () => {
     await expect(page).toHaveURL(/\/coupons/);
     await expect(page.getByRole("heading", { name: "Coupon Codes" })).toBeVisible();
 
-    await page.getByRole("link", { name: "AI Advisor", exact: true }).first().click();
+    await page.getByRole("link", { name: "Niaz", exact: true }).first().click();
     await expect(page).toHaveURL(/\/advisor/);
     await expect(page.getByTestId("advisor-input")).toBeVisible();
   });

@@ -92,7 +92,7 @@ function buildProductLinks(
 
 function helpReply(): AiReply {
   return {
-    summary: "I'm your shopping genie — here's what I can do for you.",
+    summary: "I'm Niaz — here's what I can help you with.",
     body: [
       "I compare **true prices** across JB Hi-Fi, Harvey Norman, Amazon AU, Kmart, and more — factoring in coupons, student discounts, cashback, and shipping.",
       "",
@@ -117,7 +117,7 @@ function greetingReply(name = "there"): AiReply {
   return {
     summary: `G'day! Your wish for the best price is my command.`,
     body: [
-      `Hey ${name}! I'm **PriceGenie** — I search ${PRODUCTS.length}+ products across Australian stores and tell you the **real** price you'll pay.`,
+      `Hey ${name}! I'm **Niaz** — I search ${PRODUCTS.length}+ products across Australian stores and tell you the **real** price you'll pay.`,
       "",
       "Ask me for recommendations, wait-or-buy advice, Kmart bargains, or student budget picks. What are you shopping for today?",
     ].join("\n"),
@@ -153,11 +153,11 @@ function compareReply(query: string, studentMode: boolean): AiReply | null {
     body: [
       `**${left.name}**`,
       `• True price: **${formatAud(bestL.breakdown.truePrice)}** at ${bestL.offer.retailerName}`,
-      `• [View on ${bestL.offer.retailerName}](${buildRetailerProductUrl(bestL.offer.retailer, left.name)}) · [Details in PriceGenie](/product/${left.id})`,
+      `• [View on ${bestL.offer.retailerName}](${buildRetailerProductUrl(bestL.offer.retailer, left.name)}) · [Full comparison](/product/${left.id})`,
       "",
       `**${right.name}**`,
       `• True price: **${formatAud(bestR.breakdown.truePrice)}** at ${bestR.offer.retailerName}`,
-      `• [View on ${bestR.offer.retailerName}](${buildRetailerProductUrl(bestR.offer.retailer, right.name)}) · [Details in PriceGenie](/product/${right.id})`,
+      `• [View on ${bestR.offer.retailerName}](${buildRetailerProductUrl(bestR.offer.retailer, right.name)}) · [Full comparison](/product/${right.id})`,
       "",
       cheaper.id === left.id
         ? `💡 **Verdict:** ${left.name} is **${formatAud(bestR.breakdown.truePrice - bestL.breakdown.truePrice)}** cheaper on true price.`

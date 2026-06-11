@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "PriceGenie AI — Your wish for the best price granted",
     description:
-      "AI-powered shopping genie for Australian students and savvy shoppers.",
+      "AI-powered shopping assistant Niaz helps Australian students find true lowest prices.",
     locale: "en_AU",
     type: "website",
   },
