@@ -6,6 +6,8 @@ test.describe("Product detail", () => {
 
     await expect(page.getByRole("heading", { name: /PlayStation 5/i })).toBeVisible();
     await expect(page.getByTestId("price-table")).toBeVisible();
+    await expect(page.getByTestId("true-price-explainer")).toBeVisible();
+    await expect(page.getByTestId("product-image-ps5-slim")).toBeVisible();
 
     const storeLinks = page.getByTestId("view-product-link");
     await expect(storeLinks.first()).toBeVisible();

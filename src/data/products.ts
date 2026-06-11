@@ -3,6 +3,7 @@ import { CATALOG_EXTRA } from "@/data/catalog-extra";
 import { CATALOG_KMART } from "@/data/catalog-kmart";
 import { CATALOG_ELECTRONICS } from "@/data/catalog-electronics";
 import { resolveProductUrls } from "@/data/product-helpers";
+import { getProductImageUrl } from "@/lib/product-images";
 
 const CORE_PRODUCTS: Product[] = [
   {
@@ -458,12 +459,17 @@ const CORE_PRODUCTS: Product[] = [
   },
 ];
 
+function enrichProduct(product: Product): Product {
+  const withUrls = resolveProductUrls(product);
+  return { ...withUrls, imageUrl: getProductImageUrl(withUrls) };
+}
+
 export const PRODUCTS: Product[] = [
   ...CORE_PRODUCTS,
   ...CATALOG_EXTRA,
   ...CATALOG_KMART,
   ...CATALOG_ELECTRONICS,
-].map(resolveProductUrls);
+].map(enrichProduct);
 
 export function getProductById(id: string): Product | undefined {
   return PRODUCTS.find((p) => p.id === id);

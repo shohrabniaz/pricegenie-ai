@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { APP_VERSION } from "@/lib/version";
 
 export function Footer() {
   return (
@@ -11,7 +12,7 @@ export function Footer() {
               Your wish for the best price granted
             </p>
             <p className="mt-2 text-xs text-slate-600">
-              © {new Date().getFullYear()} Shohrab Niaz. All rights reserved.
+              © {new Date().getFullYear()} Shohrab Niaz · v{APP_VERSION}
             </p>
           </div>
           <div className="flex flex-wrap gap-4 text-sm text-slate-500">

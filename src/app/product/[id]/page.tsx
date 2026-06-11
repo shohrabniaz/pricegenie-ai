@@ -8,8 +8,11 @@ import { PriceTable } from "@/components/PriceTable";
 import { WaitOrBuyCard } from "@/components/WaitOrBuyCard";
 import { PriceHistoryChart } from "@/components/PriceHistoryChart";
 import { PriceAlertButton } from "@/components/PriceAlertButton";
+import { ProductImage } from "@/components/ProductImage";
+import { TruePriceExplainer } from "@/components/TruePriceExplainer";
+import { OfferBreakdownList } from "@/components/OfferBreakdownList";
 import { useStudentMode } from "@/context/StudentModeContext";
-import { formatAud, getBestOffer } from "@/lib/pricing";
+import { formatAud, getBestOffer, getTotalSavings } from "@/lib/pricing";
 
 export default function ProductPage({
   params,
@@ -46,7 +49,7 @@ export default function ProductPage({
       <div className="mt-6 grid gap-8 lg:grid-cols-3">
         <div className="lg:col-span-1">
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-            <span className="text-6xl">{product.image}</span>
+            <ProductImage product={product} size="detail" className="mx-auto" />
             <p className="mt-4 text-xs font-medium uppercase tracking-wide text-slate-500">
               {product.brand} · {product.category}
             </p>
@@ -64,6 +67,16 @@ export default function ProductPage({
                 <p className="text-sm text-slate-400">
                   at {best.offer.retailerName}
                 </p>
+                {best.breakdown.listPrice !== best.breakdown.truePrice && (
+                  <p className="mt-2 text-xs text-slate-500 line-through">
+                    Store list: {formatAud(best.breakdown.listPrice)}
+                  </p>
+                )}
+                {getTotalSavings(best.breakdown) > 0 && (
+                  <p className="mt-1 text-xs font-medium text-emerald-400">
+                    Effective savings: {formatAud(getTotalSavings(best.breakdown))}
+                  </p>
+                )}
               </div>
             )}
 
@@ -86,13 +99,22 @@ export default function ProductPage({
         </div>
 
         <div className="space-y-6 lg:col-span-2">
+          {best && (
+            <TruePriceExplainer
+              offer={best.offer}
+              productName={product.name}
+              highlight
+            />
+          )}
+
           <div>
             <h2 className="mb-4 text-lg font-bold text-white">
-              Price Comparison — True Price
+              Compare all stores
             </h2>
             <PriceTable product={product} />
           </div>
 
+          <OfferBreakdownList product={product} />
           <WaitOrBuyCard product={product} />
           <PriceHistoryChart product={product} />
         </div>

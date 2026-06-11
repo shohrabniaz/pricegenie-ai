@@ -27,10 +27,11 @@ function offer(input: OfferInput, productName: string): StoreOffer {
 }
 
 export function catalogProduct(
-  base: Omit<Product, "offers" | "priceHistory"> & {
+  base: Omit<Product, "offers" | "priceHistory" | "imageUrl"> & {
     offers: OfferInput[];
     priceHistory?: PriceHistoryPoint[];
     currentPrice?: number;
+    imageUrl?: string;
   }
 ): Product {
   const offers = base.offers.map((o) => offer(o, base.name));
@@ -46,7 +47,13 @@ export function catalogProduct(
 
   const { currentPrice, ...rest } = base;
   void currentPrice;
-  return { ...rest, offers, priceHistory };
+  return {
+    ...rest,
+    image: rest.image ?? "📦",
+    imageUrl: base.imageUrl ?? "",
+    offers,
+    priceHistory,
+  };
 }
 
 export function resolveProductUrls(product: Product): Product {

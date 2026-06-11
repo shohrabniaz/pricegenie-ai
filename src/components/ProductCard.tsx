@@ -5,6 +5,7 @@ import { ArrowRight, Tag } from "lucide-react";
 import type { Product } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { formatAud, getBestOffer } from "@/lib/pricing";
+import { ProductImage } from "@/components/ProductImage";
 
 interface ProductCardProps {
   product: Product;
@@ -25,7 +26,7 @@ export function ProductCard({ product }: ProductCardProps) {
       className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-teal-500/30 hover:bg-white/[0.06]"
     >
       <div className="mb-3 flex items-start justify-between gap-2">
-        <span className="text-4xl">{product.image}</span>
+        <ProductImage product={product} size="card" />
         {savings > 0 && (
           <span className="rounded-full bg-emerald-500/20 px-2 py-0.5 text-xs font-semibold text-emerald-400">
             Save {formatAud(savings)}

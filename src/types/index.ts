@@ -34,7 +34,10 @@ export interface Product {
   name: string;
   brand: string;
   category: string;
+  /** @deprecated Legacy emoji — use imageUrl */
   image: string;
+  /** Populated at catalog load via enrichProduct */
+  imageUrl?: string;
   description: string;
   specs: Record<string, string>;
   offers: StoreOffer[];

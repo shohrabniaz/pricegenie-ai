@@ -50,6 +50,7 @@ for (const product of PRODUCTS) {
   assert(studentBest !== null, `${product.id} student mode has no offers`);
   getWaitOrBuyAdvice(product, false);
   getWaitOrBuyAdvice(product, true);
+  assert(Boolean(product.imageUrl), `${product.id} missing imageUrl`);
   for (const offer of product.offers) {
     assert(
       !isGenericStoreUrl(offer.url),
