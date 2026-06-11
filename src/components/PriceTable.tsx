@@ -107,9 +107,10 @@ export function PriceTable({ product }: PriceTableProps) {
                   href={offer.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title={`View ${product.name} at ${offer.retailerName}`}
                   className="inline-flex items-center gap-1 rounded-lg bg-white/10 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-white/20"
                 >
-                  Shop
+                  View product
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </td>

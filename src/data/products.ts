@@ -1,5 +1,8 @@
 import type { Product } from "@/types";
 import { CATALOG_EXTRA } from "@/data/catalog-extra";
+import { CATALOG_KMART } from "@/data/catalog-kmart";
+import { CATALOG_ELECTRONICS } from "@/data/catalog-electronics";
+import { resolveProductUrls } from "@/data/product-helpers";
 
 const CORE_PRODUCTS: Product[] = [
   {
@@ -455,7 +458,12 @@ const CORE_PRODUCTS: Product[] = [
   },
 ];
 
-export const PRODUCTS: Product[] = [...CORE_PRODUCTS, ...CATALOG_EXTRA];
+export const PRODUCTS: Product[] = [
+  ...CORE_PRODUCTS,
+  ...CATALOG_EXTRA,
+  ...CATALOG_KMART,
+  ...CATALOG_ELECTRONICS,
+].map(resolveProductUrls);
 
 export function getProductById(id: string): Product | undefined {
   return PRODUCTS.find((p) => p.id === id);

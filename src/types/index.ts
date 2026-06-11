@@ -6,7 +6,8 @@ export type Retailer =
   | "kogan"
   | "officeworks"
   | "big-w"
-  | "ebay-au";
+  | "ebay-au"
+  | "kmart";
 
 export interface StoreOffer {
   retailer: Retailer;

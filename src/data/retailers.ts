@@ -9,6 +9,7 @@ export const RETAILER_LABELS: Record<Retailer, string> = {
   officeworks: "Officeworks",
   "big-w": "Big W",
   "ebay-au": "eBay AU",
+  kmart: "Kmart",
 };
 
 export const RETAILER_COLORS: Record<Retailer, string> = {
@@ -20,4 +21,5 @@ export const RETAILER_COLORS: Record<Retailer, string> = {
   officeworks: "#E31837",
   "big-w": "#1E3A8A",
   "ebay-au": "#E53238",
+  kmart: "#D4213D",
 };

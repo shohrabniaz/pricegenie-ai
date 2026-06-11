@@ -1,5 +1,6 @@
 import type { Product, PriceHistoryPoint, StoreOffer, Retailer } from "@/types";
 import { RETAILER_LABELS } from "@/data/retailers";
+import { resolveOfferUrl } from "@/lib/retailer-urls";
 
 type OfferInput = {
   retailer: Retailer;
@@ -9,25 +10,14 @@ type OfferInput = {
   url?: string;
 } & Omit<Partial<StoreOffer>, "retailer" | "retailerName" | "listPrice" | "shipping" | "inStock" | "url">;
 
-const DEFAULT_URLS: Record<Retailer, string> = {
-  "jb-hifi": "https://www.jbhifi.com.au",
-  "harvey-norman": "https://www.harveynorman.com.au",
-  "the-good-guys": "https://www.thegoodguys.com.au",
-  "amazon-au": "https://www.amazon.com.au",
-  kogan: "https://www.kogan.com",
-  officeworks: "https://www.officeworks.com.au",
-  "big-w": "https://www.bigw.com.au",
-  "ebay-au": "https://www.ebay.com.au",
-};
-
-function offer(input: OfferInput): StoreOffer {
+function offer(input: OfferInput, productName: string): StoreOffer {
   return {
     retailer: input.retailer,
     retailerName: RETAILER_LABELS[input.retailer],
     listPrice: input.listPrice,
     shipping: input.shipping ?? 0,
     inStock: input.inStock ?? true,
-    url: input.url ?? DEFAULT_URLS[input.retailer],
+    url: resolveOfferUrl(input.retailer, productName, input.url),
     couponCode: input.couponCode,
     couponDiscount: input.couponDiscount,
     cashbackPercent: input.cashbackPercent,
@@ -43,7 +33,7 @@ export function catalogProduct(
     currentPrice?: number;
   }
 ): Product {
-  const offers = base.offers.map(offer);
+  const offers = base.offers.map((o) => offer(o, base.name));
   const current =
     base.currentPrice ??
     Math.min(...offers.filter((o) => o.inStock).map((o) => o.listPrice));
@@ -57,6 +47,16 @@ export function catalogProduct(
   const { currentPrice, ...rest } = base;
   void currentPrice;
   return { ...rest, offers, priceHistory };
+}
+
+export function resolveProductUrls(product: Product): Product {
+  return {
+    ...product,
+    offers: product.offers.map((o) => ({
+      ...o,
+      url: resolveOfferUrl(o.retailer, product.name, o.url),
+    })),
+  };
 }
 
 export { offer };

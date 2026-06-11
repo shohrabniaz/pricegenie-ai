@@ -45,7 +45,7 @@ const FEATURES = [
   {
     icon: Shield,
     title: "Australia First",
-    desc: "JB Hi-Fi, Harvey Norman, The Good Guys, Amazon AU & more.",
+    desc: "JB Hi-Fi, Harvey Norman, Kmart, Amazon AU, The Good Guys & more.",
   },
 ];
 

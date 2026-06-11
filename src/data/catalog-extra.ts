@@ -1,5 +1,5 @@
 import type { Product } from "@/types";
-import { catalogProduct, offer } from "@/data/product-helpers";
+import { catalogProduct } from "@/data/product-helpers";
 
 export const CATALOG_EXTRA: Product[] = [
   catalogProduct({
@@ -14,10 +14,10 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 549,
     currentPrice: 599,
     offers: [
-      offer({ retailer: "amazon-au", listPrice: 599, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
-      offer({ retailer: "jb-hifi", listPrice: 649 }),
-      offer({ retailer: "big-w", listPrice: 629, couponCode: "GAME30", couponDiscount: 30 }),
-      offer({ retailer: "the-good-guys", listPrice: 649, cashbackPercent: 5, cashbackProvider: "ShopBack" }),
+      { retailer: "amazon-au", listPrice: 599, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
+      { retailer: "jb-hifi", listPrice: 649 },
+      { retailer: "big-w", listPrice: 629, couponCode: "GAME30", couponDiscount: 30 },
+      { retailer: "the-good-guys", listPrice: 649, cashbackPercent: 5, cashbackProvider: "ShopBack" },
     ],
   }),
   catalogProduct({
@@ -32,9 +32,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 649,
     currentPrice: 699,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 699, studentDiscountPercent: 5 }),
-      offer({ retailer: "harvey-norman", listPrice: 749 }),
-      offer({ retailer: "amazon-au", listPrice: 679, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
+      { retailer: "jb-hifi", listPrice: 699, studentDiscountPercent: 5 },
+      { retailer: "harvey-norman", listPrice: 749 },
+      { retailer: "amazon-au", listPrice: 679, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
     ],
   }),
   catalogProduct({
@@ -49,9 +49,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 429,
     currentPrice: 449,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 449 }),
-      offer({ retailer: "big-w", listPrice: 459 }),
-      offer({ retailer: "amazon-au", listPrice: 439, cashbackPercent: 2, cashbackProvider: "ShopBack" }),
+      { retailer: "jb-hifi", listPrice: 449 },
+      { retailer: "big-w", listPrice: 459 },
+      { retailer: "amazon-au", listPrice: 439, cashbackPercent: 2, cashbackProvider: "ShopBack" },
     ],
   }),
   catalogProduct({
@@ -66,9 +66,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 329,
     currentPrice: 349,
     offers: [
-      offer({ retailer: "amazon-au", listPrice: 349, studentDiscountPercent: 10 }),
-      offer({ retailer: "jb-hifi", listPrice: 379, couponCode: "AUDIO20", couponDiscount: 20 }),
-      offer({ retailer: "officeworks", listPrice: 379, shipping: 5.95 }),
+      { retailer: "amazon-au", listPrice: 349, studentDiscountPercent: 10 },
+      { retailer: "jb-hifi", listPrice: 379, couponCode: "AUDIO20", couponDiscount: 20 },
+      { retailer: "officeworks", listPrice: 379, shipping: 5.95 },
     ],
   }),
   catalogProduct({
@@ -83,9 +83,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 279,
     currentPrice: 299,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 299, studentDiscountPercent: 10 }),
-      offer({ retailer: "harvey-norman", listPrice: 329 }),
-      offer({ retailer: "amazon-au", listPrice: 289, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
+      { retailer: "jb-hifi", listPrice: 299, studentDiscountPercent: 10 },
+      { retailer: "harvey-norman", listPrice: 329 },
+      { retailer: "amazon-au", listPrice: 289, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
     ],
   }),
   catalogProduct({
@@ -100,10 +100,10 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 449,
     currentPrice: 499,
     offers: [
-      offer({ retailer: "officeworks", listPrice: 499 }),
-      offer({ retailer: "jb-hifi", listPrice: 529, studentDiscountPercent: 5 }),
-      offer({ retailer: "amazon-au", listPrice: 479, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
-      offer({ retailer: "kogan", listPrice: 469, couponCode: "MONITOR30", couponDiscount: 30 }),
+      { retailer: "officeworks", listPrice: 499 },
+      { retailer: "jb-hifi", listPrice: 529, studentDiscountPercent: 5 },
+      { retailer: "amazon-au", listPrice: 479, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
+      { retailer: "kogan", listPrice: 469, couponCode: "MONITOR30", couponDiscount: 30 },
     ],
   }),
   catalogProduct({
@@ -118,9 +118,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 399,
     currentPrice: 429,
     offers: [
-      offer({ retailer: "harvey-norman", listPrice: 449 }),
-      offer({ retailer: "officeworks", listPrice: 429 }),
-      offer({ retailer: "amazon-au", listPrice: 419, studentDiscountPercent: 10 }),
+      { retailer: "harvey-norman", listPrice: 449 },
+      { retailer: "officeworks", listPrice: 429 },
+      { retailer: "amazon-au", listPrice: 419, studentDiscountPercent: 10 },
     ],
   }),
   catalogProduct({
@@ -135,10 +135,10 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 899,
     currentPrice: 999,
     offers: [
-      offer({ retailer: "harvey-norman", listPrice: 999, studentDiscountPercent: 10 }),
-      offer({ retailer: "jb-hifi", listPrice: 1049 }),
-      offer({ retailer: "kogan", listPrice: 949, couponCode: "LAPTOP50", couponDiscount: 50 }),
-      offer({ retailer: "officeworks", listPrice: 1029 }),
+      { retailer: "harvey-norman", listPrice: 999, studentDiscountPercent: 10 },
+      { retailer: "jb-hifi", listPrice: 1049 },
+      { retailer: "kogan", listPrice: 949, couponCode: "LAPTOP50", couponDiscount: 50 },
+      { retailer: "officeworks", listPrice: 1029 },
     ],
   }),
   catalogProduct({
@@ -153,9 +153,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 799,
     currentPrice: 849,
     offers: [
-      offer({ retailer: "harvey-norman", listPrice: 899 }),
-      offer({ retailer: "jb-hifi", listPrice: 849, studentDiscountPercent: 5 }),
-      offer({ retailer: "officeworks", listPrice: 879 }),
+      { retailer: "harvey-norman", listPrice: 899 },
+      { retailer: "jb-hifi", listPrice: 849, studentDiscountPercent: 5 },
+      { retailer: "officeworks", listPrice: 879 },
     ],
   }),
   catalogProduct({
@@ -170,9 +170,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 999,
     currentPrice: 1099,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 1099 }),
-      offer({ retailer: "harvey-norman", listPrice: 1149 }),
-      offer({ retailer: "amazon-au", listPrice: 1049, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
+      { retailer: "jb-hifi", listPrice: 1099 },
+      { retailer: "harvey-norman", listPrice: 1149 },
+      { retailer: "amazon-au", listPrice: 1049, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
     ],
   }),
   catalogProduct({
@@ -187,9 +187,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 1199,
     currentPrice: 1299,
     offers: [
-      offer({ retailer: "amazon-au", listPrice: 1249, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
-      offer({ retailer: "jb-hifi", listPrice: 1299, studentDiscountPercent: 5 }),
-      offer({ retailer: "the-good-guys", listPrice: 1279, couponCode: "SAVE50", couponDiscount: 50 }),
+      { retailer: "amazon-au", listPrice: 1249, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
+      { retailer: "jb-hifi", listPrice: 1299, studentDiscountPercent: 5 },
+      { retailer: "the-good-guys", listPrice: 1279, couponCode: "SAVE50", couponDiscount: 50 },
     ],
   }),
   catalogProduct({
@@ -204,9 +204,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 499,
     currentPrice: 549,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 549, studentDiscountPercent: 10 }),
-      offer({ retailer: "harvey-norman", listPrice: 579 }),
-      offer({ retailer: "kogan", listPrice: 529 }),
+      { retailer: "jb-hifi", listPrice: 549, studentDiscountPercent: 10 },
+      { retailer: "harvey-norman", listPrice: 579 },
+      { retailer: "kogan", listPrice: 529 },
     ],
   }),
   catalogProduct({
@@ -221,9 +221,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 1299,
     currentPrice: 1399,
     offers: [
-      offer({ retailer: "the-good-guys", listPrice: 1399, couponCode: "TV150", couponDiscount: 150 }),
-      offer({ retailer: "harvey-norman", listPrice: 1499 }),
-      offer({ retailer: "jb-hifi", listPrice: 1449, cashbackPercent: 2, cashbackProvider: "ShopBack" }),
+      { retailer: "the-good-guys", listPrice: 1399, couponCode: "TV150", couponDiscount: 150 },
+      { retailer: "harvey-norman", listPrice: 1499 },
+      { retailer: "jb-hifi", listPrice: 1449, cashbackPercent: 2, cashbackProvider: "ShopBack" },
     ],
   }),
   catalogProduct({
@@ -238,9 +238,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 1199,
     currentPrice: 1299,
     offers: [
-      offer({ retailer: "the-good-guys", listPrice: 1299 }),
-      offer({ retailer: "harvey-norman", listPrice: 1349 }),
-      offer({ retailer: "kogan", listPrice: 1249, couponCode: "TV150", couponDiscount: 150 }),
+      { retailer: "the-good-guys", listPrice: 1299 },
+      { retailer: "harvey-norman", listPrice: 1349 },
+      { retailer: "kogan", listPrice: 1249, couponCode: "TV150", couponDiscount: 150 },
     ],
   }),
   catalogProduct({
@@ -255,9 +255,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 599,
     currentPrice: 649,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 649, studentDiscountPercent: 10 }),
-      offer({ retailer: "amazon-au", listPrice: 629 }),
-      offer({ retailer: "officeworks", listPrice: 659 }),
+      { retailer: "jb-hifi", listPrice: 649, studentDiscountPercent: 10 },
+      { retailer: "amazon-au", listPrice: 629 },
+      { retailer: "officeworks", listPrice: 659 },
     ],
   }),
   catalogProduct({
@@ -272,9 +272,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 399,
     currentPrice: 429,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 429, studentDiscountPercent: 10 }),
-      offer({ retailer: "harvey-norman", listPrice: 449 }),
-      offer({ retailer: "amazon-au", listPrice: 419, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
+      { retailer: "jb-hifi", listPrice: 429, studentDiscountPercent: 10 },
+      { retailer: "harvey-norman", listPrice: 449 },
+      { retailer: "amazon-au", listPrice: 419, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
     ],
   }),
   catalogProduct({
@@ -289,9 +289,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 899,
     currentPrice: 999,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 999 }),
-      offer({ retailer: "harvey-norman", listPrice: 1049 }),
-      offer({ retailer: "amazon-au", listPrice: 949, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
+      { retailer: "jb-hifi", listPrice: 999 },
+      { retailer: "harvey-norman", listPrice: 1049 },
+      { retailer: "amazon-au", listPrice: 949, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
     ],
   }),
   catalogProduct({
@@ -306,9 +306,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 449,
     currentPrice: 499,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 499 }),
-      offer({ retailer: "amazon-au", listPrice: 479, cashbackPercent: 5, cashbackProvider: "ShopBack" }),
-      offer({ retailer: "the-good-guys", listPrice: 519 }),
+      { retailer: "jb-hifi", listPrice: 499 },
+      { retailer: "amazon-au", listPrice: 479, cashbackPercent: 5, cashbackProvider: "ShopBack" },
+      { retailer: "the-good-guys", listPrice: 519 },
     ],
   }),
   catalogProduct({
@@ -323,10 +323,10 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 249,
     currentPrice: 279,
     offers: [
-      offer({ retailer: "amazon-au", listPrice: 279, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
-      offer({ retailer: "officeworks", listPrice: 299 }),
-      offer({ retailer: "jb-hifi", listPrice: 289 }),
-      offer({ retailer: "kogan", listPrice: 269 }),
+      { retailer: "amazon-au", listPrice: 279, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
+      { retailer: "officeworks", listPrice: 299 },
+      { retailer: "jb-hifi", listPrice: 289 },
+      { retailer: "kogan", listPrice: 269 },
     ],
   }),
   catalogProduct({
@@ -341,10 +341,10 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 89,
     currentPrice: 99,
     offers: [
-      offer({ retailer: "officeworks", listPrice: 99 }),
-      offer({ retailer: "jb-hifi", listPrice: 109 }),
-      offer({ retailer: "amazon-au", listPrice: 95 }),
-      offer({ retailer: "big-w", listPrice: 99 }),
+      { retailer: "officeworks", listPrice: 99 },
+      { retailer: "jb-hifi", listPrice: 109 },
+      { retailer: "amazon-au", listPrice: 95 },
+      { retailer: "big-w", listPrice: 99 },
     ],
   }),
   catalogProduct({
@@ -359,9 +359,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 149,
     currentPrice: 169,
     offers: [
-      offer({ retailer: "officeworks", listPrice: 169 }),
-      offer({ retailer: "amazon-au", listPrice: 159, cashbackPercent: 2, cashbackProvider: "ShopBack" }),
-      offer({ retailer: "jb-hifi", listPrice: 179 }),
+      { retailer: "officeworks", listPrice: 169 },
+      { retailer: "amazon-au", listPrice: 159, cashbackPercent: 2, cashbackProvider: "ShopBack" },
+      { retailer: "jb-hifi", listPrice: 179 },
     ],
   }),
   catalogProduct({
@@ -376,9 +376,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 119,
     currentPrice: 129,
     offers: [
-      offer({ retailer: "officeworks", listPrice: 129 }),
-      offer({ retailer: "amazon-au", listPrice: 125 }),
-      offer({ retailer: "jb-hifi", listPrice: 139 }),
+      { retailer: "officeworks", listPrice: 129 },
+      { retailer: "amazon-au", listPrice: 125 },
+      { retailer: "jb-hifi", listPrice: 139 },
     ],
   }),
   catalogProduct({
@@ -393,9 +393,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 349,
     currentPrice: 379,
     offers: [
-      offer({ retailer: "officeworks", listPrice: 379 }),
-      offer({ retailer: "harvey-norman", listPrice: 399 }),
-      offer({ retailer: "jb-hifi", listPrice: 389 }),
+      { retailer: "officeworks", listPrice: 379 },
+      { retailer: "harvey-norman", listPrice: 399 },
+      { retailer: "jb-hifi", listPrice: 389 },
     ],
   }),
   catalogProduct({
@@ -410,9 +410,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 399,
     currentPrice: 429,
     offers: [
-      offer({ retailer: "officeworks", listPrice: 429 }),
-      offer({ retailer: "harvey-norman", listPrice: 449 }),
-      offer({ retailer: "jb-hifi", listPrice: 439 }),
+      { retailer: "officeworks", listPrice: 429 },
+      { retailer: "harvey-norman", listPrice: 449 },
+      { retailer: "jb-hifi", listPrice: 439 },
     ],
   }),
   catalogProduct({
@@ -427,9 +427,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 189,
     currentPrice: 199,
     offers: [
-      offer({ retailer: "officeworks", listPrice: 199 }),
-      offer({ retailer: "jb-hifi", listPrice: 209 }),
-      offer({ retailer: "big-w", listPrice: 205 }),
+      { retailer: "officeworks", listPrice: 199 },
+      { retailer: "jb-hifi", listPrice: 209 },
+      { retailer: "big-w", listPrice: 205 },
     ],
   }),
   catalogProduct({
@@ -444,9 +444,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 899,
     currentPrice: 999,
     offers: [
-      offer({ retailer: "harvey-norman", listPrice: 999, cashbackPercent: 5, cashbackProvider: "ShopBack" }),
-      offer({ retailer: "the-good-guys", listPrice: 1049 }),
-      offer({ retailer: "jb-hifi", listPrice: 1029 }),
+      { retailer: "harvey-norman", listPrice: 999, cashbackPercent: 5, cashbackProvider: "ShopBack" },
+      { retailer: "the-good-guys", listPrice: 1049 },
+      { retailer: "jb-hifi", listPrice: 1029 },
     ],
   }),
   catalogProduct({
@@ -461,9 +461,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 1099,
     currentPrice: 1199,
     offers: [
-      offer({ retailer: "the-good-guys", listPrice: 1199, couponCode: "SAVE50", couponDiscount: 50 }),
-      offer({ retailer: "harvey-norman", listPrice: 1249 }),
-      offer({ retailer: "jb-hifi", listPrice: 1229 }),
+      { retailer: "the-good-guys", listPrice: 1199, couponCode: "SAVE50", couponDiscount: 50 },
+      { retailer: "harvey-norman", listPrice: 1249 },
+      { retailer: "jb-hifi", listPrice: 1229 },
     ],
   }),
   catalogProduct({
@@ -478,9 +478,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 649,
     currentPrice: 699,
     offers: [
-      offer({ retailer: "harvey-norman", listPrice: 699 }),
-      offer({ retailer: "the-good-guys", listPrice: 729 }),
-      offer({ retailer: "jb-hifi", listPrice: 719, cashbackPercent: 2, cashbackProvider: "ShopBack" }),
+      { retailer: "harvey-norman", listPrice: 699 },
+      { retailer: "the-good-guys", listPrice: 729 },
+      { retailer: "jb-hifi", listPrice: 719, cashbackPercent: 2, cashbackProvider: "ShopBack" },
     ],
   }),
   catalogProduct({
@@ -495,9 +495,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 699,
     currentPrice: 749,
     offers: [
-      offer({ retailer: "amazon-au", listPrice: 749, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
-      offer({ retailer: "jb-hifi", listPrice: 799 }),
-      offer({ retailer: "harvey-norman", listPrice: 779 }),
+      { retailer: "amazon-au", listPrice: 749, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
+      { retailer: "jb-hifi", listPrice: 799 },
+      { retailer: "harvey-norman", listPrice: 779 },
     ],
   }),
   catalogProduct({
@@ -512,9 +512,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 799,
     currentPrice: 849,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 849 }),
-      offer({ retailer: "amazon-au", listPrice: 829 }),
-      offer({ retailer: "ebay-au", listPrice: 819, shipping: 9.95 }),
+      { retailer: "jb-hifi", listPrice: 849 },
+      { retailer: "amazon-au", listPrice: 829 },
+      { retailer: "ebay-au", listPrice: 819, shipping: 9.95 },
     ],
   }),
   catalogProduct({
@@ -529,9 +529,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 199,
     currentPrice: 219,
     offers: [
-      offer({ retailer: "amazon-au", listPrice: 219 }),
-      offer({ retailer: "jb-hifi", listPrice: 229 }),
-      offer({ retailer: "officeworks", listPrice: 225 }),
+      { retailer: "amazon-au", listPrice: 219 },
+      { retailer: "jb-hifi", listPrice: 229 },
+      { retailer: "officeworks", listPrice: 225 },
     ],
   }),
   catalogProduct({
@@ -546,9 +546,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 1199,
     currentPrice: 1299,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 1299, studentDiscountPercent: 10 }),
-      offer({ retailer: "harvey-norman", listPrice: 1349 }),
-      offer({ retailer: "amazon-au", listPrice: 1249, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
+      { retailer: "jb-hifi", listPrice: 1299, studentDiscountPercent: 10 },
+      { retailer: "harvey-norman", listPrice: 1349 },
+      { retailer: "amazon-au", listPrice: 1249, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
     ],
   }),
   catalogProduct({
@@ -563,9 +563,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 149,
     currentPrice: 169,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 169 }),
-      offer({ retailer: "harvey-norman", listPrice: 179 }),
-      offer({ retailer: "amazon-au", listPrice: 159, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
+      { retailer: "jb-hifi", listPrice: 169 },
+      { retailer: "harvey-norman", listPrice: 179 },
+      { retailer: "amazon-au", listPrice: 159, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
     ],
   }),
   catalogProduct({
@@ -580,9 +580,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 129,
     currentPrice: 139,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 139 }),
-      offer({ retailer: "big-w", listPrice: 145 }),
-      offer({ retailer: "amazon-au", listPrice: 135 }),
+      { retailer: "jb-hifi", listPrice: 139 },
+      { retailer: "big-w", listPrice: 145 },
+      { retailer: "amazon-au", listPrice: 135 },
     ],
   }),
   catalogProduct({
@@ -597,9 +597,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 299,
     currentPrice: 329,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 329 }),
-      offer({ retailer: "harvey-norman", listPrice: 349 }),
-      offer({ retailer: "the-good-guys", listPrice: 339 }),
+      { retailer: "jb-hifi", listPrice: 329 },
+      { retailer: "harvey-norman", listPrice: 349 },
+      { retailer: "the-good-guys", listPrice: 339 },
     ],
   }),
   catalogProduct({
@@ -614,9 +614,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 1499,
     currentPrice: 1599,
     offers: [
-      offer({ retailer: "harvey-norman", listPrice: 1599, studentDiscountPercent: 5 }),
-      offer({ retailer: "jb-hifi", listPrice: 1649 }),
-      offer({ retailer: "officeworks", listPrice: 1629 }),
+      { retailer: "harvey-norman", listPrice: 1599, studentDiscountPercent: 5 },
+      { retailer: "jb-hifi", listPrice: 1649 },
+      { retailer: "officeworks", listPrice: 1629 },
     ],
   }),
   catalogProduct({
@@ -631,9 +631,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 1399,
     currentPrice: 1499,
     offers: [
-      offer({ retailer: "kogan", listPrice: 1449, couponCode: "GAMING100", couponDiscount: 100 }),
-      offer({ retailer: "jb-hifi", listPrice: 1499, studentDiscountPercent: 5 }),
-      offer({ retailer: "harvey-norman", listPrice: 1549 }),
+      { retailer: "kogan", listPrice: 1449, couponCode: "GAMING100", couponDiscount: 100 },
+      { retailer: "jb-hifi", listPrice: 1499, studentDiscountPercent: 5 },
+      { retailer: "harvey-norman", listPrice: 1549 },
     ],
   }),
   catalogProduct({
@@ -648,9 +648,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 199,
     currentPrice: 219,
     offers: [
-      offer({ retailer: "kogan", listPrice: 209 }),
-      offer({ retailer: "jb-hifi", listPrice: 219 }),
-      offer({ retailer: "amazon-au", listPrice: 199, cashbackPercent: 2, cashbackProvider: "ShopBack" }),
+      { retailer: "kogan", listPrice: 209 },
+      { retailer: "jb-hifi", listPrice: 219 },
+      { retailer: "amazon-au", listPrice: 199, cashbackPercent: 2, cashbackProvider: "ShopBack" },
     ],
   }),
   catalogProduct({
@@ -665,9 +665,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 179,
     currentPrice: 199,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 199 }),
-      offer({ retailer: "the-good-guys", listPrice: 209 }),
-      offer({ retailer: "amazon-au", listPrice: 189 }),
+      { retailer: "jb-hifi", listPrice: 199 },
+      { retailer: "the-good-guys", listPrice: 209 },
+      { retailer: "amazon-au", listPrice: 189 },
     ],
   }),
   catalogProduct({
@@ -682,9 +682,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 199,
     currentPrice: 229,
     offers: [
-      offer({ retailer: "amazon-au", listPrice: 229 }),
-      offer({ retailer: "jb-hifi", listPrice: 249 }),
-      offer({ retailer: "harvey-norman", listPrice: 239 }),
+      { retailer: "amazon-au", listPrice: 229 },
+      { retailer: "jb-hifi", listPrice: 249 },
+      { retailer: "harvey-norman", listPrice: 239 },
     ],
   }),
   catalogProduct({
@@ -699,9 +699,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 1099,
     currentPrice: 1199,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 1199 }),
-      offer({ retailer: "harvey-norman", listPrice: 1249 }),
-      offer({ retailer: "amazon-au", listPrice: 1149, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
+      { retailer: "jb-hifi", listPrice: 1199 },
+      { retailer: "harvey-norman", listPrice: 1249 },
+      { retailer: "amazon-au", listPrice: 1149, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
     ],
   }),
   catalogProduct({
@@ -716,9 +716,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 199,
     currentPrice: 219,
     offers: [
-      offer({ retailer: "jb-hifi", listPrice: 219 }),
-      offer({ retailer: "harvey-norman", listPrice: 229 }),
-      offer({ retailer: "amazon-au", listPrice: 209 }),
+      { retailer: "jb-hifi", listPrice: 219 },
+      { retailer: "harvey-norman", listPrice: 229 },
+      { retailer: "amazon-au", listPrice: 209 },
     ],
   }),
   catalogProduct({
@@ -733,10 +733,10 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 249,
     currentPrice: 279,
     offers: [
-      offer({ retailer: "the-good-guys", listPrice: 279 }),
-      offer({ retailer: "harvey-norman", listPrice: 299 }),
-      offer({ retailer: "jb-hifi", listPrice: 289 }),
-      offer({ retailer: "big-w", listPrice: 285 }),
+      { retailer: "the-good-guys", listPrice: 279 },
+      { retailer: "harvey-norman", listPrice: 299 },
+      { retailer: "jb-hifi", listPrice: 289 },
+      { retailer: "big-w", listPrice: 285 },
     ],
   }),
   catalogProduct({
@@ -751,9 +751,9 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 349,
     currentPrice: 379,
     offers: [
-      offer({ retailer: "harvey-norman", listPrice: 379 }),
-      offer({ retailer: "the-good-guys", listPrice: 399 }),
-      offer({ retailer: "amazon-au", listPrice: 369, cashbackPercent: 3, cashbackProvider: "Cashrewards" }),
+      { retailer: "harvey-norman", listPrice: 379 },
+      { retailer: "the-good-guys", listPrice: 399 },
+      { retailer: "amazon-au", listPrice: 369, cashbackPercent: 3, cashbackProvider: "Cashrewards" },
     ],
   }),
   catalogProduct({
@@ -768,9 +768,11 @@ export const CATALOG_EXTRA: Product[] = [
     lowestEver: 25,
     currentPrice: 25,
     offers: [
-      offer({ retailer: "big-w", listPrice: 25 }),
-      offer({ retailer: "officeworks", listPrice: 25 }),
-      offer({ retailer: "jb-hifi", listPrice: 25 }),
+      { retailer: "big-w", listPrice: 25 },
+      { retailer: "officeworks", listPrice: 25 },
+      { retailer: "jb-hifi", listPrice: 25 },
     ],
   }),
 ];
+
+
