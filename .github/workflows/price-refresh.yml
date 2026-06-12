@@ -1,0 +1,67 @@
+name: Daily price refresh
+
+on:
+  schedule:
+    # 16:00 UTC ≈ 2:00 AM Australia/Sydney (AEST)
+    - cron: "0 16 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: price-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-commit:
+    name: Scrape retailer prices
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+
+      - name: Fetch live store prices
+        run: npm run prices:fetch-live
+        env:
+          PRICE_REFRESH_DELAY_MS: 2000
+
+      - name: Verify pricing sanity
+        run: npm run sanity
+
+      - name: Commit snapshot if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/price-snapshots.json src/data/catalog-meta.ts
+          if git diff --staged --quiet; then
+            echo "No price changes to commit."
+            exit 0
+          fi
+          git commit -m "$(cat <<'EOF'
+chore: daily price snapshot refresh
+
+Automated retailer price scrape updates store prices and catalog review date.
+EOF
+)"
+          git push
+
+      - name: Job summary
+        if: always()
+        run: |
+          echo "## Daily price refresh" >> "$GITHUB_STEP_SUMMARY"
+          echo "Completed at $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f src/data/catalog-meta.ts ]; then
+            grep CATALOG_PRICE_UPDATED_AT src/data/catalog-meta.ts >> "$GITHUB_STEP_SUMMARY" || true
+          fi

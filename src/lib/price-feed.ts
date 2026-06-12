@@ -43,13 +43,14 @@ export function applyPriceSnapshots(product: Product): ProductPriceResult {
     ? latestDate(product.pricesUpdatedAt ?? CATALOG_PRICE_UPDATED_AT, snapshot.updatedAt)
     : product.pricesUpdatedAt ?? CATALOG_PRICE_UPDATED_AT;
 
-  const hasSnapshotOverrides = liveOfferCount > 0;
+  const hasSnapshot = Boolean(snapshot && Object.keys(snapshot.offers).length > 0);
+  const verifiedCount = hasSnapshot ? Object.keys(snapshot!.offers).length : 0;
 
   return {
     product: { ...product, offers, pricesUpdatedAt },
     pricesUpdatedAt,
-    source: hasSnapshotOverrides ? "snapshot" : "catalog",
-    liveOfferCount,
+    source: hasSnapshot ? "snapshot" : "catalog",
+    liveOfferCount: hasSnapshot ? verifiedCount : liveOfferCount,
   };
 }
 

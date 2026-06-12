@@ -2,6 +2,13 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.3.9] - 2026-06-12
+
+### Added
+- **Automated daily price refresh** — GitHub Actions workflow (2 AM Sydney) scrapes retailer search pages
+- `npm run prices:fetch-live` — Playwright scraper writes `price-snapshots.json` and updates review date
+- Plausibility checks so bad scrapes keep the last known price
+
 ## [0.3.8] - 2026-06-12
 
 ### Added

@@ -30,6 +30,18 @@ Custom events appear under **Analytics → Events**:
 
 No extra env vars required on Vercel.
 
+### Daily automated prices
+
+[`.github/workflows/price-refresh.yml`](../.github/workflows/price-refresh.yml) runs every day at **~2:00 AM Sydney**:
+
+1. Scrapes in-stock offers via Playwright (JB Hi-Fi, Kmart, Amazon AU, etc.)
+2. Writes `src/data/price-snapshots.json` and bumps `CATALOG_PRICE_UPDATED_AT`
+3. Commits to `main` if prices changed → Vercel redeploys
+
+Manual run: **Actions → Daily price refresh → Run workflow**
+
+Local test: `PRICE_REFRESH_LIMIT=3 npm run prices:fetch-live`
+
 Optional environment variables (see [`.env.example`](../.env.example)):
 
 | Variable | Purpose |

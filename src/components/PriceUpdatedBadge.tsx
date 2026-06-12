@@ -15,7 +15,12 @@ export function PriceUpdatedBadge({
   liveOfferCount = 0,
   className = "",
 }: PriceUpdatedBadgeProps) {
-  const live = source === "live" || (source === "snapshot" && liveOfferCount > 0);
+  const verifiedLabel =
+    source === "snapshot" && liveOfferCount > 0
+      ? `${liveOfferCount} stores verified`
+      : source === "live"
+        ? "live feed"
+        : null;
 
   return (
     <p
@@ -26,9 +31,9 @@ export function PriceUpdatedBadge({
       <span>
         Store prices updated {formatPriceDate(updatedAt)}
         <span className="text-slate-600"> · {formatPriceAge(updatedAt)}</span>
-        {live && (
+        {verifiedLabel && (
           <span className="ml-1 rounded bg-teal-500/15 px-1.5 py-0.5 text-[10px] font-medium text-teal-400">
-            {liveOfferCount > 0 ? `${liveOfferCount} live` : "live feed"}
+            {verifiedLabel}
           </span>
         )}
       </span>

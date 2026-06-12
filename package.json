@@ -1,6 +1,6 @@
 {
   "name": "pricegenie-ai",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "PriceGenie AI — Your wish for the best price granted",
   "author": "Shohrab Hossen Niaz <shohrab.niaz@gmail.com>",
   "license": "SEE LICENSE IN LICENSE",
@@ -19,6 +19,7 @@
     "typecheck": "tsc --noEmit",
     "sanity": "tsx scripts/sanity-check.ts",
     "prices:refresh": "tsx scripts/refresh-price-snapshots.ts",
+    "prices:fetch-live": "tsx scripts/fetch-live-prices.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:unit": "vitest run",

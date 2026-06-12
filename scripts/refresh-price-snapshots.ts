@@ -27,18 +27,7 @@ for (const product of PRODUCTS) {
   snapshots[product.id] = { updatedAt: today, offers };
 }
 
-const outPath = join(process.cwd(), "src/data/price-snapshots.ts");
-const body = `import type { Retailer } from "@/types";
-
-export interface PriceSnapshot {
-  updatedAt: string;
-  offers: Partial<Record<Retailer, number>>;
-}
-
-/** Auto-generated ${today} — run \`npm run prices:refresh\` to update. */
-export const PRICE_SNAPSHOTS: Record<string, PriceSnapshot> = ${JSON.stringify(snapshots, null, 2)};
-`;
-
-writeFileSync(outPath, body, "utf8");
+const outPath = join(process.cwd(), "src/data/price-snapshots.json");
+writeFileSync(outPath, `${JSON.stringify(snapshots, null, 2)}\n`, "utf8");
 console.log(`Wrote ${Object.keys(snapshots).length} product snapshots to ${outPath}`);
 console.log("Set PRICE_FEED_URL to a hosted copy of this JSON for live API merges.");
