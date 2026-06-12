@@ -2,6 +2,19 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.3.7] - 2026-06-12
+
+### Added
+- Central coupon rules engine (`src/lib/coupon-rules.ts`) — discounts only apply when eligibility rules pass
+- `checkoutPrice` vs `truePrice` (cashback) separation in price breakdown
+- Pricing verification for all 80 products in sanity check + unit tests
+
+### Changed
+- **Store price** = retailer website price (no codes); deals shown separately
+- Product cards and product page lead with store price, not pre-applied discounts
+- Removed legacy per-offer coupon/student fields — rules resolved at calculation time
+- Invalid codes (GAME30, MONITOR30, etc.) no longer auto-applied
+
 ## [0.3.6] - 2026-06-12
 
 ### Changed

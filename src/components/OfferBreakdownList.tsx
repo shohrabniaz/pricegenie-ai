@@ -13,7 +13,7 @@ interface OfferBreakdownListProps {
 
 export function OfferBreakdownList({ product }: OfferBreakdownListProps) {
   const { studentMode } = useStudentMode();
-  const ranked = rankOffers(product.offers, studentMode);
+  const ranked = rankOffers(product.offers, studentMode, product);
   const [open, setOpen] = useState<string | null>(ranked[0]?.offer.retailer ?? null);
 
   return (
@@ -26,7 +26,7 @@ export function OfferBreakdownList({ product }: OfferBreakdownListProps) {
       </p>
       {ranked.map(({ offer, breakdown }, i) => {
         const isOpen = open === offer.retailer;
-        const steps = getPriceSteps(offer, studentMode);
+        const steps = getPriceSteps(offer, studentMode, product);
         return (
           <div
             key={offer.retailer}
@@ -52,8 +52,16 @@ export function OfferBreakdownList({ product }: OfferBreakdownListProps) {
                 )}
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-teal-300">
-                  {formatAud(breakdown.truePrice)}
+                <span className="text-right">
+                  <span className="block text-[10px] text-slate-500">Store</span>
+                  <span className="font-bold text-white">
+                    {formatAud(breakdown.listPrice)}
+                  </span>
+                  {breakdown.checkoutPrice !== breakdown.listPrice + breakdown.shipping && (
+                    <span className="block text-xs font-bold text-teal-300">
+                      {formatAud(breakdown.checkoutPrice)} checkout
+                    </span>
+                  )}
                 </span>
                 <ChevronDown
                   className={`h-4 w-4 text-slate-500 transition ${isOpen ? "rotate-180" : ""}`}

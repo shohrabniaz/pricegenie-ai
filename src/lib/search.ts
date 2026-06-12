@@ -36,14 +36,14 @@ export function searchProducts(
 
   if (filters.maxPrice !== undefined) {
     results = results.filter((p) => {
-      const best = getBestOffer(p.offers, studentMode);
+      const best = getBestOffer(p.offers, studentMode, p);
       return best && best.breakdown.truePrice <= filters.maxPrice!;
     });
   }
 
   return results.sort((a, b) => {
-    const bestA = getBestOffer(a.offers, studentMode);
-    const bestB = getBestOffer(b.offers, studentMode);
+    const bestA = getBestOffer(a.offers, studentMode, a);
+    const bestB = getBestOffer(b.offers, studentMode, b);
     return (
       (bestA?.breakdown.truePrice ?? Infinity) -
       (bestB?.breakdown.truePrice ?? Infinity)
@@ -54,8 +54,8 @@ export function searchProducts(
 export function getFeaturedProducts(studentMode = false): Product[] {
   return [...PRODUCTS]
     .sort((a, b) => {
-      const bestA = getBestOffer(a.offers, studentMode);
-      const bestB = getBestOffer(b.offers, studentMode);
+      const bestA = getBestOffer(a.offers, studentMode, a);
+      const bestB = getBestOffer(b.offers, studentMode, b);
       const savingsA =
         bestA ? bestA.breakdown.listPrice - bestA.breakdown.truePrice : 0;
       const savingsB =

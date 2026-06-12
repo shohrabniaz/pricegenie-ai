@@ -18,7 +18,7 @@ interface PriceAlertButtonProps {
 
 export function PriceAlertButton({ product }: PriceAlertButtonProps) {
   const { studentMode } = useStudentMode();
-  const best = getBestOffer(product.offers, studentMode);
+  const best = getBestOffer(product.offers, studentMode, product);
   const suggestedTarget = best
     ? String(Math.round(best.breakdown.truePrice * 0.9))
     : "";

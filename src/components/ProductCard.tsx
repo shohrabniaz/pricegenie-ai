@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Tag } from "lucide-react";
 import type { Product } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
-import { formatAud, getBestOffer } from "@/lib/pricing";
+import { formatAud, getBestOffer, hasActiveDeals } from "@/lib/pricing";
 import { ProductImage } from "@/components/ProductImage";
 
 interface ProductCardProps {
@@ -13,10 +13,11 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const { studentMode } = useStudentMode();
-  const best = getBestOffer(product.offers, studentMode);
+  const best = getBestOffer(product.offers, studentMode, product);
 
   if (!best) return null;
 
+  const deals = hasActiveDeals(best.breakdown, studentMode);
   const savings = best.breakdown.listPrice - best.breakdown.truePrice;
 
   return (
@@ -27,7 +28,7 @@ export function ProductCard({ product }: ProductCardProps) {
     >
       <div className="mb-3 flex items-start justify-between gap-2">
         <ProductImage product={product} size="card" />
-        {savings > 0 && (
+        {deals && savings > 0 && (
           <span className="rounded-full bg-emerald-500/20 px-2 py-0.5 text-xs font-semibold text-emerald-400">
             Save {formatAud(savings)}
           </span>
@@ -44,26 +45,35 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="mt-auto pt-4">
         <div className="flex items-end justify-between">
           <div>
-            <p className="text-xs text-slate-500">True price from</p>
+            <p className="text-xs text-slate-500">Store price at {best.offer.retailerName}</p>
             <p className="text-2xl font-bold text-white">
-              {formatAud(best.breakdown.truePrice)}
+              {formatAud(best.breakdown.listPrice)}
             </p>
-            <p className="text-xs text-slate-500">{best.offer.retailerName}</p>
+            {deals && best.breakdown.truePrice < best.breakdown.checkoutPrice && (
+              <p className="text-xs text-purple-300">
+                {formatAud(best.breakdown.truePrice)} after cashback
+              </p>
+            )}
+            {deals && best.breakdown.checkoutPrice < best.breakdown.listPrice + best.breakdown.shipping && (
+              <p className="text-xs text-teal-400">
+                {formatAud(best.breakdown.checkoutPrice)} with deals at checkout
+              </p>
+            )}
           </div>
           <ArrowRight className="h-5 w-5 text-slate-600 transition group-hover:translate-x-1 group-hover:text-teal-400" />
         </div>
 
-        {(best.breakdown.couponSavings > 0 || best.breakdown.cashbackSavings > 0) && (
+        {deals && (
           <div className="mt-2 flex flex-wrap gap-1">
-            {best.breakdown.couponSavings > 0 && (
+            {best.breakdown.couponSavings > 0 && best.breakdown.couponCode && (
               <span className="inline-flex items-center gap-1 rounded-md bg-amber-500/15 px-2 py-0.5 text-[10px] font-medium text-amber-300">
                 <Tag className="h-3 w-3" />
-                Coupon applied
+                Code {best.breakdown.couponCode}
               </span>
             )}
             {best.breakdown.cashbackSavings > 0 && (
               <span className="rounded-md bg-purple-500/15 px-2 py-0.5 text-[10px] font-medium text-purple-300">
-                Cashback available
+                Cashback est.
               </span>
             )}
           </div>

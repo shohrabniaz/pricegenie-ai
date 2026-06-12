@@ -34,7 +34,7 @@ export default function ProductPage({
     );
   }
 
-  const best = getBestOffer(product.offers, studentMode);
+  const best = getBestOffer(product.offers, studentMode, product);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
@@ -60,21 +60,23 @@ export default function ProductPage({
 
             {best && (
               <div className="mt-6 rounded-xl border border-teal-500/30 bg-teal-500/10 p-4">
-                <p className="text-xs text-teal-400">Best true price</p>
+                <p className="text-xs text-teal-400">Store price at {best.offer.retailerName}</p>
                 <p className="text-3xl font-bold text-white">
-                  {formatAud(best.breakdown.truePrice)}
+                  {formatAud(best.breakdown.listPrice)}
                 </p>
-                <p className="text-sm text-slate-400">
-                  at {best.offer.retailerName}
-                </p>
-                {best.breakdown.listPrice !== best.breakdown.truePrice && (
-                  <p className="mt-2 text-xs text-slate-500 line-through">
-                    Store list: {formatAud(best.breakdown.listPrice)}
+                {best.breakdown.checkoutPrice < best.breakdown.listPrice + best.breakdown.shipping && (
+                  <p className="mt-2 text-sm text-teal-300">
+                    {formatAud(best.breakdown.checkoutPrice)} at checkout with deals
+                  </p>
+                )}
+                {best.breakdown.cashbackSavings > 0 && (
+                  <p className="text-sm text-purple-300">
+                    {formatAud(best.breakdown.truePrice)} effective after cashback
                   </p>
                 )}
                 {getTotalSavings(best.breakdown) > 0 && (
                   <p className="mt-1 text-xs font-medium text-emerald-400">
-                    Effective savings: {formatAud(getTotalSavings(best.breakdown))}
+                    Up to {formatAud(getTotalSavings(best.breakdown))} total savings
                   </p>
                 )}
               </div>
@@ -102,7 +104,7 @@ export default function ProductPage({
           {best && (
             <TruePriceExplainer
               offer={best.offer}
-              productName={product.name}
+              product={product}
               highlight
             />
           )}

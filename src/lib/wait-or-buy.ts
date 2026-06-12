@@ -14,7 +14,7 @@ export function getWaitOrBuyAdvice(
   product: Product,
   studentMode: boolean
 ): WaitOrBuyAdvice {
-  const best = getBestOffer(product.offers, studentMode);
+  const best = getBestOffer(product.offers, studentMode, product);
   if (!best) {
     return {
       recommendation: "neutral",

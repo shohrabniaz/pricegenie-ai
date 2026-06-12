@@ -12,7 +12,7 @@ interface PriceTableProps {
 
 export function PriceTable({ product }: PriceTableProps) {
   const { studentMode } = useStudentMode();
-  const ranked = rankOffers(product.offers, studentMode);
+  const ranked = rankOffers(product.offers, studentMode, product);
 
   return (
     <div data-testid="price-table" className="overflow-hidden rounded-2xl border border-white/10">
@@ -20,9 +20,9 @@ export function PriceTable({ product }: PriceTableProps) {
         <thead>
           <tr className="border-b border-white/10 bg-white/[0.03] text-left text-xs uppercase tracking-wide text-slate-500">
             <th className="px-4 py-3">Store</th>
-            <th className="px-4 py-3">List</th>
-            <th className="px-4 py-3 hidden sm:table-cell">Savings</th>
-            <th className="px-4 py-3">True Price</th>
+            <th className="px-4 py-3">Store price</th>
+            <th className="px-4 py-3 hidden sm:table-cell">Deals</th>
+            <th className="px-4 py-3">Checkout</th>
             <th className="px-4 py-3">Stock</th>
             <th className="px-4 py-3"></th>
           </tr>
@@ -88,8 +88,13 @@ export function PriceTable({ product }: PriceTableProps) {
                 <span
                   className={`text-lg font-bold ${i === 0 ? "text-teal-300" : "text-white"}`}
                 >
-                  {formatAud(breakdown.truePrice)}
+                  {formatAud(breakdown.checkoutPrice)}
                 </span>
+                {breakdown.cashbackSavings > 0 && (
+                  <p className="text-[10px] text-purple-400">
+                    {formatAud(breakdown.truePrice)} after cashback
+                  </p>
+                )}
               </td>
               <td className="px-4 py-3">
                 <span

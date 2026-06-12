@@ -3,6 +3,7 @@ import { CATALOG_EXTRA } from "@/data/catalog-extra";
 import { CATALOG_KMART } from "@/data/catalog-kmart";
 import { CATALOG_ELECTRONICS } from "@/data/catalog-electronics";
 import { resolveProductUrls } from "@/data/product-helpers";
+import { stripLegacyDiscountFields } from "@/lib/coupon-rules";
 import { getProductImageUrl } from "@/lib/product-images";
 
 const CORE_PRODUCTS: Product[] = [
@@ -461,7 +462,12 @@ const CORE_PRODUCTS: Product[] = [
 
 function enrichProduct(product: Product): Product {
   const withUrls = resolveProductUrls(product);
-  return { ...withUrls, imageUrl: getProductImageUrl(withUrls) };
+  const normalized = {
+    ...withUrls,
+    offers: withUrls.offers.map(stripLegacyDiscountFields),
+    imageUrl: getProductImageUrl(withUrls),
+  };
+  return normalized;
 }
 
 export const PRODUCTS: Product[] = [

@@ -252,7 +252,7 @@ function buildProductLinks(
   studentMode: boolean
 ): AiReply["productLinks"] {
   return products.slice(0, 3).map((product) => {
-    const best = getBestOffer(product.offers, studentMode)!;
+    const best = getBestOffer(product.offers, studentMode, product)!;
     return {
       name: product.name,
       href: `/product/${product.id}`,
@@ -355,10 +355,10 @@ function compareReply(query: string, studentMode: boolean): AiReply | null {
     };
   }
 
-  const bestL = getBestOffer(left.offers, studentMode)!;
-  const bestR = getBestOffer(right.offers, studentMode)!;
+  const bestL = getBestOffer(left.offers, studentMode, left)!;
+  const bestR = getBestOffer(right.offers, studentMode, right)!;
   const cheaper = bestL.breakdown.truePrice <= bestR.breakdown.truePrice ? left : right;
-  const cheaperBest = getBestOffer(cheaper.offers, studentMode)!;
+  const cheaperBest = getBestOffer(cheaper.offers, studentMode, cheaper)!;
 
   return {
     summary: `**${cheaper.name}** wins on true price at ${formatAud(cheaperBest.breakdown.truePrice)}.`,
@@ -395,7 +395,7 @@ function studentPackReply(studentMode: boolean): AiReply {
 
   let body = "Here's a **student starter pack** I'd recommend for uni in Australia:\n\n";
   unique.forEach((product, i) => {
-    const best = getBestOffer(product.offers, studentMode)!;
+    const best = getBestOffer(product.offers, studentMode, product)!;
     body += `**${i + 1}. ${product.name}** — ${formatAud(best.breakdown.truePrice)} at ${best.offer.retailerName}\n`;
     body += `   [Shop at store](${buildRetailerProductUrl(best.offer.retailer, product.name)}) · [Compare in app](/product/${product.id})\n\n`;
   });
@@ -410,8 +410,8 @@ function studentPackReply(studentMode: boolean): AiReply {
 }
 
 function productPriceReply(product: Product, studentMode: boolean): AiReply {
-  const best = getBestOffer(product.offers, studentMode)!;
-  const ranked = rankOffers(product.offers, studentMode);
+  const best = getBestOffer(product.offers, studentMode, product)!;
+  const ranked = rankOffers(product.offers, studentMode, product);
   const savings = best.breakdown.listPrice - best.breakdown.truePrice;
 
   let body = `**${product.name}** — best true price **${formatAud(best.breakdown.truePrice)}** at **${best.offer.retailerName}**.\n\n`;
@@ -434,7 +434,7 @@ function productPriceReply(product: Product, studentMode: boolean): AiReply {
 }
 
 function productDetailReply(product: Product, studentMode: boolean): AiReply {
-  const best = getBestOffer(product.offers, studentMode)!;
+  const best = getBestOffer(product.offers, studentMode, product)!;
   const advice = getWaitOrBuyAdvice(product, studentMode);
 
   return {
@@ -458,8 +458,8 @@ function productDetailReply(product: Product, studentMode: boolean): AiReply {
 
 function waitOrBuyReply(product: Product, studentMode: boolean): AiReply {
   const advice = getWaitOrBuyAdvice(product, studentMode);
-  const best = getBestOffer(product.offers, studentMode)!;
-  const ranked = rankOffers(product.offers, studentMode);
+  const best = getBestOffer(product.offers, studentMode, product)!;
+  const ranked = rankOffers(product.offers, studentMode, product);
 
   const icon =
     advice.recommendation === "buy" ? "✅" : advice.recommendation === "wait" ? "⏳" : "ℹ️";
@@ -534,7 +534,7 @@ function recommendationReply(query: string, studentMode: boolean): AiReply {
   body += `I compared **${top.length} options**${budget ? ` under **${formatAud(budget)}**` : ""}${kmartFilter ? " at **Kmart** and other stores" : ""}:\n\n`;
 
   top.forEach((product, i) => {
-    const best = getBestOffer(product.offers, studentMode)!;
+    const best = getBestOffer(product.offers, studentMode, product)!;
     const advice = getWaitOrBuyAdvice(product, studentMode);
     const savings = best.breakdown.listPrice - best.breakdown.truePrice;
 

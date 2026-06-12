@@ -9,7 +9,7 @@ import {
   Tag,
   Wallet,
 } from "lucide-react";
-import type { StoreOffer } from "@/types";
+import type { Product, StoreOffer } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
 import {
   formatAud,
@@ -20,7 +20,7 @@ import {
 
 interface TruePriceExplainerProps {
   offer: StoreOffer;
-  productName: string;
+  product: Product;
   highlight?: boolean;
 }
 
@@ -41,12 +41,12 @@ function StepIcon({ type }: { type: string }) {
 
 export function TruePriceExplainer({
   offer,
-  productName,
+  product,
   highlight = false,
 }: TruePriceExplainerProps) {
   const { studentMode } = useStudentMode();
-  const steps = getPriceSteps(offer, studentMode);
-  const breakdown = calculateTruePrice(offer, studentMode);
+  const steps = getPriceSteps(offer, studentMode, product);
+  const breakdown = calculateTruePrice(offer, studentMode, product);
   const savings = getTotalSavings(breakdown);
 
   return (
@@ -69,8 +69,8 @@ export function TruePriceExplainer({
           <p className="mt-1 text-sm text-slate-400">
             The {offer.retailerName} website may show{" "}
             <strong className="text-slate-300">{formatAud(breakdown.listPrice)}</strong>{" "}
-            for {productName}. Below is how coupons, discounts, shipping, and
-            cashback change what you <em>effectively</em> pay.
+            for {product.name}. Below is how optional coupon codes, student
+            pricing, shipping, and cashback change what you pay.
           </p>
         </div>
       </div>
@@ -123,8 +123,8 @@ export function TruePriceExplainer({
 
       {savings > 0 && (
         <p className="mt-4 rounded-lg bg-emerald-500/10 px-3 py-2 text-sm text-emerald-300">
-          You save {formatAud(savings)} compared to the store list price at{" "}
-          {offer.retailerName}.
+          You save up to {formatAud(savings)} vs the store price at{" "}
+          {offer.retailerName} when all listed deals apply.
         </p>
       )}
 

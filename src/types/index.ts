@@ -69,12 +69,18 @@ export interface StudentDiscount {
 }
 
 export interface TruePriceBreakdown {
+  /** Price on retailer site before any codes (AUD). */
   listPrice: number;
   couponSavings: number;
   cashbackSavings: number;
   studentSavings: number;
   shipping: number;
+  /** Total at retailer checkout after codes + shipping, before cashback. */
+  checkoutPrice: number;
+  /** Effective cost after cashback (if any). */
   truePrice: number;
+  couponCode?: string;
+  studentDiscountPercent?: number;
 }
 
 export interface PriceAlert {

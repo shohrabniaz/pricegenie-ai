@@ -1,6 +1,7 @@
-import type { StoreOffer, TruePriceBreakdown } from "@/types";
+import type { Product, StoreOffer, TruePriceBreakdown } from "@/types";
+import { resolveDiscounts } from "@/lib/coupon-rules";
 
-export type PriceStepType = "base" | "discount" | "fee" | "cashback" | "total";
+export type PriceStepType = "base" | "discount" | "fee" | "cashback" | "subtotal" | "total";
 
 export interface PriceStep {
   label: string;
@@ -20,25 +21,36 @@ export function formatAud(amount: number): string {
 
 export function calculateTruePrice(
   offer: StoreOffer,
-  studentMode: boolean
+  studentMode: boolean,
+  product?: Product
 ): TruePriceBreakdown {
   const listPrice = offer.listPrice;
-  const couponSavings = offer.couponDiscount ?? 0;
+  const discounts = product
+    ? resolveDiscounts(offer, product, studentMode)
+    : {
+        couponCode: offer.couponCode,
+        couponDiscount: offer.couponDiscount ?? 0,
+        studentDiscountPercent: studentMode ? (offer.studentDiscountPercent ?? 0) : 0,
+      };
+
+  const couponSavings = discounts.couponDiscount;
   const afterCoupon = listPrice - couponSavings;
 
   const studentSavings =
-    studentMode && offer.studentDiscountPercent
-      ? Math.round(afterCoupon * (offer.studentDiscountPercent / 100))
+    discounts.studentDiscountPercent > 0
+      ? Math.round(afterCoupon * (discounts.studentDiscountPercent / 100))
       : 0;
 
   const afterStudent = afterCoupon - studentSavings;
+  const shipping = offer.shipping;
+
+  const checkoutPrice = afterStudent + shipping;
 
   const cashbackSavings = offer.cashbackPercent
     ? Math.round(afterStudent * (offer.cashbackPercent / 100))
     : 0;
 
-  const shipping = offer.shipping;
-  const truePrice = afterStudent + shipping - cashbackSavings;
+  const truePrice = checkoutPrice - cashbackSavings;
 
   return {
     listPrice,
@@ -46,46 +58,48 @@ export function calculateTruePrice(
     cashbackSavings,
     studentSavings,
     shipping,
+    checkoutPrice: Math.max(0, checkoutPrice),
     truePrice: Math.max(0, truePrice),
+    couponCode: discounts.couponCode,
+    studentDiscountPercent: discounts.studentDiscountPercent,
   };
 }
 
-/** Human-readable steps showing exactly how true price is calculated. */
+/** Human-readable steps: store price → checkout → effective after cashback. */
 export function getPriceSteps(
   offer: StoreOffer,
-  studentMode: boolean
+  studentMode: boolean,
+  product?: Product
 ): PriceStep[] {
-  const b = calculateTruePrice(offer, studentMode);
+  const b = calculateTruePrice(offer, studentMode, product);
   const steps: PriceStep[] = [
     {
-      label: `Store list price at ${offer.retailerName}`,
+      label: `Store price on ${offer.retailerName} (no codes)`,
       amount: b.listPrice,
       type: "base",
       detail:
-        "This is the sticker price shown on the retailer's website before any discounts.",
+        "This matches the price shown on the retailer website before you enter any coupon or student codes.",
     },
   ];
 
   if (b.couponSavings > 0) {
     steps.push({
-      label: offer.couponCode
-        ? `Coupon code ${offer.couponCode}`
-        : "Coupon discount",
+      label: b.couponCode ? `Coupon ${b.couponCode}` : "Coupon discount",
       amount: -b.couponSavings,
       type: "discount",
-      detail: offer.couponCode
-        ? `Apply code ${offer.couponCode} at checkout to save ${formatAud(b.couponSavings)}.`
+      detail: b.couponCode
+        ? `Enter code ${b.couponCode} at checkout to save ${formatAud(b.couponSavings)}.`
         : `Estimated coupon savings of ${formatAud(b.couponSavings)}.`,
     });
   }
 
   if (b.studentSavings > 0) {
     steps.push({
-      label: `Student discount (${offer.studentDiscountPercent}%)`,
+      label: `Student discount (${b.studentDiscountPercent}%)`,
       amount: -b.studentSavings,
       type: "discount",
       detail:
-        "Education pricing applied because Student Mode is on. Verify with UNiDAYS, Student Beans, or your uni ID at checkout.",
+        "Education pricing — verify with UNiDAYS, Student Beans, or your uni ID at checkout.",
     });
   }
 
@@ -98,47 +112,68 @@ export function getPriceSteps(
     });
   }
 
+  if (b.couponSavings > 0 || b.studentSavings > 0 || b.shipping > 0) {
+    steps.push({
+      label: "Checkout total (on retailer site)",
+      amount: b.checkoutPrice,
+      type: "subtotal",
+      detail: "What you pay at the store checkout after applicable codes and shipping.",
+    });
+  }
+
   if (b.cashbackSavings > 0) {
     steps.push({
       label: `Cashback via ${offer.cashbackProvider ?? "rewards app"}`,
       amount: -b.cashbackSavings,
       type: "cashback",
-      detail: `Shop through ${offer.cashbackProvider} to receive ~${formatAud(b.cashbackSavings)} back after your purchase (${offer.cashbackPercent}% cashback).`,
+      detail: `Not shown on ${offer.retailerName} — shop through ${offer.cashbackProvider} for ~${formatAud(b.cashbackSavings)} back (${offer.cashbackPercent}% cashback).`,
     });
   }
 
   steps.push({
-    label: "True price (what you effectively pay)",
+    label:
+      b.cashbackSavings > 0
+        ? "Effective price (after cashback)"
+        : "Price you pay at checkout",
     amount: b.truePrice,
     type: "total",
     detail:
-      "Your real cost after coupons, student discounts, shipping, and cashback.",
+      b.cashbackSavings > 0
+        ? "Your real cost after checkout discounts and estimated cashback."
+        : "Matches the retailer checkout total when no cashback app is used.",
   });
 
   return steps;
 }
 
 export function getTotalSavings(breakdown: TruePriceBreakdown): number {
+  return breakdown.listPrice + breakdown.shipping - breakdown.truePrice;
+}
+
+export function hasActiveDeals(
+  breakdown: TruePriceBreakdown,
+  studentMode: boolean
+): boolean {
   return (
-    breakdown.couponSavings +
-    breakdown.studentSavings +
-    breakdown.cashbackSavings -
-    breakdown.shipping
+    breakdown.couponSavings > 0 ||
+    (studentMode && breakdown.studentSavings > 0) ||
+    breakdown.cashbackSavings > 0
   );
 }
 
 export function getBestOffer(
   offers: StoreOffer[],
-  studentMode: boolean
+  studentMode: boolean,
+  product?: Product
 ): { offer: StoreOffer; breakdown: TruePriceBreakdown } | null {
   const inStock = offers.filter((o) => o.inStock);
   if (inStock.length === 0) return null;
 
   let best = inStock[0];
-  let bestBreakdown = calculateTruePrice(best, studentMode);
+  let bestBreakdown = calculateTruePrice(best, studentMode, product);
 
   for (const offer of inStock.slice(1)) {
-    const breakdown = calculateTruePrice(offer, studentMode);
+    const breakdown = calculateTruePrice(offer, studentMode, product);
     if (breakdown.truePrice < bestBreakdown.truePrice) {
       best = offer;
       bestBreakdown = breakdown;
@@ -150,12 +185,13 @@ export function getBestOffer(
 
 export function rankOffers(
   offers: StoreOffer[],
-  studentMode: boolean
+  studentMode: boolean,
+  product?: Product
 ): Array<{ offer: StoreOffer; breakdown: TruePriceBreakdown }> {
   return offers
     .map((offer) => ({
       offer,
-      breakdown: calculateTruePrice(offer, studentMode),
+      breakdown: calculateTruePrice(offer, studentMode, product),
     }))
     .sort((a, b) => a.breakdown.truePrice - b.breakdown.truePrice);
 }
