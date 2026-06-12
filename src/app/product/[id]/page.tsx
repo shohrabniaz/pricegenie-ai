@@ -12,6 +12,8 @@ import { ProductImage } from "@/components/ProductImage";
 import { TruePriceExplainer } from "@/components/TruePriceExplainer";
 import { OfferBreakdownList } from "@/components/OfferBreakdownList";
 import { useStudentMode } from "@/context/StudentModeContext";
+import { PriceUpdatedBadge } from "@/components/PriceUpdatedBadge";
+import { useProductPrices } from "@/hooks/useProductPrices";
 import { formatAud, getBestOffer, getTotalSavings } from "@/lib/pricing";
 
 export default function ProductPage({
@@ -20,10 +22,13 @@ export default function ProductPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
-  const product = getProductById(id);
+  const catalogProduct = getProductById(id);
+  const { product, pricesUpdatedAt, source, liveOfferCount } = useProductPrices(
+    catalogProduct
+  );
   const { studentMode } = useStudentMode();
 
-  if (!product) {
+  if (!catalogProduct || !product) {
     return (
       <div className="mx-auto max-w-6xl px-4 py-16 text-center">
         <p className="text-lg text-slate-400">Product not found</p>
@@ -57,6 +62,13 @@ export default function ProductPage({
               {product.name}
             </h1>
             <p className="mt-3 text-sm text-slate-400">{product.description}</p>
+
+            <PriceUpdatedBadge
+              className="mt-4"
+              updatedAt={pricesUpdatedAt}
+              source={source}
+              liveOfferCount={liveOfferCount}
+            />
 
             {best && (
               <div className="mt-6 rounded-xl border border-teal-500/30 bg-teal-500/10 p-4">
@@ -110,9 +122,15 @@ export default function ProductPage({
           )}
 
           <div>
-            <h2 className="mb-4 text-lg font-bold text-white">
-              Compare all stores
-            </h2>
+            <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <h2 className="text-lg font-bold text-white">Compare all stores</h2>
+              <PriceUpdatedBadge
+                updatedAt={pricesUpdatedAt}
+                source={source}
+                liveOfferCount={liveOfferCount}
+                className="sm:text-right"
+              />
+            </div>
             <PriceTable product={product} />
           </div>
 

@@ -2,6 +2,13 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.3.8] - 2026-06-12
+
+### Added
+- **Prices last updated** badge on product pages and search cards
+- Live price feed scaffold: `/api/prices/[id]`, `price-snapshots.ts`, `npm run prices:refresh`
+- Optional `PRICE_FEED_URL` env for hosted JSON price overrides
+
 ## [0.3.7] - 2026-06-12
 
 ### Added

@@ -44,6 +44,8 @@ export interface Product {
   priceHistory: PriceHistoryPoint[];
   lowestEver: number;
   tags: string[];
+  /** ISO date when store list prices were last verified. */
+  pricesUpdatedAt?: string;
 }
 
 export interface Coupon {

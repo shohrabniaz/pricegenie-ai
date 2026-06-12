@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Tag } from "lucide-react";
 import type { Product } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
+import { formatPriceDate } from "@/lib/format-date";
 import { formatAud, getBestOffer, hasActiveDeals } from "@/lib/pricing";
 import { ProductImage } from "@/components/ProductImage";
 
@@ -57,6 +58,11 @@ export function ProductCard({ product }: ProductCardProps) {
             {deals && best.breakdown.checkoutPrice < best.breakdown.listPrice + best.breakdown.shipping && (
               <p className="text-xs text-teal-400">
                 {formatAud(best.breakdown.checkoutPrice)} with deals at checkout
+              </p>
+            )}
+            {product.pricesUpdatedAt && (
+              <p className="mt-1 text-[10px] text-slate-600">
+                Prices as of {formatPriceDate(product.pricesUpdatedAt)}
               </p>
             )}
           </div>
