@@ -160,7 +160,11 @@ export function AiAdvisorChat() {
     scrollToBottom();
 
     setTimeout(() => {
-      const reply = generateAiReply(trimmed, studentMode);
+      const history = messages.map((m) => ({
+        role: m.role,
+        content: m.content,
+      }));
+      const reply = generateAiReply(trimmed, studentMode, history);
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: JSON.stringify(reply) },
@@ -243,7 +247,7 @@ export function AiAdvisorChat() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="e.g. Best Kmart headphones under $30?"
-            className="min-h-[2.75rem] flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-base text-white placeholder:text-slate-600 focus:border-violet-500/50 focus:outline-none sm:text-sm"
+            className="min-h-[2.75rem] flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-base text-white placeholder:text-slate-600 focus:border-violet-500/50 focus:outline-none"
           />
           <button
             type="submit"

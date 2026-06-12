@@ -10,7 +10,7 @@ AI shopping genie that finds the true lowest price in Australia — compare JB H
 
 **Live:** [pricegenie-ai.vercel.app](https://pricegenie-ai.vercel.app)
 
-Built by **Shohrab Niaz**.
+Built by **Shohrab Hossen Niaz**.
 
 ## Features
 
@@ -96,12 +96,12 @@ See [`marketing/STRATEGY.md`](marketing/STRATEGY.md) for the full go-to-market p
 
 **Proprietary — All Rights Reserved.**
 
-Copyright © 2026 Shohrab Niaz. See [LICENSE](LICENSE).
+Copyright © 2026 Shohrab Hossen Niaz. See [LICENSE](LICENSE).
 
 Unauthorized copying, distribution, or commercial use is prohibited.
 
 ## Author
 
-**Shohrab Niaz**  
+**Shohrab Hossen Niaz**  
 Email: shohrab.niaz@gmail.com  
 GitHub: [@shohrabniaz](https://github.com/shohrabniaz)

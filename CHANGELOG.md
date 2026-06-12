@@ -2,6 +2,15 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.3.6] - 2026-06-12
+
+### Changed
+- Author display name updated to **Shohrab Hossen Niaz** (`src/lib/author.ts`)
+- Genie AI: smarter intent routing, multi-strategy search, price/detail/compare replies, chat follow-up context
+
+### Fixed
+- Mobile typography: fixed 16px root size, Geist font on body, consistent input/button font sizing across pages
+
 ## [0.3.5] - 2026-06-12
 
 ### Added

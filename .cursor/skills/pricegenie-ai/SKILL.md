@@ -46,4 +46,4 @@ This runs lint → `scripts/sanity-check.ts` → production build. Do not push i
 
 ## License
 
-Proprietary — Copyright Shohrab Niaz. Do not change LICENSE or remove author attribution.
+Proprietary — Copyright Shohrab Hossen Niaz. Do not change LICENSE or remove author attribution.

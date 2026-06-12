@@ -1,6 +1,6 @@
 # Contributing to PriceGenie AI
 
-Thank you for your interest in PriceGenie AI. This is a proprietary project by Shohrab Niaz; external contributions require prior approval.
+Thank you for your interest in PriceGenie AI. This is a proprietary project by Shohrab Hossen Niaz; external contributions require prior approval.
 
 ## Getting started
 
@@ -57,4 +57,4 @@ This runs lint, typecheck, unit tests, sanity checks, and production build.
 
 ## Questions
 
-Contact **Shohrab Niaz**: shohrab.niaz@gmail.com
+Contact **Shohrab Hossen Niaz**: shohrab.niaz@gmail.com

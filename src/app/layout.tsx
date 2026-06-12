@@ -3,12 +3,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VercelAnalytics } from "@/components/VercelAnalytics";
+import { AUTHOR_NAME, AUTHOR_GITHUB } from "@/lib/author";
 import { StudentModeProvider } from "@/context/StudentModeContext";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -31,8 +33,8 @@ export const metadata: Metadata = {
     "JB Hi-Fi deals",
     "AI shopping assistant",
   ],
-  authors: [{ name: "Shohrab Niaz", url: "https://github.com/shohrabniaz" }],
-  creator: "Shohrab Niaz",
+  authors: [{ name: AUTHOR_NAME, url: AUTHOR_GITHUB }],
+  creator: AUTHOR_NAME,
   manifest: "/manifest.json",
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
@@ -62,9 +64,11 @@ export default function RootLayout({
   return (
     <html
       lang="en-AU"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-[#060a12] text-slate-200">
+      <body
+        className={`${geistSans.className} min-h-full flex flex-col bg-[#060a12] text-base leading-normal text-slate-200 antialiased`}
+      >
         <StudentModeProvider>
           <Header />
           <main className="flex-1">{children}</main>

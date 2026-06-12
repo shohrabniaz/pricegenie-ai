@@ -47,8 +47,8 @@ export function SearchBar({
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search iPhone 17 Pro, gaming laptop under $1500..."
           autoFocus={autoFocus}
-          className={`flex-1 bg-transparent text-white placeholder:text-slate-500 focus:outline-none ${
-            isLarge ? "py-3 text-base" : "py-2 text-sm"
+          className={`flex-1 bg-transparent text-base text-white placeholder:text-slate-500 focus:outline-none ${
+            isLarge ? "py-3" : "py-2"
           }`}
         />
         <button

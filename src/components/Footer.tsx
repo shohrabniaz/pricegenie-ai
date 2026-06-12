@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { AI_ASSISTANT_NAME } from "@/lib/brand";
+import { AUTHOR_GITHUB, AUTHOR_NAME } from "@/lib/author";
 import { APP_VERSION } from "@/lib/version";
 
 export function Footer() {
@@ -14,7 +15,7 @@ export function Footer() {
               Your wish for the best price granted
             </p>
             <p className="mt-2 text-xs text-slate-600">
-              © {new Date().getFullYear()} Shohrab Niaz · v{APP_VERSION}
+              © {new Date().getFullYear()} {AUTHOR_NAME} · v{APP_VERSION}
             </p>
           </div>
           <div className="flex flex-wrap gap-4 text-sm text-slate-500">
@@ -31,7 +32,7 @@ export function Footer() {
               {AI_ASSISTANT_NAME}
             </Link>
             <a
-              href="https://github.com/shohrabniaz/pricegenie-ai"
+              href={`${AUTHOR_GITHUB}/pricegenie-ai`}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-teal-400"
