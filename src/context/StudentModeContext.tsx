@@ -7,6 +7,7 @@ import {
   useState,
   useSyncExternalStore,
 } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 interface StudentModeContextValue {
   studentMode: boolean;
@@ -37,6 +38,7 @@ export function StudentModeProvider({
     setStudentMode((prev) => {
       const next = !prev;
       localStorage.setItem(STORAGE_KEY, String(next));
+      trackEvent("student_mode_toggle", { enabled: next });
       return next;
     });
   }, []);

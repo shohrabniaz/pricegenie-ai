@@ -6,6 +6,7 @@ import { ExternalLink, Send, Sparkles } from "lucide-react";
 import type { AiMessage } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { generateAiReply } from "@/lib/ai-advisor";
+import { trackEvent } from "@/lib/analytics";
 import { AI_ASSISTANT_NAME } from "@/lib/brand";
 
 const SUGGESTIONS = [
@@ -152,6 +153,7 @@ export function AiAdvisorChat() {
     const trimmed = text.trim();
     if (!trimmed || loading) return;
 
+    trackEvent("genie_message", { message_length: trimmed.length });
     setMessages((prev) => [...prev, { role: "user", content: trimmed }]);
     setInput("");
     setLoading(true);

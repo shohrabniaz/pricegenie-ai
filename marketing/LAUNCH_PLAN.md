@@ -4,14 +4,15 @@
 
 ### Day 1 — Deploy
 - [x] Push to GitHub (private or public with proprietary license)
-- [ ] Deploy to Vercel: connect repo, deploy main branch — see [`docs/DEPLOYMENT.md`](../docs/DEPLOYMENT.md)
+- [x] Deploy to Vercel: [pricegenie-ai.vercel.app](https://pricegenie-ai.vercel.app) — see [`docs/DEPLOYMENT.md`](../docs/DEPLOYMENT.md)
+- [x] Vercel Analytics + Speed Insights (`search`, `genie_message`, `student_mode_toggle` events)
 - [ ] Test on mobile browser → Add to Home Screen (PWA)
-- [ ] Screenshot hero, search results, student mode, AI advisor
+- [ ] Screenshot hero, search results, student mode, Genie advisor
 
 ### Day 2 — Social Setup
 - [ ] Create @pricegenie.ai on TikTok and Instagram
 - [ ] Bio: "Your wish for the best price granted 🧞 Student deals · AI genie · Free"
-- [ ] Link to live site
+- [ ] Link to [pricegenie-ai.vercel.app](https://pricegenie-ai.vercel.app)
 
 ### Day 3 — First Content
 - [ ] Record 30s screen demo of True Price comparison
@@ -35,7 +36,7 @@
 - [ ] Ask 10 friends to try and share honest feedback
 - [ ] Add 2 more products to seed data based on requests
 - [ ] Post "Wait or Buy" feature demo
-- [ ] Track: searches/day, student mode usage
+- [x] Track: searches/day, student mode usage — Vercel Analytics dashboard (custom events)
 
 ## Week 3-4: Content SEO Prep
 

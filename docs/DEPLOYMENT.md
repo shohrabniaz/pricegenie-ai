@@ -13,6 +13,23 @@ Production deployment uses **Vercel** with optional **GitHub Actions CD** from [
    - Region: **Sydney (syd1)**
 5. Deploy. Vercel auto-deploys on every push to `main`.
 
+### Analytics (built-in)
+
+Vercel **Analytics** and **Speed Insights** are included in the app. On Vercel:
+
+1. Project → **Analytics** → enable Web Analytics (free tier).
+2. Project → **Speed Insights** → enable (optional, recommended).
+
+Custom events appear under **Analytics → Events**:
+
+| Event | When |
+|-------|------|
+| `search` | User submits a search (`query_length` only) |
+| `genie_message` | User sends a message to Genie (`message_length` only) |
+| `student_mode_toggle` | Student Mode turned on/off |
+
+No extra env vars required on Vercel.
+
 Optional environment variables (see [`.env.example`](../.env.example)):
 
 | Variable | Purpose |
@@ -70,6 +87,7 @@ See [`docs/DEVOPS.md`](DEVOPS.md) for build details.
 - [ ] `/product/ps5-slim` shows price explainer
 - [ ] `/advisor` — Genie responds
 - [ ] PWA manifest loads (`/manifest.json`)
+- [ ] Vercel Analytics shows page views after a few minutes
 
 ## Troubleshooting
 

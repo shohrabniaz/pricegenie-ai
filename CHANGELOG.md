@@ -2,6 +2,15 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.3.5] - 2026-06-12
+
+### Added
+- Vercel Analytics + Speed Insights (page views, Web Vitals, custom events)
+- Custom events: `search`, `genie_message`, `student_mode_toggle` (no query text logged)
+
+### Changed
+- README and launch plan updated with live URL [pricegenie-ai.vercel.app](https://pricegenie-ai.vercel.app)
+
 ## [0.3.4] - 2026-06-12
 
 ### Changed

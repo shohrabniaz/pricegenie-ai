@@ -8,6 +8,8 @@
 
 AI shopping genie that finds the true lowest price in Australia — compare JB Hi-Fi, Harvey Norman, The Good Guys, Amazon AU & more with coupons, student discounts, cashback, and shipping included.
 
+**Live:** [pricegenie-ai.vercel.app](https://pricegenie-ai.vercel.app)
+
 Built by **Shohrab Niaz**.
 
 ## Features
@@ -61,7 +63,7 @@ Full details: [`docs/DEVOPS.md`](docs/DEVOPS.md) · [`docs/DEPLOYMENT.md`](docs/
 
 ### Optional (Free with Student Pack)
 
-- **Vercel** — Free hosting
+- **Vercel** — Free hosting + Analytics & Speed Insights
 - **Firebase** — Auth & database when you scale
 - **Groq / Ollama** — Free AI API (see `.env.example`)
 

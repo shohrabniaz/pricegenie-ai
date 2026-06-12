@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { Search } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 interface SearchBarProps {
   defaultValue?: string;
@@ -22,6 +23,7 @@ export function SearchBar({
     e.preventDefault();
     const q = query.trim();
     if (q) {
+      trackEvent("search", { query_length: q.length });
       router.push(`/search?q=${encodeURIComponent(q)}`);
     }
   }
