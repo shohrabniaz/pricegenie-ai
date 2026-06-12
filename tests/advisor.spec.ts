@@ -1,10 +1,10 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Niaz AI assistant", () => {
+test.describe("Genie AI assistant", () => {
   test("responds to a shopping question", async ({ page }) => {
     await page.goto("/advisor");
 
-    await expect(page.getByRole("heading", { name: "Niaz" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Genie" })).toBeVisible();
     await expect(page.getByTestId("advisor-input")).toBeVisible();
     await page.getByTestId("advisor-input").fill("Best gaming laptop under $2,100?");
     await page.getByTestId("advisor-send").click();

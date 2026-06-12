@@ -4,22 +4,23 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Bell,
-  Bot,
   GraduationCap,
   Home,
   Search,
+  Sparkles,
   Tag,
   TrendingDown,
 } from "lucide-react";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { Logo } from "@/components/Logo";
+import { AI_ASSISTANT_NAME } from "@/lib/brand";
 
 const NAV = [
   { href: "/", label: "Home", icon: Home },
   { href: "/search", label: "Search", icon: Search },
   { href: "/coupons", label: "Coupons", icon: Tag },
   { href: "/student", label: "Student", icon: GraduationCap },
-  { href: "/advisor", label: "Niaz", icon: Bot },
+  { href: "/advisor", label: AI_ASSISTANT_NAME, icon: Sparkles },
   { href: "/alerts", label: "Alerts", icon: Bell },
 ];
 
@@ -84,20 +85,20 @@ export function Header() {
         </button>
       </div>
 
-      <nav className="flex gap-1 overflow-x-auto border-t border-white/5 px-4 py-2 md:hidden">
+      <nav className="scrollbar-hide flex gap-1 overflow-x-auto border-t border-white/5 px-4 py-2 pb-[calc(0.5rem+var(--app-safe-bottom))] md:hidden">
         {NAV.map(({ href, label, icon: Icon }) => {
           const active = pathname === href;
           return (
             <Link
               key={href}
               href={href}
-              className={`flex shrink-0 items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-medium ${
+              className={`touch-target flex shrink-0 items-center justify-center gap-1.5 rounded-lg px-3.5 py-2 text-xs font-medium ${
                 active
                   ? "bg-teal-500/20 text-teal-300"
                   : "text-slate-400"
               }`}
             >
-              <Icon className="h-3.5 w-3.5" />
+              <Icon className="h-4 w-4 shrink-0" />
               {label}
             </Link>
           );

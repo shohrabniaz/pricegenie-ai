@@ -1,4 +1,5 @@
 import { PRODUCTS } from "@/data/products";
+import { AI_ASSISTANT_NAME } from "@/lib/brand";
 import { searchProducts } from "./search";
 import { getBestOffer, formatAud, rankOffers } from "./pricing";
 import { getWaitOrBuyAdvice } from "./wait-or-buy";
@@ -92,7 +93,7 @@ function buildProductLinks(
 
 function helpReply(): AiReply {
   return {
-    summary: "I'm Niaz — here's what I can help you with.",
+    summary: `I'm ${AI_ASSISTANT_NAME} — here's what I can help you with.`,
     body: [
       "I compare **true prices** across JB Hi-Fi, Harvey Norman, Amazon AU, Kmart, and more — factoring in coupons, student discounts, cashback, and shipping.",
       "",
@@ -117,7 +118,7 @@ function greetingReply(name = "there"): AiReply {
   return {
     summary: `G'day! Your wish for the best price is my command.`,
     body: [
-      `Hey ${name}! I'm **Niaz** — I search ${PRODUCTS.length}+ products across Australian stores and tell you the **real** price you'll pay.`,
+      `Hey ${name}! I'm **${AI_ASSISTANT_NAME}** — I search ${PRODUCTS.length}+ products across Australian stores and tell you the **real** price you'll pay.`,
       "",
       "Ask me for recommendations, wait-or-buy advice, Kmart bargains, or student budget picks. What are you shopping for today?",
     ].join("\n"),

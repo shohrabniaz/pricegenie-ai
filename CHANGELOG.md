@@ -2,6 +2,17 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.3.4] - 2026-06-12
+
+### Changed
+- AI assistant renamed from **Niaz** to **Genie** (`src/lib/brand.ts` single source of truth)
+- Sparkles icon for Genie in nav, chat header, and homepage CTA
+
+### Fixed
+- Mobile UX: safe-area insets, `100dvh` advisor layout, 44px touch targets, pinch-zoom enabled
+- Advisor chat fills mobile viewport; footer hidden on `/advisor` for small screens
+- Horizontally scrollable suggestion chips on mobile; larger chat input (`text-base` on mobile)
+
 ## [0.3.3] - 2026-06-12
 
 ### Added

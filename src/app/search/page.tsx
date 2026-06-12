@@ -56,7 +56,7 @@ function SearchResults() {
           <p className="mt-2 text-sm text-slate-600">
             Try a different search term or ask our{" "}
             <a href="/advisor" className="text-teal-400 hover:underline">
-              Niaz
+              Genie
             </a>
           </p>
         </div>

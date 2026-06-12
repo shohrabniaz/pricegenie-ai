@@ -55,14 +55,14 @@ export default function StudentPage() {
       <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-6">
         <h2 className="font-bold text-white">New Student in Australia?</h2>
         <p className="mt-2 text-sm text-slate-400">
-          Ask Niaz to build your student survival pack — laptop, SIM,
+          Ask Genie to build your student survival pack — laptop, SIM,
           internet, and grocery savings in one conversation.
         </p>
         <a
           href="/advisor"
           className="mt-4 inline-block rounded-xl bg-amber-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-amber-500"
         >
-          Chat with Niaz
+          Chat with Genie
         </a>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { AI_ASSISTANT_NAME } from "@/lib/brand";
 import { APP_VERSION } from "@/lib/version";
 
 export function Footer() {
@@ -27,7 +28,7 @@ export function Footer() {
               Student Deals
             </Link>
             <Link href="/advisor" className="hover:text-teal-400">
-              Niaz
+              {AI_ASSISTANT_NAME}
             </Link>
             <a
               href="https://github.com/shohrabniaz/pricegenie-ai"

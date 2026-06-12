@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "PriceGenie AI — Your wish for the best price granted",
     description:
-      "AI-powered shopping assistant Niaz helps Australian students find true lowest prices.",
+      "AI shopping Genie helps Australian students find true lowest prices.",
     locale: "en_AU",
     type: "website",
   },
@@ -50,7 +50,7 @@ export const viewport: Viewport = {
   themeColor: "#0B1220",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

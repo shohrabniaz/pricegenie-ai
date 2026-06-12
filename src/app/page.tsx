@@ -4,9 +4,9 @@ import Link from "next/link";
 import {
   ArrowRight,
   BadgePercent,
-  Bot,
   GraduationCap,
   Shield,
+  Sparkles,
   TrendingDown,
   Zap,
 } from "lucide-react";
@@ -14,6 +14,7 @@ import { HeroBadge } from "@/components/Header";
 import { SearchBar } from "@/components/SearchBar";
 import { ProductCard } from "@/components/ProductCard";
 import { useStudentMode } from "@/context/StudentModeContext";
+import { AI_ASSISTANT_NAME } from "@/lib/brand";
 import { getFeaturedProducts } from "@/lib/search";
 
 const FEATURES = [
@@ -33,9 +34,9 @@ const FEATURES = [
     desc: "Working codes with success rates from Australian retailers.",
   },
   {
-    icon: Bot,
-    title: "Niaz AI",
-    desc: "Chat with Niaz — personalised picks, wait-or-buy advice, and budget help.",
+    icon: Sparkles,
+    title: `${AI_ASSISTANT_NAME} AI`,
+    desc: `Chat with ${AI_ASSISTANT_NAME} — personalised picks, wait-or-buy advice, and budget help.`,
   },
   {
     icon: Zap,
@@ -137,7 +138,7 @@ export default function HomePage() {
 
       <section className="px-4 py-16">
         <div className="mx-auto max-w-2xl rounded-3xl border border-violet-500/20 bg-gradient-to-br from-violet-500/10 to-purple-500/5 p-8 text-center">
-          <Bot className="mx-auto h-10 w-10 text-violet-400" />
+          <Sparkles className="mx-auto h-10 w-10 text-violet-400" />
           <h2 className="mt-4 text-2xl font-bold text-white">
             Not sure what to buy?
           </h2>
@@ -149,7 +150,7 @@ export default function HomePage() {
             href="/advisor"
             className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 px-6 py-3 text-sm font-semibold text-white transition hover:from-violet-500 hover:to-purple-500"
           >
-            Chat with Niaz <ArrowRight className="h-4 w-4" />
+            Chat with {AI_ASSISTANT_NAME} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>

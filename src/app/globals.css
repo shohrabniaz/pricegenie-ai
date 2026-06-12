@@ -3,6 +3,9 @@
 :root {
   --background: #060a12;
   --foreground: #e2e8f0;
+  --app-header: 3.25rem;
+  --app-mobile-nav: 2.75rem;
+  --app-safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 @theme inline {
@@ -12,10 +15,45 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  padding-bottom: var(--app-safe-bottom);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile bottom nav clearance (header has second row on small screens) */
+@media (max-width: 767px) {
+  main {
+    padding-bottom: calc(var(--app-mobile-nav) + var(--app-safe-bottom));
+  }
+
+  main:has(.advisor-shell) {
+    padding-bottom: 0;
+  }
+
+  main:has(.advisor-shell) + footer {
+    display: none;
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.touch-target {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
 }
 
 /* Subtle grid background */

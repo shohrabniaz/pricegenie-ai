@@ -52,8 +52,8 @@ export function SearchBar({
         <button
           type="submit"
           data-testid="search-submit"
-          className={`shrink-0 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-600 font-semibold text-white transition hover:from-teal-400 hover:to-emerald-500 ${
-            isLarge ? "px-6 py-3 text-sm" : "px-4 py-2 text-xs"
+          className={`touch-target shrink-0 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-600 font-semibold text-white transition hover:from-teal-400 hover:to-emerald-500 ${
+            isLarge ? "px-6 py-3 text-sm" : "min-h-[2.75rem] px-4 py-2 text-xs"
           }`}
         >
           Search

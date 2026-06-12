@@ -2,10 +2,11 @@
 
 import { FormEvent, useRef, useState } from "react";
 import Link from "next/link";
-import { Bot, ExternalLink, Send, Sparkles } from "lucide-react";
+import { ExternalLink, Send, Sparkles } from "lucide-react";
 import type { AiMessage } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { generateAiReply } from "@/lib/ai-advisor";
+import { AI_ASSISTANT_NAME } from "@/lib/brand";
 
 const SUGGESTIONS = [
   "Best gaming laptop under $1,500?",
@@ -130,7 +131,7 @@ export function AiAdvisorChat() {
       role: "assistant",
       content: JSON.stringify({
         summary: "Your wish for the best price — granted.",
-        body: "G'day! I'm **Niaz**, your AI shopping assistant for Australia.\n\nI compare **true prices** across JB Hi-Fi, Harvey Norman, Amazon AU, **Kmart**, and more — including coupons, student discounts, cashback, and shipping.\n\nWhat are you looking for today?",
+        body: `G'day! I'm **${AI_ASSISTANT_NAME}**, your AI shopping assistant for Australia.\n\nI compare **true prices** across JB Hi-Fi, Harvey Norman, Amazon AU, **Kmart**, and more — including coupons, student discounts, cashback, and shipping.\n\nWhat are you looking for today?`,
         suggestions: [
           "Best laptop under $1,200?",
           "Kmart dorm essentials",
@@ -173,20 +174,20 @@ export function AiAdvisorChat() {
   }
 
   return (
-    <div className="flex h-[calc(100vh-12rem)] flex-col rounded-2xl border border-white/10 bg-white/[0.02] md:h-[600px]">
-      <div className="flex items-center gap-3 border-b border-white/10 px-5 py-4">
+    <div className="flex min-h-0 flex-1 flex-col rounded-2xl border border-white/10 bg-white/[0.02] md:h-[600px] md:flex-none">
+      <div className="flex shrink-0 items-center gap-3 border-b border-white/10 px-4 py-3 sm:px-5 sm:py-4">
         <div className="rounded-xl bg-gradient-to-br from-violet-500 to-purple-700 p-2">
-          <Bot className="h-5 w-5 text-white" />
+          <Sparkles className="h-5 w-5 text-white" />
         </div>
-        <div>
-          <h2 className="font-semibold text-white">Niaz</h2>
-          <p className="text-xs text-slate-500">
+        <div className="min-w-0">
+          <h2 className="font-semibold text-white">{AI_ASSISTANT_NAME}</h2>
+          <p className="truncate text-xs text-slate-500">
             PriceGenie AI assistant · True prices · Kmart · Student deals
           </p>
         </div>
       </div>
 
-      <div className="flex-1 space-y-4 overflow-y-auto px-5 py-4">
+      <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain px-4 py-4 sm:px-5">
         {messages.map((msg, i) => (
           <div
             key={i}
@@ -194,7 +195,7 @@ export function AiAdvisorChat() {
           >
             <div
               data-testid={msg.role === "assistant" ? "advisor-response" : "advisor-user-message"}
-              className={`max-w-[90%] rounded-2xl px-4 py-3 text-sm ${
+              className={`max-w-[92%] rounded-2xl px-4 py-3 text-sm sm:max-w-[90%] ${
                 msg.role === "user"
                   ? "bg-teal-600 text-white"
                   : "bg-white/[0.06] text-slate-300"
@@ -210,22 +211,24 @@ export function AiAdvisorChat() {
         ))}
         {loading && (
           <div className="flex items-center gap-2 text-sm text-slate-500">
-            <Sparkles className="h-4 w-4 animate-pulse text-violet-400" />
-            Niaz is checking JB Hi-Fi, Kmart, Amazon AU & more...
-            <ExternalLink className="h-3 w-3 opacity-50" />
+            <Sparkles className="h-4 w-4 shrink-0 animate-pulse text-violet-400" />
+            <span className="min-w-0">
+              {AI_ASSISTANT_NAME} is checking JB Hi-Fi, Kmart, Amazon AU & more...
+            </span>
+            <ExternalLink className="h-3 w-3 shrink-0 opacity-50" />
           </div>
         )}
         <div ref={bottomRef} />
       </div>
 
-      <div className="border-t border-white/10 p-4">
-        <div className="mb-3 flex flex-wrap gap-2">
+      <div className="shrink-0 border-t border-white/10 p-3 pb-[calc(0.75rem+var(--app-safe-bottom))] sm:p-4">
+        <div className="mb-3 flex gap-2 overflow-x-auto pb-1 scrollbar-hide sm:flex-wrap sm:overflow-visible">
           {SUGGESTIONS.map((s) => (
             <button
               key={s}
               type="button"
               onClick={() => sendMessage(s)}
-              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-400 transition hover:border-violet-500/30 hover:text-violet-300"
+              className="touch-target shrink-0 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs text-slate-400 transition hover:border-violet-500/30 hover:text-violet-300 sm:py-1"
             >
               {s}
             </button>
@@ -238,13 +241,14 @@ export function AiAdvisorChat() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="e.g. Best Kmart headphones under $30?"
-            className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-600 focus:border-violet-500/50 focus:outline-none"
+            className="min-h-[2.75rem] flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-base text-white placeholder:text-slate-600 focus:border-violet-500/50 focus:outline-none sm:text-sm"
           />
           <button
             type="submit"
             data-testid="advisor-send"
             disabled={loading || !input.trim()}
-            className="rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 px-4 py-3 text-white transition hover:from-violet-500 hover:to-purple-500 disabled:opacity-50"
+            aria-label="Send message"
+            className="touch-target flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-violet-600 to-purple-600 px-4 text-white transition hover:from-violet-500 hover:to-purple-500 disabled:opacity-50"
           >
             <Send className="h-4 w-4" />
           </button>

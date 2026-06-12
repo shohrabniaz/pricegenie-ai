@@ -68,7 +68,7 @@ See [`docs/DEVOPS.md`](DEVOPS.md) for build details.
 - [ ] Homepage loads with PriceGenie branding
 - [ ] `/search` returns products
 - [ ] `/product/ps5-slim` shows price explainer
-- [ ] `/advisor` — Niaz responds
+- [ ] `/advisor` — Genie responds
 - [ ] PWA manifest loads (`/manifest.json`)
 
 ## Troubleshooting
