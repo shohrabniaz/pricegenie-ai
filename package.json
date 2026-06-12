@@ -1,6 +1,6 @@
 {
   "name": "pricegenie-ai",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "PriceGenie AI — Your wish for the best price granted",
   "author": "Shohrab Niaz <shohrab.niaz@gmail.com>",
   "license": "SEE LICENSE IN LICENSE",
@@ -37,8 +37,8 @@
   "dependencies": {
     "lucide-react": "^1.17.0",
     "next": "16.2.9",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0",

@@ -3,8 +3,8 @@
 ## Week 1: Ship & Share
 
 ### Day 1 — Deploy
-- [ ] Push to GitHub (private or public with proprietary license)
-- [ ] Deploy to Vercel: connect repo, deploy main branch
+- [x] Push to GitHub (private or public with proprietary license)
+- [ ] Deploy to Vercel: connect repo, deploy main branch — see [`docs/DEPLOYMENT.md`](../docs/DEPLOYMENT.md)
 - [ ] Test on mobile browser → Add to Home Screen (PWA)
 - [ ] Screenshot hero, search results, student mode, AI advisor
 

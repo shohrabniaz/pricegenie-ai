@@ -79,7 +79,7 @@ flowchart LR
 | `VERCEL_ORG_ID` | Vercel team/org ID |
 | `VERCEL_PROJECT_ID` | Vercel project ID |
 
-CD skips deploy gracefully when secrets are not configured.
+CD skips deploy gracefully when secrets are not configured. Step-by-step setup: [`docs/DEPLOYMENT.md`](DEPLOYMENT.md).
 
 ## Docker
 

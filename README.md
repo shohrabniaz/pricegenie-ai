@@ -49,7 +49,7 @@ npm run docker:up    # production container on :3000
 | [Docker](.github/workflows/docker.yml) | Image build + Trivy scan + GHCR push |
 | [CD](.github/workflows/cd.yml) | Vercel deploy (when secrets configured) |
 
-Full details: [`docs/DEVOPS.md`](docs/DEVOPS.md) · [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`SECURITY.md`](SECURITY.md)
+Full details: [`docs/DEVOPS.md`](docs/DEVOPS.md) · [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) · [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`SECURITY.md`](SECURITY.md)
 
 ## Tech Stack (100% Free Tier)
 

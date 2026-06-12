@@ -2,6 +2,20 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.3.3] - 2026-06-12
+
+### Added
+- `vercel.json` with Sydney region and production build settings
+- [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) — Vercel + GitHub Actions CD guide
+
+### Changed
+- React 19.2.4 → 19.2.7 (grouped Dependabot update)
+- GitHub Actions: checkout v6, setup-node v6, github-script v9, CodeQL v4, docker/build-push-action v7
+- CD workflow writes deploy URL to job summary and environment
+
+### Fixed
+- Dependabot: ignore `@types/node` major bumps; group GitHub Actions updates
+
 ## [0.3.2] - 2026-06-12
 
 ### Fixed
