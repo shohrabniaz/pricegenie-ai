@@ -28,5 +28,455 @@
       "date": "2026-06-14",
       "price": 429
     }
+  ],
+  "lg-65-c4-oled": [
+    {
+      "date": "2026-06-14",
+      "price": 2299
+    }
+  ],
+  "dell-xps-15": [
+    {
+      "date": "2026-06-14",
+      "price": 2399
+    }
+  ],
+  "ipad-air-m3": [
+    {
+      "date": "2026-06-14",
+      "price": 829
+    }
+  ],
+  "ps5-slim": [
+    {
+      "date": "2026-06-14",
+      "price": 599
+    }
+  ],
+  "xbox-series-x": [
+    {
+      "date": "2026-06-14",
+      "price": 679
+    }
+  ],
+  "nintendo-switch-oled": [
+    {
+      "date": "2026-06-14",
+      "price": 439
+    }
+  ],
+  "airpods-pro-3": [
+    {
+      "date": "2026-06-14",
+      "price": 331
+    }
+  ],
+  "samsung-galaxy-buds3-pro": [
+    {
+      "date": "2026-06-14",
+      "price": 258
+    }
+  ],
+  "lg-27-4k-monitor": [
+    {
+      "date": "2026-06-14",
+      "price": 469
+    }
+  ],
+  "dell-27-monitor": [
+    {
+      "date": "2026-06-14",
+      "price": 419
+    }
+  ],
+  "lenovo-ideapad-slim-5": [
+    {
+      "date": "2026-06-14",
+      "price": 949
+    }
+  ],
+  "hp-pavilion-15": [
+    {
+      "date": "2026-06-14",
+      "price": 875
+    }
+  ],
+  "google-pixel-9": [
+    {
+      "date": "2026-06-14",
+      "price": 1049
+    }
+  ],
+  "iphone-16": [
+    {
+      "date": "2026-06-14",
+      "price": 1249
+    }
+  ],
+  "samsung-galaxy-a55": [
+    {
+      "date": "2026-06-14",
+      "price": 529
+    }
+  ],
+  "samsung-55-qled": [
+    {
+      "date": "2026-06-14",
+      "price": 1391
+    }
+  ],
+  "tcl-65-miniled": [
+    {
+      "date": "2026-06-14",
+      "price": 1249
+    }
+  ],
+  "apple-watch-series-10": [
+    {
+      "date": "2026-06-14",
+      "price": 629
+    }
+  ],
+  "samsung-galaxy-watch-7": [
+    {
+      "date": "2026-06-14",
+      "price": 419
+    }
+  ],
+  "canon-eos-r50": [
+    {
+      "date": "2026-06-14",
+      "price": 949
+    }
+  ],
+  "gopro-hero-13": [
+    {
+      "date": "2026-06-14",
+      "price": 479
+    }
+  ],
+  "samsung-990-pro-2tb": [
+    {
+      "date": "2026-06-14",
+      "price": 269
+    }
+  ],
+  "wd-my-passport-2tb": [
+    {
+      "date": "2026-06-14",
+      "price": 95
+    }
+  ],
+  "logitech-mx-keys": [
+    {
+      "date": "2026-06-14",
+      "price": 169
+    }
+  ],
+  "logitech-mx-master-3s": [
+    {
+      "date": "2026-06-14",
+      "price": 125
+    }
+  ],
+  "hp-laserjet-printer": [
+    {
+      "date": "2026-06-14",
+      "price": 379
+    }
+  ],
+  "epson-ecotank-et-2850": [
+    {
+      "date": "2026-06-14",
+      "price": 429
+    }
+  ],
+  "casio-fx-cg50": [
+    {
+      "date": "2026-06-14",
+      "price": 199
+    }
+  ],
+  "dyson-v15-detect": [
+    {
+      "date": "2026-06-14",
+      "price": 999
+    }
+  ],
+  "bosch-serie-6-dishwasher": [
+    {
+      "date": "2026-06-14",
+      "price": 1199
+    }
+  ],
+  "breville-barista-express": [
+    {
+      "date": "2026-06-14",
+      "price": 598
+    }
+  ],
+  "meta-quest-3": [
+    {
+      "date": "2026-06-14",
+      "price": 749
+    }
+  ],
+  "steam-deck-oled": [
+    {
+      "date": "2026-06-14",
+      "price": 819
+    }
+  ],
+  "kindle-paperwhite": [
+    {
+      "date": "2026-06-14",
+      "price": 219
+    }
+  ],
+  "samsung-galaxy-tab-s10": [
+    {
+      "date": "2026-06-14",
+      "price": 1249
+    }
+  ],
+  "bose-soundlink-flex": [
+    {
+      "date": "2026-06-14",
+      "price": 159
+    }
+  ],
+  "jbl-flip-6": [
+    {
+      "date": "2026-06-14",
+      "price": 135
+    }
+  ],
+  "sonos-era-100": [
+    {
+      "date": "2026-06-14",
+      "price": 319
+    }
+  ],
+  "asus-zenbook-14-oled": [
+    {
+      "date": "2026-06-14",
+      "price": 1599
+    }
+  ],
+  "msi-katana-15": [
+    {
+      "date": "2026-06-14",
+      "price": 1449
+    }
+  ],
+  "aoc-24g4": [
+    {
+      "date": "2026-06-14",
+      "price": 179
+    }
+  ],
+  "philips-hue-starter": [
+    {
+      "date": "2026-06-14",
+      "price": 148
+    }
+  ],
+  "ring-doorbell": [
+    {
+      "date": "2026-06-14",
+      "price": 229
+    }
+  ],
+  "dji-mini-4-pro": [
+    {
+      "date": "2026-06-14",
+      "price": 1149
+    }
+  ],
+  "fitbit-charge-6": [
+    {
+      "date": "2026-06-14",
+      "price": 210
+    }
+  ],
+  "ninja-air-fryer": [
+    {
+      "date": "2026-06-14",
+      "price": 279
+    }
+  ],
+  "oral-b-io-series-9": [
+    {
+      "date": "2026-06-14",
+      "price": 368
+    }
+  ],
+  "sim-plan-belong": [
+    {
+      "date": "2026-06-14",
+      "price": 25
+    }
+  ],
+  "kmart-anko-bluetooth-speaker": [
+    {
+      "date": "2026-06-14",
+      "price": 19
+    }
+  ],
+  "kmart-55-smart-tv": [
+    {
+      "date": "2026-06-14",
+      "price": 499
+    }
+  ],
+  "kmart-wireless-earbuds": [
+    {
+      "date": "2026-06-14",
+      "price": 25
+    }
+  ],
+  "kmart-10-tablet": [
+    {
+      "date": "2026-06-14",
+      "price": 95
+    }
+  ],
+  "kmart-gaming-headset": [
+    {
+      "date": "2026-06-14",
+      "price": 29
+    }
+  ],
+  "kmart-power-board": [
+    {
+      "date": "2026-06-14",
+      "price": 15
+    }
+  ],
+  "kmart-10000mah-powerbank": [
+    {
+      "date": "2026-06-14",
+      "price": 19
+    }
+  ],
+  "kmart-desk-fan": [
+    {
+      "date": "2026-06-14",
+      "price": 12
+    }
+  ],
+  "kmart-hdmi-cable-2m": [
+    {
+      "date": "2026-06-14",
+      "price": 10
+    }
+  ],
+  "kmart-led-desk-lamp": [
+    {
+      "date": "2026-06-14",
+      "price": 19
+    }
+  ],
+  "kmart-mini-fridge": [
+    {
+      "date": "2026-06-14",
+      "price": 169
+    }
+  ],
+  "kmart-anko-blender": [
+    {
+      "date": "2026-06-14",
+      "price": 25
+    }
+  ],
+  "kmart-webcam-hd": [
+    {
+      "date": "2026-06-14",
+      "price": 29
+    }
+  ],
+  "kmart-switch-joycon-charger": [
+    {
+      "date": "2026-06-14",
+      "price": 19
+    }
+  ],
+  "kmart-robot-vacuum": [
+    {
+      "date": "2026-06-14",
+      "price": 129
+    }
+  ],
+  "logitech-c920-webcam": [
+    {
+      "date": "2026-06-14",
+      "price": 79
+    }
+  ],
+  "blue-yeti-nano": [
+    {
+      "date": "2026-06-14",
+      "price": 105
+    }
+  ],
+  "tp-link-wifi6-router": [
+    {
+      "date": "2026-06-14",
+      "price": 95
+    }
+  ],
+  "samsung-t7-1tb-ssd": [
+    {
+      "date": "2026-06-14",
+      "price": 129
+    }
+  ],
+  "anker-735-charger": [
+    {
+      "date": "2026-06-14",
+      "price": 69
+    }
+  ],
+  "elgato-stream-deck-mk2": [
+    {
+      "date": "2026-06-14",
+      "price": 199
+    }
+  ],
+  "razer-deathadder-v3": [
+    {
+      "date": "2026-06-14",
+      "price": 125
+    }
+  ],
+  "corsair-k70-keyboard": [
+    {
+      "date": "2026-06-14",
+      "price": 169
+    }
+  ],
+  "ring-light-10": [
+    {
+      "date": "2026-06-14",
+      "price": 45
+    }
+  ],
+  "sandisk-ultra-128gb-usb": [
+    {
+      "date": "2026-06-14",
+      "price": 18
+    }
+  ],
+  "google-nest-mini": [
+    {
+      "date": "2026-06-14",
+      "price": 59
+    }
+  ],
+  "xiaomi-electric-scooter": [
+    {
+      "date": "2026-06-14",
+      "price": 429
+    }
   ]
 }
