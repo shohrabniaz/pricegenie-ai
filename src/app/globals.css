@@ -80,6 +80,12 @@ body {
   scrollbar-width: none;
 }
 
+@media (min-width: 768px) {
+  .header-mobile-nav {
+    display: none !important;
+  }
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

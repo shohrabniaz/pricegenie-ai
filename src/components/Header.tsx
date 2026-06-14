@@ -87,7 +87,10 @@ export function Header() {
         </button>
       </div>
 
-      <nav className="scrollbar-hide flex gap-1 overflow-x-auto border-t border-white/5 px-4 py-2 pb-[calc(0.5rem+var(--app-safe-bottom))] md:hidden">
+      <nav
+        aria-label="Mobile navigation"
+        className="header-mobile-nav scrollbar-hide hidden max-md:flex gap-1 overflow-x-auto border-t border-white/5 px-4 py-2 pb-[calc(0.5rem+var(--app-safe-bottom))]"
+      >
         {NAV.map(({ href, label, icon: Icon }) => {
           const active = pathname === href;
           return (
