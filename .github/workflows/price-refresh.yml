@@ -55,12 +55,7 @@ jobs:
             echo "No price changes to commit."
             exit 0
           fi
-          git commit -m "$(cat <<'EOF'
-chore: daily price snapshot refresh
-
-Automated retailer price scrape updates store prices and catalog review date.
-EOF
-)"
+          git commit -m "chore: daily price snapshot refresh" -m "Automated retailer price scrape updates store prices and catalog review date."
           git push
 
       - name: Job summary
