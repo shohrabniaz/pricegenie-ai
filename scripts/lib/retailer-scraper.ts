@@ -176,7 +176,7 @@ async function discoverFromSearch(
     const price = pickBestScrapedPrice(prices, catalogPrice);
     const score = scoreTitleMatch(title, productName);
 
-    if (score < 0.2) continue;
+    if (score < 0.35) continue;
 
     candidates.push({ url: absolute, title: title.trim(), price, score });
   }
@@ -197,9 +197,9 @@ async function discoverFromSearch(
           url: absolute,
           title: title.trim(),
           price: null,
-          score: Math.max(score, 0.2),
+          score: Math.max(score, 0.35),
         });
-        break;
+        if (candidates.length >= 3) break;
       }
     }
   }

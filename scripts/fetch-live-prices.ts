@@ -18,7 +18,7 @@ import {
   todayIsoDate,
 } from "./lib/price-parse";
 import { appendPriceHistoryPoint } from "../src/lib/price-history";
-import { isProductPageUrl } from "../src/lib/offer-deep-links";
+import { isProductPageUrl, scoreTitleMatch } from "../src/lib/offer-deep-links";
 import { createScraperPage, scrapeRetailPrice } from "./lib/retailer-scraper";
 
 const DELAY_MS = Number(process.env.PRICE_REFRESH_DELAY_MS ?? 2_500);
@@ -141,13 +141,24 @@ async function main() {
           isProductPageUrl(retailer, productUrl) &&
           deepLinks[product.id]?.[retailer]?.url !== productUrl
         ) {
-          if (!deepLinks[product.id]) deepLinks[product.id] = {};
-          deepLinks[product.id]![retailer] = {
-            url: productUrl,
-            discoveredAt: today,
-          };
-          stats.linksDiscovered += 1;
-          console.log(`   ↳ saved product URL (${retailer})`);
+          const pageTitle = await page.title();
+          const titleScore = Math.max(
+            scoreTitleMatch(pageTitle, product.name),
+            scoreTitleMatch(productUrl, product.name)
+          );
+          if (titleScore >= 0.35) {
+            if (!deepLinks[product.id]) deepLinks[product.id] = {};
+            deepLinks[product.id]![retailer] = {
+              url: productUrl,
+              discoveredAt: today,
+            };
+            stats.linksDiscovered += 1;
+            console.log(`   ↳ saved product URL (${retailer})`);
+          } else {
+            console.log(
+              `   ↳ rejected product URL (${retailer}, title match ${Math.round(titleScore * 100)}%)`
+            );
+          }
         }
 
         const previous =
