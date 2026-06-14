@@ -1,5 +1,5 @@
 /**
- * Daily price refresh — scrapes retailer search pages and writes price-snapshots.json.
+ * Daily price refresh — scrapes retailer product pages and writes price-snapshots.json.
  *
  * Usage:
  *   npm run prices:fetch-live
@@ -10,13 +10,15 @@ import { join } from "node:path";
 import { chromium } from "@playwright/test";
 import { CATALOG_PRODUCTS } from "../src/data/products";
 import type { PriceSnapshot } from "../src/data/price-snapshots";
-import type { PriceHistoryPoint } from "../src/types";
+import type { OfferDeepLinks } from "../src/lib/offer-deep-links";
+import type { PriceHistoryPoint, Retailer } from "../src/types";
 import {
   isPlausiblePrice,
   sleep,
   todayIsoDate,
 } from "./lib/price-parse";
 import { appendPriceHistoryPoint } from "../src/lib/price-history";
+import { isProductPageUrl } from "../src/lib/offer-deep-links";
 import { createScraperPage, scrapeRetailPrice } from "./lib/retailer-scraper";
 
 const DELAY_MS = Number(process.env.PRICE_REFRESH_DELAY_MS ?? 2_500);
@@ -27,7 +29,17 @@ const LIMIT = process.env.PRICE_REFRESH_LIMIT
 const ROOT = process.cwd();
 const SNAPSHOT_PATH = join(ROOT, "src/data/price-snapshots.json");
 const HISTORY_PATH = join(ROOT, "src/data/price-history-log.json");
+const DEEP_LINKS_PATH = join(ROOT, "src/data/offer-deep-links.json");
 const META_PATH = join(ROOT, "src/data/catalog-meta.ts");
+
+function loadDeepLinks(): OfferDeepLinks {
+  if (!existsSync(DEEP_LINKS_PATH)) return {};
+  try {
+    return JSON.parse(readFileSync(DEEP_LINKS_PATH, "utf8")) as OfferDeepLinks;
+  } catch {
+    return {};
+  }
+}
 
 function loadExistingHistory(): Record<string, PriceHistoryPoint[]> {
   if (!existsSync(HISTORY_PATH)) return {};
@@ -56,10 +68,17 @@ function loadExistingSnapshots(): Record<string, PriceSnapshot> {
 function writeSnapshots(
   snapshots: Record<string, PriceSnapshot>,
   history: Record<string, PriceHistoryPoint[]>,
-  stats: { success: number; failed: number; skipped: number }
+  deepLinks: OfferDeepLinks,
+  stats: {
+    success: number;
+    failed: number;
+    skipped: number;
+    linksDiscovered: number;
+  }
 ) {
   writeFileSync(SNAPSHOT_PATH, `${JSON.stringify(snapshots, null, 2)}\n`, "utf8");
   writeFileSync(HISTORY_PATH, `${JSON.stringify(history, null, 2)}\n`, "utf8");
+  writeFileSync(DEEP_LINKS_PATH, `${JSON.stringify(deepLinks, null, 2)}\n`, "utf8");
 
   const today = todayIsoDate();
   writeFileSync(
@@ -70,20 +89,24 @@ function writeSnapshots(
 
   console.log(`\nWrote ${Object.keys(snapshots).length} products → ${SNAPSHOT_PATH}`);
   console.log(`Wrote ${Object.keys(history).length} history series → ${HISTORY_PATH}`);
+  console.log(
+    `Wrote ${Object.keys(deepLinks).length} products with deep links → ${DEEP_LINKS_PATH}`
+  );
   console.log(`Updated CATALOG_PRICE_UPDATED_AT → ${today}`);
   console.log(
-    `Scrape results: ${stats.success} ok, ${stats.failed} failed, ${stats.skipped} kept previous`
+    `Scrape results: ${stats.success} ok, ${stats.failed} failed, ${stats.skipped} skipped, ${stats.linksDiscovered} new URLs`
   );
 }
 
 async function main() {
   const existing = loadExistingSnapshots();
   const historyLog = loadExistingHistory();
+  const deepLinks = loadDeepLinks();
   const today = todayIsoDate();
   const products = LIMIT ? CATALOG_PRODUCTS.slice(0, LIMIT) : CATALOG_PRODUCTS;
 
   const snapshots: Record<string, PriceSnapshot> = { ...existing };
-  const stats = { success: 0, failed: 0, skipped: 0 };
+  const stats = { success: 0, failed: 0, skipped: 0, linksDiscovered: 0 };
 
   console.log(`PriceGenie — live price refresh (${products.length} products)\n`);
 
@@ -102,12 +125,30 @@ async function main() {
         if (!offer.inStock) continue;
 
         const catalogPrice = offer.listPrice;
-        const scraped = await scrapeRetailPrice(
+        const retailer = offer.retailer as Retailer;
+        const cachedUrl = deepLinks[product.id]?.[retailer]?.url;
+
+        const { price: scraped, productUrl } = await scrapeRetailPrice(
           page,
-          offer.retailer,
+          retailer,
           product.name,
-          catalogPrice
+          catalogPrice,
+          cachedUrl
         );
+
+        if (
+          productUrl &&
+          isProductPageUrl(retailer, productUrl) &&
+          deepLinks[product.id]?.[retailer]?.url !== productUrl
+        ) {
+          if (!deepLinks[product.id]) deepLinks[product.id] = {};
+          deepLinks[product.id]![retailer] = {
+            url: productUrl,
+            discoveredAt: today,
+          };
+          stats.linksDiscovered += 1;
+          console.log(`   ↳ saved product URL (${retailer})`);
+        }
 
         const previous =
           existing[product.id]?.offers[offer.retailer] ?? catalogPrice;
@@ -118,8 +159,9 @@ async function main() {
           stats.success += 1;
           const delta = scraped - catalogPrice;
           const mark = delta === 0 ? "=" : delta > 0 ? "↑" : "↓";
+          const via = productUrl || cachedUrl ? "PDP" : "search";
           console.log(
-            `   ✓ ${offer.retailerName}: $${scraped} ${mark} (catalog $${catalogPrice})`
+            `   ✓ ${offer.retailerName}: $${scraped} ${mark} (catalog $${catalogPrice}, ${via})`
           );
         } else if (isPlausiblePrice(previous, catalogPrice)) {
           resolved = previous;
@@ -167,7 +209,7 @@ async function main() {
     await browser.close();
   }
 
-  writeSnapshots(snapshots, historyLog, stats);
+  writeSnapshots(snapshots, historyLog, deepLinks, stats);
 }
 
 main().catch((err) => {

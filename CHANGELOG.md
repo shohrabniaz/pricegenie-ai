@@ -2,6 +2,17 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.4.3] - 2026-06-14
+
+### Added
+- **Product deep link cache** (`offer-deep-links.json`) — scraper discovers and reuses retailer PDP URLs
+- Search-to-PDP discovery with title matching; product pages scraped via JSON-LD first
+- Outbound shop links use cached deep URLs when available (not search pages)
+
+### Changed
+- Scraper prefers cached PDP → discover from search → fallback to search prices
+- Daily workflow commits `offer-deep-links.json` alongside price snapshots
+
 ## [0.4.2] - 2026-06-14
 
 ### Added

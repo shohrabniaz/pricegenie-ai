@@ -1,4 +1,5 @@
 import type { Retailer } from "@/types";
+import { getOfferDeepLink } from "@/data/offer-deep-links";
 
 /** Homepage-only URLs that should be replaced with product-specific links. */
 const GENERIC_STORE_PATTERNS = [
@@ -55,8 +56,13 @@ export function buildRetailerProductUrl(
 export function resolveOfferUrl(
   retailer: Retailer,
   productName: string,
-  url?: string
+  url?: string,
+  productId?: string
 ): string {
+  if (productId) {
+    const deepLink = getOfferDeepLink(productId, retailer);
+    if (deepLink) return deepLink;
+  }
   if (url && !isGenericStoreUrl(url)) return url;
   return buildRetailerProductUrl(retailer, productName);
 }

@@ -10,14 +10,14 @@ type OfferInput = {
   url?: string;
 } & Omit<Partial<StoreOffer>, "retailer" | "retailerName" | "listPrice" | "shipping" | "inStock" | "url">;
 
-function offer(input: OfferInput, productName: string): StoreOffer {
+function offer(input: OfferInput, productName: string, productId: string): StoreOffer {
   return {
     retailer: input.retailer,
     retailerName: RETAILER_LABELS[input.retailer],
     listPrice: input.listPrice,
     shipping: input.shipping ?? 0,
     inStock: input.inStock ?? true,
-    url: resolveOfferUrl(input.retailer, productName, input.url),
+    url: resolveOfferUrl(input.retailer, productName, input.url, productId),
     couponCode: input.couponCode,
     couponDiscount: input.couponDiscount,
     cashbackPercent: input.cashbackPercent,
@@ -34,7 +34,7 @@ export function catalogProduct(
     imageUrl?: string;
   }
 ): Product {
-  const offers = base.offers.map((o) => offer(o, base.name));
+  const offers = base.offers.map((o) => offer(o, base.name, base.id));
   const current =
     base.currentPrice ??
     Math.min(...offers.filter((o) => o.inStock).map((o) => o.listPrice));
@@ -61,7 +61,7 @@ export function resolveProductUrls(product: Product): Product {
     ...product,
     offers: product.offers.map((o) => ({
       ...o,
-      url: resolveOfferUrl(o.retailer, product.name, o.url),
+      url: resolveOfferUrl(o.retailer, product.name, o.url, product.id),
     })),
   };
 }
