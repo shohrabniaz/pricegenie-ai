@@ -30,6 +30,26 @@ Custom events appear under **Analytics → Events**:
 
 No extra env vars required on Vercel.
 
+### Email sign-in (Firebase Auth)
+
+When Firebase env vars are set, users must **sign in with email and verify** before accessing the app.
+
+1. [Firebase Console](https://console.firebase.google.com) → create project → **Authentication** → enable **Email/Password**.
+2. Project settings → your Web app → copy config into Vercel **Environment Variables**:
+
+| Variable | Example |
+|----------|---------|
+| `NEXT_PUBLIC_FIREBASE_API_KEY` | `AIza...` |
+| `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN` | `your-app.firebaseapp.com` |
+| `NEXT_PUBLIC_FIREBASE_PROJECT_ID` | `your-app` |
+| `NEXT_PUBLIC_FIREBASE_APP_ID` | `1:123:web:abc` |
+| `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | `123456789` |
+
+3. Authentication → Templates → customize verification email (optional).
+4. Redeploy. Unauthenticated visitors are redirected to `/login`.
+
+For local dev without Firebase, set `NEXT_PUBLIC_AUTH_DISABLED=true` in `.env.local`.
+
 ### Daily automated prices
 
 [`.github/workflows/price-refresh.yml`](../.github/workflows/price-refresh.yml) runs every day at **~2:00 AM Sydney**:

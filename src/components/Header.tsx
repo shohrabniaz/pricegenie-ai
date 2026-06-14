@@ -7,12 +7,14 @@ import {
   GraduationCap,
   Home,
   Link2,
+  LogOut,
   Search,
   Sparkles,
   Tag,
   TrendingDown,
 } from "lucide-react";
 import { useStudentMode } from "@/context/StudentModeContext";
+import { useAuth } from "@/context/AuthContext";
 import { Logo } from "@/components/Logo";
 import { AI_ASSISTANT_NAME } from "@/lib/brand";
 
@@ -29,6 +31,7 @@ const NAV = [
 export function Header() {
   const pathname = usePathname();
   const { studentMode, toggleStudentMode, hydrated } = useStudentMode();
+  const { user, authRequired, signOut } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0B1220]/90 backdrop-blur-xl">
@@ -63,28 +66,47 @@ export function Header() {
           })}
         </nav>
 
-        <button
-          type="button"
-          data-testid="student-mode-toggle"
-          onClick={toggleStudentMode}
-          disabled={!hydrated}
-          className={`flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all ${
-            studentMode
-              ? "border-amber-400/50 bg-amber-400/15 text-amber-300 shadow-sm shadow-amber-400/10"
-              : "border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:text-white"
-          }`}
-          aria-pressed={studentMode}
-        >
-          <GraduationCap className="h-3.5 w-3.5" />
-          <span className="hidden sm:inline">Student Mode</span>
-          <span
-            className={`rounded-full px-1.5 py-0.5 text-[10px] ${
-              studentMode ? "bg-amber-400/30" : "bg-white/10"
+        <div className="flex shrink-0 items-center gap-2">
+          {authRequired && user?.email && (
+            <div className="hidden items-center gap-2 sm:flex">
+              <span className="max-w-[8rem] truncate text-xs text-slate-500 lg:max-w-[12rem]">
+                {user.email}
+              </span>
+              <button
+                type="button"
+                onClick={() => signOut()}
+                className="inline-flex items-center gap-1 rounded-lg border border-white/10 px-2 py-1 text-xs text-slate-400 hover:text-white"
+                title="Sign out"
+              >
+                <LogOut className="h-3.5 w-3.5" />
+                <span className="hidden lg:inline">Sign out</span>
+              </button>
+            </div>
+          )}
+
+          <button
+            type="button"
+            data-testid="student-mode-toggle"
+            onClick={toggleStudentMode}
+            disabled={!hydrated}
+            className={`flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-all ${
+              studentMode
+                ? "border-amber-400/50 bg-amber-400/15 text-amber-300 shadow-sm shadow-amber-400/10"
+                : "border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:text-white"
             }`}
+            aria-pressed={studentMode}
           >
-            {studentMode ? "ON" : "OFF"}
-          </span>
-        </button>
+            <GraduationCap className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Student Mode</span>
+            <span
+              className={`rounded-full px-1.5 py-0.5 text-[10px] ${
+                studentMode ? "bg-amber-400/30" : "bg-white/10"
+              }`}
+            >
+              {studentMode ? "ON" : "OFF"}
+            </span>
+          </button>
+        </div>
       </div>
 
       <nav

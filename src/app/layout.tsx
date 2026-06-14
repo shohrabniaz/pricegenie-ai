@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { VercelAnalytics } from "@/components/VercelAnalytics";
+import { AuthShell } from "@/components/AuthShell";
 import { AUTHOR_NAME, AUTHOR_GITHUB } from "@/lib/author";
+import { AuthProvider } from "@/context/AuthContext";
 import { StudentModeProvider } from "@/context/StudentModeContext";
 import "./globals.css";
 
@@ -69,12 +69,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.className} min-h-full flex flex-col bg-[#060a12] text-base leading-normal text-slate-200 antialiased`}
       >
-        <StudentModeProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <VercelAnalytics />
-        </StudentModeProvider>
+        <AuthProvider>
+          <StudentModeProvider>
+            <AuthShell>{children}</AuthShell>
+            <VercelAnalytics />
+          </StudentModeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

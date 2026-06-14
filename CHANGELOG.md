@@ -2,6 +2,15 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.5.0] - 2026-06-14
+
+### Added
+- **Email sign-in with verification** — Firebase Auth; users must verify email before accessing the app
+- `/login` — sign in or create account
+- `/verify-email` — resend verification and confirm status
+- Auth gate wraps all pages when Firebase env vars are set
+- Set `NEXT_PUBLIC_AUTH_DISABLED=true` to bypass auth (CI / local dev)
+
 ## [0.4.3] - 2026-06-14
 
 ### Added
