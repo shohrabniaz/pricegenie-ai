@@ -3,6 +3,7 @@
 import { ExternalLink } from "lucide-react";
 import type { Product } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
+import { withAffiliateLink } from "@/lib/affiliate";
 import { formatAud, rankOffers } from "@/lib/pricing";
 import { RETAILER_COLORS } from "@/data/retailers";
 
@@ -109,7 +110,7 @@ export function PriceTable({ product }: PriceTableProps) {
               </td>
               <td className="px-4 py-3">
                 <a
-                  href={offer.url}
+                  href={withAffiliateLink(offer.url)}
                   data-testid="view-product-link"
                   target="_blank"
                   rel="noopener noreferrer"

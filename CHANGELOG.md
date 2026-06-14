@@ -2,6 +2,19 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.4.0] - 2026-06-12
+
+### Added
+- **Search engine model** — `GET /api/search` merges catalog + daily snapshots + priority AU retailer links
+- **Paste any product URL** — `/analyze` page + `POST /api/analyze-url` (JSON-LD / meta price extraction)
+- **Affiliate links** — `src/lib/affiliate.ts` for Amazon AU & eBay AU outbound URLs
+- Retailer search links on search results (Amazon, eBay, JB Hi-Fi, Good Guys, Officeworks, Harvey Norman, Kogan)
+- Homepage CTA → Analyze; **Analyze** in main nav
+
+### Changed
+- Search page fetches unified API instead of static `searchProducts()` only
+- README documents search-on-demand architecture (not millions of imported SKUs)
+
 ## [0.3.9] - 2026-06-12
 
 ### Added

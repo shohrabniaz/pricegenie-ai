@@ -22,7 +22,34 @@ Built by **Shohrab Hossen Niaz**.
 | **AI Shopping Genie** | Ask what to buy, when to wait, budget recommendations |
 | **Wait or Buy** | Sale timing advice based on price history |
 | **Price Alerts** | Local alerts — no account, no cost |
+| **Paste URL** | Paste a JB Hi-Fi / Amazon AU link — live price + cheaper alternatives |
 | **PWA Ready** | Install on phone from browser (no app store fee for MVP) |
+
+## Architecture: search engine, not a product database
+
+PriceGenie does **not** import millions of SKUs. The flow is:
+
+```
+User searches or pastes a URL
+        ↓
+Match seed catalog + daily price snapshots
+        ↓
+Normalize pricing (store → checkout → true price)
+        ↓
+Show results + affiliate retailer links
+        ↓
+Cache (API + CDN)
+```
+
+| Layer | Role |
+|-------|------|
+| `src/data/` | ~80-product seed catalog (MVP) |
+| `price-snapshots.json` | Daily scraped store prices (GitHub Actions) |
+| `/api/search` | Unified search: catalog + snapshots + live retailer links |
+| `/api/analyze-url` | Paste any product URL → fetch live HTML price + alternatives |
+| `src/lib/affiliate.ts` | Amazon / eBay affiliate params on outbound links |
+
+Priority AU retailers: Amazon AU, eBay AU, JB Hi-Fi, The Good Guys, Officeworks, Harvey Norman, Kogan.
 
 ## Quick Start
 
@@ -71,18 +98,22 @@ Full details: [`docs/DEVOPS.md`](docs/DEVOPS.md) · [`docs/DEPLOYMENT.md`](docs/
 
 ```
 src/
-├── app/           # Pages (search, product, coupons, student, advisor, alerts)
+├── app/           # Pages + API routes (search, analyze-url, prices)
 ├── components/    # UI components
 ├── context/       # Student mode state
-├── data/          # Product, coupon, retailer data (MVP seed data)
-├── lib/           # Pricing engine, search, AI advisor, alerts
+├── data/          # Seed catalog, coupons, daily price snapshots
+├── lib/           # Pricing, live search, URL analyzer, affiliate links
 └── types/         # TypeScript types
 ```
 
 ## Roadmap
 
 - [x] MVP — Search, compare, coupons, student mode, AI advisor
-- [ ] Live price scraping / retailer APIs
+- [x] Search-on-demand API + daily price snapshots (not a static-only DB)
+- [x] Paste any product URL analyzer
+- [x] Affiliate link scaffolding (Amazon AU, eBay AU)
+- [ ] SEO landing pages (`/best-laptops-under-1000-australia`, etc.)
+- [ ] PriceGenie Pro subscription ($4.99/mo)
 - [ ] Firebase auth & cloud price alerts
 - [ ] ShopBack / Cashrewards API integration
 - [ ] Flutter or Capacitor native app

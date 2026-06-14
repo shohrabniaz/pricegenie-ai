@@ -77,6 +77,13 @@ export default function HomePage() {
           <div className="mx-auto mt-8 max-w-2xl">
             <SearchBar size="large" />
           </div>
+          <p className="mt-3 text-sm text-slate-500">
+            Already have a link?{" "}
+            <Link href="/analyze" className="text-teal-400 hover:underline">
+              Paste any product URL
+            </Link>{" "}
+            for live price + cheaper alternatives.
+          </p>
           <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs text-slate-600">
             {["iPhone 17 Pro", "gaming laptop", "MacBook Air", "OLED TV"].map(
               (term) => (
