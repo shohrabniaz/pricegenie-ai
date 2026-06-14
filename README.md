@@ -112,7 +112,7 @@ src/
 - [x] Search-on-demand API + daily price snapshots (not a static-only DB)
 - [x] Paste any product URL analyzer
 - [x] Affiliate link scaffolding (Amazon AU, eBay AU)
-- [ ] SEO landing pages (`/best-laptops-under-1000-australia`, etc.)
+- [x] SEO landing pages (`/best/[slug]` — laptops, student picks, gaming monitors)
 - [ ] PriceGenie Pro subscription ($4.99/mo)
 - [ ] Firebase auth & cloud price alerts
 - [ ] ShopBack / Cashrewards API integration

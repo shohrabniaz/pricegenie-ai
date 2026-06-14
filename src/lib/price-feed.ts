@@ -2,6 +2,7 @@ import type { Product, Retailer, StoreOffer } from "@/types";
 import { CATALOG_PRICE_UPDATED_AT } from "@/data/catalog-meta";
 import { PRICE_SNAPSHOTS, type PriceSnapshot } from "@/data/price-snapshots";
 import { stripLegacyDiscountFields } from "@/lib/coupon-rules";
+import { mergeLoggedPriceHistory } from "@/lib/price-history";
 
 export type PriceSource = "catalog" | "snapshot" | "live";
 
@@ -46,9 +47,15 @@ export function applyPriceSnapshots(product: Product): ProductPriceResult {
   const hasSnapshot = Boolean(snapshot && Object.keys(snapshot.offers).length > 0);
   const verifiedCount = hasSnapshot ? Object.keys(snapshot!.offers).length : 0;
 
-  return {
-    product: { ...product, offers, pricesUpdatedAt },
+  const mergedProduct = mergeLoggedPriceHistory({
+    ...product,
+    offers,
     pricesUpdatedAt,
+  });
+
+  return {
+    product: mergedProduct,
+    pricesUpdatedAt: mergedProduct.pricesUpdatedAt!,
     source: hasSnapshot ? "snapshot" : "catalog",
     liveOfferCount: hasSnapshot ? verifiedCount : liveOfferCount,
   };
@@ -103,7 +110,7 @@ export function mergeRemoteSnapshots(
 
   const liveOfferCount = Object.keys(snapshot.offers).length;
   return {
-    product: merged,
+    product: mergeLoggedPriceHistory(merged),
     pricesUpdatedAt: merged.pricesUpdatedAt!,
     source: "live",
     liveOfferCount,

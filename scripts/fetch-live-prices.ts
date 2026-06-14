@@ -10,11 +10,13 @@ import { join } from "node:path";
 import { chromium } from "@playwright/test";
 import { PRODUCTS } from "../src/data/products";
 import type { PriceSnapshot } from "../src/data/price-snapshots";
+import type { PriceHistoryPoint } from "../src/types";
 import {
   isPlausiblePrice,
   sleep,
   todayIsoDate,
 } from "./lib/price-parse";
+import { appendPriceHistoryPoint } from "../src/lib/price-history";
 import { createScraperPage, scrapeRetailPrice } from "./lib/retailer-scraper";
 
 const DELAY_MS = Number(process.env.PRICE_REFRESH_DELAY_MS ?? 2_500);
@@ -24,7 +26,20 @@ const LIMIT = process.env.PRICE_REFRESH_LIMIT
 
 const ROOT = process.cwd();
 const SNAPSHOT_PATH = join(ROOT, "src/data/price-snapshots.json");
+const HISTORY_PATH = join(ROOT, "src/data/price-history-log.json");
 const META_PATH = join(ROOT, "src/data/catalog-meta.ts");
+
+function loadExistingHistory(): Record<string, PriceHistoryPoint[]> {
+  if (!existsSync(HISTORY_PATH)) return {};
+  try {
+    return JSON.parse(readFileSync(HISTORY_PATH, "utf8")) as Record<
+      string,
+      PriceHistoryPoint[]
+    >;
+  } catch {
+    return {};
+  }
+}
 
 function loadExistingSnapshots(): Record<string, PriceSnapshot> {
   if (!existsSync(SNAPSHOT_PATH)) return {};
@@ -40,9 +55,11 @@ function loadExistingSnapshots(): Record<string, PriceSnapshot> {
 
 function writeSnapshots(
   snapshots: Record<string, PriceSnapshot>,
+  history: Record<string, PriceHistoryPoint[]>,
   stats: { success: number; failed: number; skipped: number }
 ) {
   writeFileSync(SNAPSHOT_PATH, `${JSON.stringify(snapshots, null, 2)}\n`, "utf8");
+  writeFileSync(HISTORY_PATH, `${JSON.stringify(history, null, 2)}\n`, "utf8");
 
   const today = todayIsoDate();
   writeFileSync(
@@ -52,6 +69,7 @@ function writeSnapshots(
   );
 
   console.log(`\nWrote ${Object.keys(snapshots).length} products → ${SNAPSHOT_PATH}`);
+  console.log(`Wrote ${Object.keys(history).length} history series → ${HISTORY_PATH}`);
   console.log(`Updated CATALOG_PRICE_UPDATED_AT → ${today}`);
   console.log(
     `Scrape results: ${stats.success} ok, ${stats.failed} failed, ${stats.skipped} kept previous`
@@ -60,6 +78,7 @@ function writeSnapshots(
 
 async function main() {
   const existing = loadExistingSnapshots();
+  const historyLog = loadExistingHistory();
   const today = todayIsoDate();
   const products = LIMIT ? PRODUCTS.slice(0, LIMIT) : PRODUCTS;
 
@@ -117,13 +136,26 @@ async function main() {
       }
 
       snapshots[product.id] = { updatedAt: today, offers };
+
+      const inStockPrices = product.offers
+        .filter((o) => o.inStock)
+        .map((o) => offers[o.retailer])
+        .filter((p): p is number => typeof p === "number" && p > 0);
+      if (inStockPrices.length > 0) {
+        appendPriceHistoryPoint(
+          historyLog,
+          product.id,
+          today,
+          Math.min(...inStockPrices)
+        );
+      }
     }
   } finally {
     await page.close();
     await browser.close();
   }
 
-  writeSnapshots(snapshots, stats);
+  writeSnapshots(snapshots, historyLog, stats);
 }
 
 main().catch((err) => {

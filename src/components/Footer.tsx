@@ -31,6 +31,12 @@ export function Footer() {
             <Link href="/advisor" className="hover:text-teal-400">
               {AI_ASSISTANT_NAME}
             </Link>
+            <Link href="/analyze" className="hover:text-teal-400">
+              Analyze URL
+            </Link>
+            <Link href="/best/best-laptops-under-1000-australia" className="hover:text-teal-400">
+              Buying guides
+            </Link>
             <a
               href={`${AUTHOR_GITHUB}/pricegenie-ai`}
               target="_blank"

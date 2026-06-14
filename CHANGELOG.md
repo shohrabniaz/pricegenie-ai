@@ -2,6 +2,16 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.4.1] - 2026-06-12
+
+### Added
+- **Price history log** — daily scraper appends best store price to `price-history-log.json`; merged into product charts at runtime
+- **SEO buying guides** — `/best/[slug]` pages (laptops under $1k, student laptops, gaming monitors) + `sitemap.xml`
+- Footer links for Analyze URL and buying guides
+
+### Changed
+- Daily price refresh workflow commits `price-history-log.json` alongside snapshots
+
 ## [0.4.0] - 2026-06-12
 
 ### Added
