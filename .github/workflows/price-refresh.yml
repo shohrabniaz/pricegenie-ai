@@ -5,6 +5,11 @@ on:
     # 16:00 UTC ≈ 2:00 AM Australia/Sydney (AEST)
     - cron: "0 16 * * *"
   workflow_dispatch:
+    inputs:
+      product_limit:
+        description: "Max products to scrape (empty = all 80)"
+        required: false
+        type: string
 
 concurrency:
   group: price-refresh
@@ -36,6 +41,7 @@ jobs:
         run: npm run prices:fetch-live
         env:
           PRICE_REFRESH_DELAY_MS: 2000
+          PRICE_REFRESH_LIMIT: ${{ inputs.product_limit }}
 
       - name: Verify pricing sanity
         run: npm run sanity

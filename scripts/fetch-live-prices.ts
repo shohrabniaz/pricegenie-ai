@@ -8,7 +8,7 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "@playwright/test";
-import { PRODUCTS } from "../src/data/products";
+import { CATALOG_PRODUCTS } from "../src/data/products";
 import type { PriceSnapshot } from "../src/data/price-snapshots";
 import type { PriceHistoryPoint } from "../src/types";
 import {
@@ -80,7 +80,7 @@ async function main() {
   const existing = loadExistingSnapshots();
   const historyLog = loadExistingHistory();
   const today = todayIsoDate();
-  const products = LIMIT ? PRODUCTS.slice(0, LIMIT) : PRODUCTS;
+  const products = LIMIT ? CATALOG_PRODUCTS.slice(0, LIMIT) : CATALOG_PRODUCTS;
 
   const snapshots: Record<string, PriceSnapshot> = { ...existing };
   const stats = { success: 0, failed: 0, skipped: 0 };
@@ -101,36 +101,48 @@ async function main() {
       for (const offer of product.offers) {
         if (!offer.inStock) continue;
 
+        const catalogPrice = offer.listPrice;
         const scraped = await scrapeRetailPrice(
           page,
           offer.retailer,
-          product.name
+          product.name,
+          catalogPrice
         );
 
-        const fallback =
-          existing[product.id]?.offers[offer.retailer] ?? offer.listPrice;
+        const previous =
+          existing[product.id]?.offers[offer.retailer] ?? catalogPrice;
 
-        if (scraped && isPlausiblePrice(scraped, offer.listPrice)) {
-          offers[offer.retailer] = scraped;
+        let resolved = catalogPrice;
+        if (scraped && isPlausiblePrice(scraped, catalogPrice)) {
+          resolved = scraped;
           stats.success += 1;
-          const delta = scraped - offer.listPrice;
+          const delta = scraped - catalogPrice;
           const mark = delta === 0 ? "=" : delta > 0 ? "↑" : "↓";
           console.log(
-            `   ✓ ${offer.retailerName}: $${scraped} ${mark} (catalog $${offer.listPrice})`
+            `   ✓ ${offer.retailerName}: $${scraped} ${mark} (catalog $${catalogPrice})`
           );
-        } else if (scraped) {
-          offers[offer.retailer] = fallback;
+        } else if (isPlausiblePrice(previous, catalogPrice)) {
+          resolved = previous;
+          if (scraped) {
+            stats.skipped += 1;
+            console.log(
+              `   ~ ${offer.retailerName}: kept $${previous} (scraped $${scraped} out of range)`
+            );
+          } else {
+            stats.failed += 1;
+            console.log(
+              `   ✗ ${offer.retailerName}: kept $${previous} (scrape failed)`
+            );
+          }
+        } else {
+          resolved = catalogPrice;
           stats.skipped += 1;
           console.log(
-            `   ~ ${offer.retailerName}: kept $${fallback} (scraped $${scraped} out of range)`
-          );
-        } else {
-          offers[offer.retailer] = fallback;
-          stats.failed += 1;
-          console.log(
-            `   ✗ ${offer.retailerName}: kept $${fallback} (scrape failed)`
+            `   ~ ${offer.retailerName}: reset to catalog $${catalogPrice} (was $${previous})`
           );
         }
+
+        offers[offer.retailer] = resolved;
 
         await sleep(DELAY_MS);
       }

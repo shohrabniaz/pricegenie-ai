@@ -2,6 +2,19 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.4.2] - 2026-06-14
+
+### Added
+- Scraper reads search result tiles only (not whole-page noise)
+- `pickBestScrapedPrice` — chooses closest plausible match from multiple hits
+- `CATALOG_PRODUCTS` export for scraper anchor prices (seed, not snapshot)
+- GitHub Actions `workflow_dispatch` input for optional product limit
+
+### Changed
+- Tighter plausibility: up to 15% above catalog (rejects wrong Amazon listings)
+- **All pages** now show snapshot prices via `PRODUCTS` enrichment (homepage, browse, search)
+- Refreshed smoke snapshot — iPhone Amazon corrected from $2,197 → $1,302
+
 ## [0.4.1] - 2026-06-12
 
 ### Added

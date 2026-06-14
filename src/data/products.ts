@@ -6,6 +6,7 @@ import { resolveProductUrls } from "@/data/product-helpers";
 import { CATALOG_PRICE_UPDATED_AT } from "@/data/catalog-meta";
 import { stripLegacyDiscountFields } from "@/lib/coupon-rules";
 import { getProductImageUrl } from "@/lib/product-images";
+import { applyPriceSnapshots } from "@/lib/price-feed";
 
 const CORE_PRODUCTS: Product[] = [
   {
@@ -461,7 +462,7 @@ const CORE_PRODUCTS: Product[] = [
   },
 ];
 
-function enrichProduct(product: Product): Product {
+function enrichProductBase(product: Product): Product {
   const withUrls = resolveProductUrls(product);
   return {
     ...withUrls,
@@ -471,12 +472,17 @@ function enrichProduct(product: Product): Product {
   };
 }
 
-export const PRODUCTS: Product[] = [
+/** Seed catalog without daily snapshot overrides (used by price scraper). */
+export const CATALOG_PRODUCTS: Product[] = [
   ...CORE_PRODUCTS,
   ...CATALOG_EXTRA,
   ...CATALOG_KMART,
   ...CATALOG_ELECTRONICS,
-].map(enrichProduct);
+].map(enrichProductBase);
+
+export const PRODUCTS: Product[] = CATALOG_PRODUCTS.map(
+  (product) => applyPriceSnapshots(product).product
+);
 
 export function getProductById(id: string): Product | undefined {
   return PRODUCTS.find((p) => p.id === id);
