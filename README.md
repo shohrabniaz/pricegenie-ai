@@ -78,7 +78,7 @@ npm run docker:up    # production container on :3000
 | [Docker](.github/workflows/docker.yml) | Image build + Trivy scan + GHCR push |
 | [CD](.github/workflows/cd.yml) | Vercel deploy (when secrets configured) |
 
-Full details: [`docs/DEVOPS.md`](docs/DEVOPS.md) · [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) · [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`SECURITY.md`](SECURITY.md)
+Full details: [`docs/DEVOPS.md`](docs/DEVOPS.md) · [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) · [`docs/LAUNCH.md`](docs/LAUNCH.md) · [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`SECURITY.md`](SECURITY.md)
 
 ## Tech Stack (100% Free Tier)
 
@@ -112,9 +112,10 @@ src/
 - [x] Search-on-demand API + daily price snapshots (not a static-only DB)
 - [x] Paste any product URL analyzer
 - [x] Affiliate link scaffolding (Amazon AU, eBay AU)
-- [x] SEO landing pages (`/best/[slug]` — laptops, student picks, gaming monitors)
+- [x] SEO landing pages (`/best/[slug]` — laptops, student picks, gaming monitors, iPhone, PS5, student essentials)
+- [x] Firebase email auth (opt-in via `NEXT_PUBLIC_AUTH_ENABLED`)
+- [ ] Cloud price alerts (Firestore sync for signed-in users)
 - [ ] PriceGenie AI Pro subscription ($4.99/mo)
-- [ ] Firebase auth & cloud price alerts
 - [ ] ShopBack / Cashrewards API integration
 - [ ] Flutter or Capacitor native app
 - [ ] NZ, UK, US expansion

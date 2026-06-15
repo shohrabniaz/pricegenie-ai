@@ -5,8 +5,11 @@ import { ArrowRight, Tag } from "lucide-react";
 import type { Product } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { formatPriceDate } from "@/lib/format-date";
+import { applyPriceSnapshots } from "@/lib/price-feed";
 import { formatAud, getBestOffer, hasActiveDeals } from "@/lib/pricing";
 import { ProductImage } from "@/components/ProductImage";
+import { PriceFreshnessBadge } from "@/components/PriceFreshnessBadge";
+import { getPriceFreshness } from "@/lib/price-freshness";
 
 interface ProductCardProps {
   product: Product;
@@ -14,6 +17,8 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const { studentMode } = useStudentMode();
+  const { pricesUpdatedAt, source } = applyPriceSnapshots(product);
+  const freshness = getPriceFreshness(pricesUpdatedAt, source);
   const best = getBestOffer(product.offers, studentMode, product);
 
   if (!best) return null;
@@ -60,10 +65,13 @@ export function ProductCard({ product }: ProductCardProps) {
                 {formatAud(best.breakdown.checkoutPrice)} with deals at checkout
               </p>
             )}
-            {product.pricesUpdatedAt && (
-              <p className="mt-1 text-[10px] text-slate-600">
-                Prices as of {formatPriceDate(product.pricesUpdatedAt)}
-              </p>
+            {pricesUpdatedAt && (
+              <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                <p className="text-[10px] text-slate-600">
+                  Prices as of {formatPriceDate(pricesUpdatedAt)}
+                </p>
+                <PriceFreshnessBadge freshness={freshness} />
+              </div>
             )}
           </div>
           <ArrowRight className="h-5 w-5 text-slate-600 transition group-hover:translate-x-1 group-hover:text-teal-400" />

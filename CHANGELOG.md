@@ -2,6 +2,19 @@
 
 All notable changes to PriceGenie AI are documented here.
 
+## [0.6.0] - 2026-06-15
+
+### Added
+- **Launch readiness** — `npm run launch:check` validates public mode, SEO guides, branding, snapshots
+- **Price freshness UX** — Live / recent / stale / estimate badges on product cards and product pages
+- **Per-store verified** label on price table when daily scrape has that retailer
+- **Scrape metrics** — per-retailer success/fail counts in `scrape-metrics.json` + GitHub Actions summary
+- **3 SEO buying guides** — cheapest iPhone AU, PS5 deals, student essentials
+
+### Changed
+- **Auth is opt-in** — gate only when `NEXT_PUBLIC_AUTH_ENABLED=true` (public launch by default)
+- Auth docs and `.env.example` updated for growth-first deploy
+
 ## [0.5.0] - 2026-06-14
 
 ### Added

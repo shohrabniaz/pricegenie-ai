@@ -50,7 +50,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data/price-snapshots.json src/data/price-history-log.json src/data/offer-deep-links.json src/data/catalog-meta.ts
+          git add src/data/price-snapshots.json src/data/price-history-log.json src/data/offer-deep-links.json src/data/catalog-meta.ts src/data/scrape-metrics.json
           if git diff --staged --quiet; then
             echo "No price changes to commit."
             exit 0
@@ -65,4 +65,11 @@ jobs:
           echo "Completed at $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_STEP_SUMMARY"
           if [ -f src/data/catalog-meta.ts ]; then
             grep CATALOG_PRICE_UPDATED_AT src/data/catalog-meta.ts >> "$GITHUB_STEP_SUMMARY" || true
+          fi
+          if [ -f src/data/scrape-metrics.json ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "### Scrape metrics" >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat src/data/scrape-metrics.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
           fi

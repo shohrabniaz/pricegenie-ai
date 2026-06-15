@@ -6,9 +6,10 @@ export function isAuthPublicPath(pathname: string): boolean {
   );
 }
 
-/** Auth is on when Firebase is configured and not explicitly disabled. */
+/** Auth is on only when explicitly enabled and Firebase is configured. */
 export function isAuthRequired(): boolean {
   if (process.env.NEXT_PUBLIC_AUTH_DISABLED === "true") return false;
+  if (process.env.NEXT_PUBLIC_AUTH_ENABLED !== "true") return false;
   return Boolean(
     process.env.NEXT_PUBLIC_FIREBASE_API_KEY &&
       process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN &&

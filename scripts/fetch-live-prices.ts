@@ -32,6 +32,30 @@ const SNAPSHOT_PATH = join(ROOT, "src/data/price-snapshots.json");
 const HISTORY_PATH = join(ROOT, "src/data/price-history-log.json");
 const DEEP_LINKS_PATH = join(ROOT, "src/data/offer-deep-links.json");
 const META_PATH = join(ROOT, "src/data/catalog-meta.ts");
+const METRICS_PATH = join(ROOT, "src/data/scrape-metrics.json");
+
+interface RetailerScrapeStats {
+  ok: number;
+  failed: number;
+  kept: number;
+  skipped: number;
+}
+
+interface ScrapeMetrics {
+  generatedAt: string;
+  productsScraped: number;
+  totals: {
+    ok: number;
+    failed: number;
+    skipped: number;
+    linksDiscovered: number;
+  };
+  byRetailer: Record<string, RetailerScrapeStats>;
+}
+
+function emptyRetailerStats(): RetailerScrapeStats {
+  return { ok: 0, failed: 0, kept: 0, skipped: 0 };
+}
 
 function loadDeepLinks(): OfferDeepLinks {
   if (!existsSync(DEEP_LINKS_PATH)) return {};
@@ -75,11 +99,13 @@ function writeSnapshots(
     failed: number;
     skipped: number;
     linksDiscovered: number;
-  }
+  },
+  metrics: ScrapeMetrics
 ) {
   writeFileSync(SNAPSHOT_PATH, `${JSON.stringify(snapshots, null, 2)}\n`, "utf8");
   writeFileSync(HISTORY_PATH, `${JSON.stringify(history, null, 2)}\n`, "utf8");
   writeFileSync(DEEP_LINKS_PATH, `${JSON.stringify(deepLinks, null, 2)}\n`, "utf8");
+  writeFileSync(METRICS_PATH, `${JSON.stringify(metrics, null, 2)}\n`, "utf8");
 
   const today = todayIsoDate();
   writeFileSync(
@@ -97,6 +123,15 @@ function writeSnapshots(
   console.log(
     `Scrape results: ${stats.success} ok, ${stats.failed} failed, ${stats.skipped} skipped, ${stats.linksDiscovered} new URLs`
   );
+  console.log("\nPer-retailer:");
+  for (const [retailer, r] of Object.entries(metrics.byRetailer).sort(
+    (a, b) => b[1].ok - a[1].ok
+  )) {
+    console.log(
+      `  ${retailer}: ${r.ok} ok, ${r.failed} fail, ${r.kept} kept, ${r.skipped} skip`
+    );
+  }
+  console.log(`\nMetrics → ${METRICS_PATH}`);
 }
 
 async function main() {
@@ -108,6 +143,12 @@ async function main() {
 
   const snapshots: Record<string, PriceSnapshot> = { ...existing };
   const stats = { success: 0, failed: 0, skipped: 0, linksDiscovered: 0 };
+  const byRetailer: Record<string, RetailerScrapeStats> = {};
+
+  function retailerStats(retailer: Retailer): RetailerScrapeStats {
+    if (!byRetailer[retailer]) byRetailer[retailer] = emptyRetailerStats();
+    return byRetailer[retailer]!;
+  }
 
   console.log(`${APP_NAME} — live price refresh (${products.length} products)\n`);
 
@@ -169,6 +210,7 @@ async function main() {
         if (scraped && isPlausiblePrice(scraped, catalogPrice)) {
           resolved = scraped;
           stats.success += 1;
+          retailerStats(retailer).ok += 1;
           const delta = scraped - catalogPrice;
           const mark = delta === 0 ? "=" : delta > 0 ? "↑" : "↓";
           const via = productUrl || cachedUrl ? "PDP" : "search";
@@ -177,13 +219,16 @@ async function main() {
           );
         } else if (isPlausiblePrice(previous, catalogPrice)) {
           resolved = previous;
+          retailerStats(retailer).kept += 1;
           if (scraped) {
             stats.skipped += 1;
+            retailerStats(retailer).skipped += 1;
             console.log(
               `   ~ ${offer.retailerName}: kept $${previous} (scraped $${scraped} out of range)`
             );
           } else {
             stats.failed += 1;
+            retailerStats(retailer).failed += 1;
             console.log(
               `   ✗ ${offer.retailerName}: kept $${previous} (scrape failed)`
             );
@@ -191,6 +236,7 @@ async function main() {
         } else {
           resolved = catalogPrice;
           stats.skipped += 1;
+          retailerStats(retailer).skipped += 1;
           console.log(
             `   ~ ${offer.retailerName}: reset to catalog $${catalogPrice} (was $${previous})`
           );
@@ -221,7 +267,19 @@ async function main() {
     await browser.close();
   }
 
-  writeSnapshots(snapshots, historyLog, deepLinks, stats);
+  const metrics: ScrapeMetrics = {
+    generatedAt: today,
+    productsScraped: products.length,
+    totals: {
+      ok: stats.success,
+      failed: stats.failed,
+      skipped: stats.skipped,
+      linksDiscovered: stats.linksDiscovered,
+    },
+    byRetailer,
+  };
+
+  writeSnapshots(snapshots, historyLog, deepLinks, stats, metrics);
 }
 
 main().catch((err) => {

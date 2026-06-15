@@ -14,4 +14,29 @@ describe("auth-config", () => {
     expect(isAuthRequired()).toBe(false);
     process.env.NEXT_PUBLIC_AUTH_DISABLED = prev;
   });
+
+  it("requires explicit NEXT_PUBLIC_AUTH_ENABLED for auth gate", () => {
+    const prevDisabled = process.env.NEXT_PUBLIC_AUTH_DISABLED;
+    const prevEnabled = process.env.NEXT_PUBLIC_AUTH_ENABLED;
+    const prevKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
+
+    process.env.NEXT_PUBLIC_AUTH_DISABLED = "false";
+    process.env.NEXT_PUBLIC_AUTH_ENABLED = "false";
+    process.env.NEXT_PUBLIC_FIREBASE_API_KEY = "test-key";
+    process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN = "test.firebaseapp.com";
+    process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID = "test";
+    process.env.NEXT_PUBLIC_FIREBASE_APP_ID = "1:123:web:abc";
+
+    expect(isAuthRequired()).toBe(false);
+
+    process.env.NEXT_PUBLIC_AUTH_ENABLED = "true";
+    expect(isAuthRequired()).toBe(true);
+
+    process.env.NEXT_PUBLIC_AUTH_DISABLED = prevDisabled;
+    process.env.NEXT_PUBLIC_AUTH_ENABLED = prevEnabled;
+    process.env.NEXT_PUBLIC_FIREBASE_API_KEY = prevKey;
+    delete process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN;
+    delete process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+    delete process.env.NEXT_PUBLIC_FIREBASE_APP_ID;
+  });
 });

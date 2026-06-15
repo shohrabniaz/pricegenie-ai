@@ -1,6 +1,11 @@
 import { Clock } from "lucide-react";
 import type { PriceSource } from "@/lib/price-feed";
 import { formatPriceAge, formatPriceDate } from "@/lib/format-date";
+import {
+  getPriceFreshness,
+  type PriceFreshness,
+} from "@/lib/price-freshness";
+import { PriceFreshnessBadge } from "@/components/PriceFreshnessBadge";
 
 interface PriceUpdatedBadgeProps {
   updatedAt: string;
@@ -15,6 +20,7 @@ export function PriceUpdatedBadge({
   liveOfferCount = 0,
   className = "",
 }: PriceUpdatedBadgeProps) {
+  const freshness: PriceFreshness = getPriceFreshness(updatedAt, source);
   const verifiedLabel =
     source === "snapshot" && liveOfferCount > 0
       ? `${liveOfferCount} stores verified`
@@ -31,6 +37,7 @@ export function PriceUpdatedBadge({
       <span>
         Store prices updated {formatPriceDate(updatedAt)}
         <span className="text-slate-600"> · {formatPriceAge(updatedAt)}</span>
+        <PriceFreshnessBadge freshness={freshness} className="ml-1.5 align-middle" />
         {verifiedLabel && (
           <span className="ml-1 rounded bg-teal-500/15 px-1.5 py-0.5 text-[10px] font-medium text-teal-400">
             {verifiedLabel}

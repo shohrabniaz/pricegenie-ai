@@ -58,6 +58,51 @@ export const SEO_GUIDES: SeoGuide[] = [
       `Check coupon codes on ${APP_NAME} before checkout — GAMING100-style promos appear seasonally.`,
     ],
   },
+  {
+    slug: "cheapest-iphone-australia-2026",
+    title: "Cheapest iPhone in Australia (2026)",
+    description:
+      "Compare iPhone 17, iPhone 16 and Pro models across JB Hi-Fi, Amazon AU, Harvey Norman and more. True prices with coupons and cashback.",
+    searchQuery: "iphone",
+    category: "Phones",
+    intro:
+      `iPhone prices move every sale season in Australia. These are the best current deals on Apple phones — with store prices checked and true checkout cost calculated in ${APP_NAME}.`,
+    tips: [
+      "Trade-in promos at Apple and carriers can beat retailer sales — compare total cost, not headline price.",
+      "Amazon AU often has the lowest list price; JB Hi-Fi and The Good Guys run bundle deals.",
+      "Use Wait or Buy on the product page if you're not in a rush — EOFY and Black Friday usually drop prices.",
+    ],
+  },
+  {
+    slug: "best-ps5-deals-australia",
+    title: "Best PS5 Deals in Australia (2026)",
+    description:
+      "PlayStation 5 Slim and Digital Edition prices compared across Australian retailers. Coupons, cashback and true lowest price.",
+    searchQuery: "playstation ps5",
+    category: "Gaming",
+    intro:
+      "The PS5 Slim has settled into regular discount cycles in Australia. Here's where to buy today — and what you'll actually pay after promos.",
+    tips: [
+      "Digital Edition is often $50–100 cheaper if you do not need a disc drive.",
+      "The Good Guys and Harvey Norman run gaming bundle deals around school holidays.",
+      `Set a price alert in ${APP_NAME} if you're waiting for a sub-$550 digital deal.`,
+    ],
+  },
+  {
+    slug: "student-essentials-australia",
+    title: "Student Essentials Australia — Laptops, Audio & More (2026)",
+    description:
+      "Back-to-uni shopping guide: laptops, headphones, monitors and dorm essentials with student discounts across AU retailers.",
+    searchQuery: "student",
+    category: "Student Essentials",
+    intro:
+      "Starting uni or TAFE? These essentials cover lectures, shared housing, and late-night study — with Student Mode pricing where available.",
+    tips: [
+      `Enable Student Mode in ${APP_NAME} before comparing — education pricing is not always shown on retailer sites.`,
+      "Prioritise laptop + headphones first; monitor and printer can wait until week two.",
+      "Kmart and Big W are strong for budget dorm gear; compare True Price before checkout.",
+    ],
+  },
 ];
 
 export function getSeoGuide(slug: string): SeoGuide | undefined {

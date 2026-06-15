@@ -30,9 +30,9 @@ Custom events appear under **Analytics → Events**:
 
 No extra env vars required on Vercel.
 
-### Email sign-in (Firebase Auth)
+### Email sign-in (Firebase Auth) — opt-in
 
-When Firebase env vars are set, users must **sign in with email and verify** before accessing the app.
+Auth is **off by default** so the site stays public for launch. To require sign-in:
 
 1. [Firebase Console](https://console.firebase.google.com) → create project → **Authentication** → enable **Email/Password**.
 2. Project settings → your Web app → copy config into Vercel **Environment Variables**:
@@ -44,11 +44,14 @@ When Firebase env vars are set, users must **sign in with email and verify** bef
 | `NEXT_PUBLIC_FIREBASE_PROJECT_ID` | `your-app` |
 | `NEXT_PUBLIC_FIREBASE_APP_ID` | `1:123:web:abc` |
 | `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | `123456789` |
+| `NEXT_PUBLIC_AUTH_ENABLED` | `true` |
 
 3. Authentication → Templates → customize verification email (optional).
 4. Redeploy. Unauthenticated visitors are redirected to `/login`.
 
 For local dev without Firebase, set `NEXT_PUBLIC_AUTH_DISABLED=true` in `.env.local`.
+
+Run `npm run launch:check` before a marketing push to confirm public launch mode.
 
 ### Daily automated prices
 

@@ -4,6 +4,7 @@ import { ExternalLink } from "lucide-react";
 import type { Product } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { withAffiliateLink } from "@/lib/affiliate";
+import { getSnapshotForProduct } from "@/lib/price-feed";
 import { formatAud, rankOffers } from "@/lib/pricing";
 import { RETAILER_COLORS } from "@/data/retailers";
 
@@ -14,6 +15,7 @@ interface PriceTableProps {
 export function PriceTable({ product }: PriceTableProps) {
   const { studentMode } = useStudentMode();
   const ranked = rankOffers(product.offers, studentMode, product);
+  const snapshot = getSnapshotForProduct(product.id);
 
   return (
     <div data-testid="price-table" className="overflow-hidden rounded-2xl border border-white/10">
@@ -45,6 +47,14 @@ export function PriceTable({ product }: PriceTableProps) {
                   <span className="font-medium text-white">
                     {offer.retailerName}
                   </span>
+                  {snapshot?.offers[offer.retailer] !== undefined && (
+                    <span
+                      className="rounded bg-teal-500/15 px-1.5 py-0.5 text-[9px] font-medium text-teal-400"
+                      title="Price verified by daily scrape"
+                    >
+                      verified
+                    </span>
+                  )}
                   {i === 0 && (
                     <span className="rounded-full bg-teal-500/20 px-2 py-0.5 text-[10px] font-bold text-teal-300">
                       BEST
