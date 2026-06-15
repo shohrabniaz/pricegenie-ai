@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-import { AI_ASSISTANT_NAME } from "@/lib/brand";
-import { AUTHOR_GITHUB, AUTHOR_NAME } from "@/lib/author";
+import { AI_ASSISTANT_NAME, APP_NAME, APP_TAGLINE } from "@/lib/brand";
+import { AUTHOR_NAME } from "@/lib/author";
 import { APP_VERSION } from "@/lib/version";
 
 export function Footer() {
@@ -11,9 +11,7 @@ export function Footer() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <Logo testId="footer-logo" />
-            <p className="mt-2 text-sm text-slate-500">
-              Your wish for the best price granted
-            </p>
+            <p className="mt-2 text-sm text-slate-500">{APP_TAGLINE}</p>
             <p className="mt-2 text-xs text-slate-600">
               © {new Date().getFullYear()} {AUTHOR_NAME} · v{APP_VERSION}
             </p>
@@ -37,18 +35,10 @@ export function Footer() {
             <Link href="/best/best-laptops-under-1000-australia" className="hover:text-teal-400">
               Buying guides
             </Link>
-            <a
-              href={`${AUTHOR_GITHUB}/pricegenie-ai`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-teal-400"
-            >
-              GitHub
-            </a>
           </div>
         </div>
         <p className="mt-6 text-xs text-slate-700">
-          Affiliate disclosure: PriceGenie AI may earn commission when you purchase
+          Affiliate disclosure: {APP_NAME} may earn commission when you purchase
           through retailer links. Prices are indicative for MVP demo purposes.
         </p>
       </div>

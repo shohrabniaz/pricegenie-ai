@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Smoke tests", () => {
-  test("homepage loads with PriceGenie branding", async ({ page }) => {
+  test("homepage loads with PriceGenie AI branding", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveTitle(/PriceGenie AI/i);
     await expect(page.getByTestId("hero-title")).toBeVisible();

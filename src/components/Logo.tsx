@@ -40,8 +40,8 @@ function LogoWordmark({ className = "" }: { className?: string }) {
     <span
       className={`text-[15px] font-semibold tracking-tight leading-none ${className}`}
     >
-      <span className="text-slate-100">pricegenie</span>
-      <span className="text-teal-400"> ai</span>
+      <span className="text-slate-100">PriceGenie</span>
+      <span className="text-teal-400"> AI</span>
     </span>
   );
 }

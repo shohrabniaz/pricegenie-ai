@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ExternalLink, Link2, Loader2 } from "lucide-react";
+import { APP_NAME } from "@/lib/brand";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { formatAud } from "@/lib/pricing";
 import type { UrlAnalysisResult } from "@/lib/url-analyzer";
@@ -122,7 +123,7 @@ export default function AnalyzePage() {
           {result.alternatives.length > 0 && (
             <div>
               <h3 className="text-sm font-semibold text-white">
-                Cheaper alternatives in PriceGenie
+                Cheaper alternatives in {APP_NAME}
               </h3>
               <ul className="mt-3 space-y-2">
                 {result.alternatives.map((alt) => (

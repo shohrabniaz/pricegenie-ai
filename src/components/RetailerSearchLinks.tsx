@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import type { RetailerSearchLink } from "@/lib/live-search";
+import { APP_NAME } from "@/lib/brand";
 import { RETAILER_COLORS } from "@/data/retailers";
 
 interface RetailerSearchLinksProps {
@@ -19,7 +20,7 @@ export function RetailerSearchLinks({ links, query }: RetailerSearchLinksProps) 
         Search live on Australian retailers
       </h2>
       <p className="mt-1 text-xs text-slate-500">
-        PriceGenie matches our catalog + daily price snapshots. Open a retailer
+        {APP_NAME} matches our catalog + daily price snapshots. Open a retailer
         to compare live listings for &ldquo;{query}&rdquo;.
       </p>
       <div className="mt-4 flex flex-wrap gap-2">

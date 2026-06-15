@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2, Mail, Sparkles } from "lucide-react";
 import { Logo } from "@/components/Logo";
-import { AI_ASSISTANT_NAME } from "@/lib/brand";
+import { AI_ASSISTANT_NAME, APP_NAME } from "@/lib/brand";
 import {
   getAuthErrorMessage,
   signInWithEmail,
@@ -176,7 +176,7 @@ export default function LoginPageClient() {
             <p className="mt-4 flex items-start gap-2 text-xs text-slate-500">
               <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-teal-400" />
               We&apos;ll email you a verification link. You must verify before
-              accessing PriceGenie.
+              accessing {APP_NAME}.
             </p>
           )}
         </div>

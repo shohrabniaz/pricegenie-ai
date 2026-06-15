@@ -2,7 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { VercelAnalytics } from "@/components/VercelAnalytics";
 import { AuthShell } from "@/components/AuthShell";
-import { AUTHOR_NAME, AUTHOR_GITHUB } from "@/lib/author";
+import { AUTHOR_NAME } from "@/lib/author";
+import { APP_NAME, APP_TAGLINE } from "@/lib/brand";
 import { AuthProvider } from "@/context/AuthContext";
 import { StudentModeProvider } from "@/context/StudentModeContext";
 import "./globals.css";
@@ -20,20 +21,20 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "PriceGenie AI — Your wish for the best price granted",
-    template: "%s | PriceGenie AI",
+    default: `${APP_NAME} — ${APP_TAGLINE}`,
+    template: `%s | ${APP_NAME}`,
   },
   description:
-    "PriceGenie AI finds the true lowest price in Australia. Compare JB Hi-Fi, Harvey Norman, Amazon AU & more. Coupons, student discounts, cashback & AI buying advice.",
+    `${APP_NAME} finds the true lowest price in Australia. Compare JB Hi-Fi, Harvey Norman, Amazon AU & more. Coupons, student discounts, cashback & AI buying advice.`,
   keywords: [
-    "PriceGenie AI",
+    APP_NAME,
     "price comparison Australia",
     "student discounts Australia",
     "coupon codes Australia",
     "JB Hi-Fi deals",
     "AI shopping assistant",
   ],
-  authors: [{ name: AUTHOR_NAME, url: AUTHOR_GITHUB }],
+  authors: [{ name: AUTHOR_NAME }],
   creator: AUTHOR_NAME,
   manifest: "/manifest.json",
   icons: {
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
   },
   openGraph: {
-    title: "PriceGenie AI — Your wish for the best price granted",
+    title: `${APP_NAME} — ${APP_TAGLINE}`,
     description:
       "AI shopping Genie helps Australian students find true lowest prices.",
     locale: "en_AU",

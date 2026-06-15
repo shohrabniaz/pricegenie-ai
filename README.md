@@ -27,7 +27,7 @@ Built by **Shohrab Hossen Niaz**.
 
 ## Architecture: search engine, not a product database
 
-PriceGenie does **not** import millions of SKUs. The flow is:
+PriceGenie AI does **not** import millions of SKUs. The flow is:
 
 ```
 User searches or pastes a URL
@@ -113,7 +113,7 @@ src/
 - [x] Paste any product URL analyzer
 - [x] Affiliate link scaffolding (Amazon AU, eBay AU)
 - [x] SEO landing pages (`/best/[slug]` — laptops, student picks, gaming monitors)
-- [ ] PriceGenie Pro subscription ($4.99/mo)
+- [ ] PriceGenie AI Pro subscription ($4.99/mo)
 - [ ] Firebase auth & cloud price alerts
 - [ ] ShopBack / Cashrewards API integration
 - [ ] Flutter or Capacitor native app

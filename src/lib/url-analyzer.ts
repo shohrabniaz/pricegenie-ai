@@ -1,4 +1,5 @@
 import { RETAILER_LABELS } from "@/data/retailers";
+import { APP_NAME } from "@/lib/brand";
 import { calculateTruePrice, formatAud } from "@/lib/pricing";
 import { resolveDiscounts } from "@/lib/coupon-rules";
 import { fetchRetailerHtml, withAffiliateLink } from "@/lib/affiliate";
@@ -79,7 +80,7 @@ export async function analyzeProductUrl(
     if (alternatives.length > 0) {
       const cheapest = alternatives[0];
       if (cheapest.checkoutPrice < storePrice) {
-        summary += ` PriceGenie found a similar option from **${formatAud(cheapest.checkoutPrice)}** at ${cheapest.retailerName}.`;
+        summary += ` ${APP_NAME} found a similar option from **${formatAud(cheapest.checkoutPrice)}** at ${cheapest.retailerName}.`;
       }
     }
   } else if (productTitle) {

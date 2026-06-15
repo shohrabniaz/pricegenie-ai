@@ -1,3 +1,5 @@
+import { APP_NAME } from "@/lib/brand";
+
 export interface SeoGuide {
   slug: string;
   title: string;
@@ -19,7 +21,7 @@ export const SEO_GUIDES: SeoGuide[] = [
     maxPrice: 1000,
     category: "Laptops",
     intro:
-      "You do not need to spend $2,000 for a solid everyday laptop in Australia. These picks balance performance, battery life, and value — with store prices verified and deals calculated by PriceGenie.",
+      `You do not need to spend $2,000 for a solid everyday laptop in Australia. These picks balance performance, battery life, and value — with store prices verified and deals calculated by ${APP_NAME}.`,
     tips: [
       "Check Student Mode if you have a .edu.au email — education pricing can drop checkout by 10% or more.",
       "Amazon AU and eBay AU often beat in-store sales; compare shipping before you buy.",
@@ -36,7 +38,7 @@ export const SEO_GUIDES: SeoGuide[] = [
     intro:
       "For lectures, essays, and light creative work, these laptops offer the best value for Australian students — with EDU discounts and cashback included where available.",
     tips: [
-      "Turn on Student Mode in PriceGenie to auto-apply education pricing.",
+      `Turn on Student Mode in ${APP_NAME} to auto-apply education pricing.`,
       "A 13–14\" screen and 8GB+ RAM is the sweet spot for most degrees.",
       "Officeworks and JB Hi-Fi run back-to-uni promos in January — set a price alert if you can wait.",
     ],
@@ -53,7 +55,7 @@ export const SEO_GUIDES: SeoGuide[] = [
     tips: [
       "Match refresh rate to your GPU — 1080p 144Hz is easier to drive than 4K.",
       "The Good Guys and JB Hi-Fi bundle monitor + desk deals around sales events.",
-      "Check coupon codes on PriceGenie before checkout — GAMING100-style promos appear seasonally.",
+      `Check coupon codes on ${APP_NAME} before checkout — GAMING100-style promos appear seasonally.`,
     ],
   },
 ];

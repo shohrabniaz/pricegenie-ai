@@ -14,7 +14,7 @@ import { HeroBadge } from "@/components/Header";
 import { SearchBar } from "@/components/SearchBar";
 import { ProductCard } from "@/components/ProductCard";
 import { useStudentMode } from "@/context/StudentModeContext";
-import { AI_ASSISTANT_NAME } from "@/lib/brand";
+import { AI_ASSISTANT_NAME, APP_NAME } from "@/lib/brand";
 import { getFeaturedProducts } from "@/lib/search";
 
 const FEATURES = [
@@ -70,7 +70,7 @@ export default function HomePage() {
             </span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base text-slate-400 sm:text-lg">
-            PriceGenie AI compares Australian retailers and grants you the true
+            {APP_NAME} compares Australian retailers and grants you the true
             lowest price — with coupons, student discounts, cashback & shipping
             included.
           </p>
@@ -120,7 +120,7 @@ export default function HomePage() {
       <section className="border-t border-white/5 bg-white/[0.02] px-4 py-16">
         <div className="mx-auto max-w-6xl">
           <h2 className="text-center text-2xl font-bold text-white">
-            Why PriceGenie beats manual searching
+            Why {APP_NAME} beats manual searching
           </h2>
           <p className="mx-auto mt-2 max-w-lg text-center text-sm text-slate-500">
             Most apps do one thing. We combine everything into one AI shopping

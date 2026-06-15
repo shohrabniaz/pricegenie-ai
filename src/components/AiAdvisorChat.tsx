@@ -7,7 +7,7 @@ import type { AiMessage } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { generateAiReply } from "@/lib/ai-advisor";
 import { trackEvent } from "@/lib/analytics";
-import { AI_ASSISTANT_NAME } from "@/lib/brand";
+import { AI_ASSISTANT_NAME, APP_NAME } from "@/lib/brand";
 
 const SUGGESTIONS = [
   "Best gaming laptop under $1,500?",
@@ -188,7 +188,7 @@ export function AiAdvisorChat() {
         <div className="min-w-0">
           <h2 className="font-semibold text-white">{AI_ASSISTANT_NAME}</h2>
           <p className="truncate text-xs text-slate-500">
-            PriceGenie AI assistant · True prices · Kmart · Student deals
+            {APP_NAME} assistant · True prices · Kmart · Student deals
           </p>
         </div>
       </div>

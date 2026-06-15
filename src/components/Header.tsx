@@ -16,7 +16,7 @@ import {
 import { useStudentMode } from "@/context/StudentModeContext";
 import { useAuth } from "@/context/AuthContext";
 import { Logo } from "@/components/Logo";
-import { AI_ASSISTANT_NAME } from "@/lib/brand";
+import { AI_ASSISTANT_NAME, APP_NAME } from "@/lib/brand";
 
 const NAV = [
   { href: "/", label: "Home", icon: Home },
@@ -139,7 +139,7 @@ export function HeroBadge() {
   return (
     <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-300">
       <TrendingDown className="h-3.5 w-3.5" />
-      PriceGenie AI — true lowest price, coupons, cashback & student discounts
+      {APP_NAME} — true lowest price, coupons, cashback & student discounts
     </div>
   );
 }

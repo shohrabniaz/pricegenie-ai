@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductCard } from "@/components/ProductCard";
 import { RetailerSearchLinks } from "@/components/RetailerSearchLinks";
+import { APP_NAME } from "@/lib/brand";
 import { getSeoGuide, SEO_GUIDES } from "@/data/seo-guides";
 import { unifiedSearch } from "@/lib/live-search";
 import { getBestOffer } from "@/lib/pricing";
@@ -81,7 +82,7 @@ export default async function BestGuidePage({ params }: BestGuidePageProps) {
       <section className="mt-10">
         <h2 className="text-lg font-semibold text-white">Top picks</h2>
         <p className="mt-1 text-sm text-slate-500">
-          Store prices from PriceGenie catalog + daily refresh where available.
+          Store prices from {APP_NAME} catalog + daily refresh where available.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {picks.map((product) => (

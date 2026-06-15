@@ -7,6 +7,7 @@
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { APP_NAME } from "../src/lib/brand";
 import { chromium } from "@playwright/test";
 import { CATALOG_PRODUCTS } from "../src/data/products";
 import type { PriceSnapshot } from "../src/data/price-snapshots";
@@ -108,7 +109,7 @@ async function main() {
   const snapshots: Record<string, PriceSnapshot> = { ...existing };
   const stats = { success: 0, failed: 0, skipped: 0, linksDiscovered: 0 };
 
-  console.log(`PriceGenie — live price refresh (${products.length} products)\n`);
+  console.log(`${APP_NAME} — live price refresh (${products.length} products)\n`);
 
   const browser = await chromium.launch({ headless: true });
   const page = await createScraperPage(browser);

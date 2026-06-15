@@ -114,7 +114,7 @@ See [`docs/DEVOPS.md`](DEVOPS.md) for build details.
 
 ## Post-deploy checklist
 
-- [ ] Homepage loads with PriceGenie branding
+- [ ] Homepage loads with PriceGenie AI branding
 - [ ] `/search` returns products
 - [ ] `/product/ps5-slim` shows price explainer
 - [ ] `/advisor` — Genie responds
