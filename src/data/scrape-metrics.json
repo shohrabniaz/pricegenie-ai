@@ -1,11 +1,66 @@
 {
-  "generatedAt": "2026-06-14",
+  "generatedAt": "2026-06-16",
   "productsScraped": 80,
   "totals": {
-    "ok": 0,
-    "failed": 0,
+    "ok": 21,
+    "failed": 225,
     "skipped": 0,
     "linksDiscovered": 0
   },
-  "byRetailer": {}
+  "byRetailer": {
+    "amazon-au": {
+      "ok": 8,
+      "failed": 44,
+      "kept": 44,
+      "skipped": 0
+    },
+    "the-good-guys": {
+      "ok": 0,
+      "failed": 18,
+      "kept": 18,
+      "skipped": 0
+    },
+    "harvey-norman": {
+      "ok": 0,
+      "failed": 35,
+      "kept": 35,
+      "skipped": 0
+    },
+    "jb-hifi": {
+      "ok": 13,
+      "failed": 50,
+      "kept": 50,
+      "skipped": 0
+    },
+    "officeworks": {
+      "ok": 0,
+      "failed": 30,
+      "kept": 30,
+      "skipped": 0
+    },
+    "kogan": {
+      "ok": 0,
+      "failed": 15,
+      "kept": 15,
+      "skipped": 0
+    },
+    "big-w": {
+      "ok": 0,
+      "failed": 15,
+      "kept": 15,
+      "skipped": 0
+    },
+    "ebay-au": {
+      "ok": 0,
+      "failed": 2,
+      "kept": 2,
+      "skipped": 0
+    },
+    "kmart": {
+      "ok": 0,
+      "failed": 16,
+      "kept": 16,
+      "skipped": 0
+    }
+  }
 }
