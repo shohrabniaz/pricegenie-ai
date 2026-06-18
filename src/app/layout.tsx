@@ -38,8 +38,12 @@ export const metadata: Metadata = {
   creator: AUTHOR_NAME,
   manifest: "/manifest.json",
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.svg", sizes: "32x32", type: "image/svg+xml" },
+    ],
     apple: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    shortcut: ["/icon.svg"],
   },
   openGraph: {
     title: `${APP_NAME} — ${APP_TAGLINE}`,
