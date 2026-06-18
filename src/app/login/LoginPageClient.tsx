@@ -87,7 +87,7 @@ export default function LoginPageClient() {
       <div className="relative w-full max-w-md">
         <div className="mb-8 text-center">
           <Link href="/" className="inline-flex justify-center">
-            <Logo testId="login-logo" />
+            <Logo testId="login-logo" layout="stacked" priority />
           </Link>
           <p className="mt-4 text-sm text-slate-500">
             Sign in with email to access {AI_ASSISTANT_NAME} and price tools

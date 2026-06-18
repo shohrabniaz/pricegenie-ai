@@ -55,7 +55,7 @@ export default function VerifyEmailPage() {
 
       <div className="relative w-full max-w-md text-center">
         <Link href="/" className="inline-flex justify-center">
-          <Logo testId="verify-logo" />
+          <Logo testId="verify-logo" layout="stacked" />
         </Link>
 
         <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] p-6">
