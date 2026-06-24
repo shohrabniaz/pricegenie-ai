@@ -23,6 +23,7 @@ import { isProductPageUrl, scoreTitleMatch } from "../src/lib/offer-deep-links";
 import { createScraperPage, scrapeRetailPrice } from "./lib/retailer-scraper";
 
 const DELAY_MS = Number(process.env.PRICE_REFRESH_DELAY_MS ?? 2_500);
+const MIN_TITLE_SCORE = 0.55;
 const LIMIT = process.env.PRICE_REFRESH_LIMIT
   ? Number(process.env.PRICE_REFRESH_LIMIT)
   : undefined;
@@ -188,7 +189,7 @@ async function main() {
             scoreTitleMatch(pageTitle, product.name),
             scoreTitleMatch(productUrl, product.name)
           );
-          if (titleScore >= 0.35) {
+          if (titleScore >= MIN_TITLE_SCORE) {
             if (!deepLinks[product.id]) deepLinks[product.id] = {};
             deepLinks[product.id]![retailer] = {
               url: productUrl,

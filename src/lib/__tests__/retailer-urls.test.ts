@@ -38,9 +38,7 @@ describe("resolveOfferUrl", () => {
     expect(resolveOfferUrl("jb-hifi", "Test", url)).toBe(url);
   });
 
-  it("replaces generic store URLs", () => {
-    expect(resolveOfferUrl("kmart", "Bluetooth Speaker", "https://www.kmart.com.au")).toContain(
-      "kmart.com.au/search"
-    );
+  it("blocks generic store URLs when no direct product page is known", () => {
+    expect(resolveOfferUrl("kmart", "Bluetooth Speaker", "https://www.kmart.com.au")).toBe("");
   });
 });

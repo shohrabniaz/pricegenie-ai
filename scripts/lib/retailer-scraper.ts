@@ -4,6 +4,8 @@ import { buildRetailerProductUrl } from "@/lib/retailer-urls";
 import { isProductPageUrl, scoreTitleMatch } from "@/lib/offer-deep-links";
 import { parseAudPrice, pickBestScrapedPrice } from "./price-parse";
 
+const MIN_TITLE_SCORE = 0.55;
+
 const RETAILER_PRICE_SELECTORS: Partial<Record<Retailer, string[]>> = {
   "jb-hifi": [
     "[data-testid='product-tile-price']",
@@ -176,7 +178,7 @@ async function discoverFromSearch(
     const price = pickBestScrapedPrice(prices, catalogPrice);
     const score = scoreTitleMatch(title, productName);
 
-    if (score < 0.35) continue;
+    if (score < MIN_TITLE_SCORE) continue;
 
     candidates.push({ url: absolute, title: title.trim(), price, score });
   }
@@ -197,7 +199,7 @@ async function discoverFromSearch(
           url: absolute,
           title: title.trim(),
           price: null,
-          score: Math.max(score, 0.35),
+          score: Math.max(score, MIN_TITLE_SCORE),
         });
         if (candidates.length >= 3) break;
       }
@@ -274,19 +276,6 @@ export async function scrapeRetailPrice(
       if (price) {
         return { price, productUrl: discovered.url };
       }
-    }
-
-    const rootSelector = SEARCH_RESULT_ROOT[retailer];
-    if (rootSelector) {
-      const tiles = page.locator(rootSelector);
-      const tileCount = await tiles.count();
-      const searchPrices: number[] = [];
-      for (let i = 0; i < Math.min(tileCount, 4); i++) {
-        const tilePrices = await pricesFromLocator(tiles.nth(i), selectors);
-        searchPrices.push(...tilePrices);
-      }
-      const fallback = pickBestScrapedPrice(searchPrices, catalogPrice);
-      if (fallback) return { price: fallback };
     }
   } catch {
     return { price: null };

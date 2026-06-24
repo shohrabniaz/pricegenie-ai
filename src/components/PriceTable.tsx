@@ -5,6 +5,7 @@ import type { Product } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { withAffiliateLink } from "@/lib/affiliate";
 import { getSnapshotForProduct } from "@/lib/price-feed";
+import { isProductPageUrl } from "@/lib/offer-deep-links";
 import { formatAud, rankOffers } from "@/lib/pricing";
 import { RETAILER_COLORS } from "@/data/retailers";
 
@@ -31,7 +32,10 @@ export function PriceTable({ product }: PriceTableProps) {
           </tr>
         </thead>
         <tbody>
-          {ranked.map(({ offer, breakdown }, i) => (
+          {ranked.map(({ offer, breakdown }, i) => {
+            const verifiedProductUrl =
+              offer.url && isProductPageUrl(offer.retailer, offer.url);
+            return (
             <tr
               key={offer.retailer}
               className={`border-b border-white/5 transition hover:bg-white/[0.03] ${
@@ -119,20 +123,30 @@ export function PriceTable({ product }: PriceTableProps) {
                 </span>
               </td>
               <td className="px-4 py-3">
-                <a
-                  href={withAffiliateLink(offer.url)}
-                  data-testid="view-product-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={`View ${product.name} at ${offer.retailerName}`}
-                  className="inline-flex items-center gap-1 rounded-lg bg-white/10 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-white/20"
-                >
-                  View product
-                  <ExternalLink className="h-3 w-3" />
-                </a>
+                {verifiedProductUrl ? (
+                  <a
+                    href={withAffiliateLink(offer.url)}
+                    data-testid="view-product-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`View ${product.name} at ${offer.retailerName}`}
+                    className="inline-flex items-center gap-1 rounded-lg bg-white/10 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-white/20"
+                  >
+                    View product
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                ) : (
+                  <span
+                    title="Direct product page is being verified"
+                    className="inline-flex items-center rounded-lg border border-white/10 px-3 py-1.5 text-xs font-medium text-slate-400"
+                  >
+                    Link verifying
+                  </span>
+                )}
               </td>
             </tr>
-          ))}
+            );
+          })}
         </tbody>
       </table>
     </div>
