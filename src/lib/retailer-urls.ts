@@ -1,6 +1,11 @@
 import type { Retailer } from "@/types";
 import { getOfferDeepLink } from "@/data/offer-deep-links";
-import { isProductPageUrl } from "@/lib/offer-deep-links";
+import {
+  canonicalizeProductUrl,
+  isProductPageUrl,
+} from "@/lib/offer-deep-links";
+
+export type OfferLinkKind = "pdp" | "search" | "none";
 
 /** Homepage-only URLs that should be replaced with product-specific links. */
 const GENERIC_STORE_PATTERNS = [
@@ -60,23 +65,29 @@ export function resolveOfferUrl(
   url?: string,
   productId?: string
 ): string {
-  void productName;
   if (productId) {
     const deepLink = getOfferDeepLink(productId, retailer);
-    if (deepLink) return deepLink;
+    if (deepLink) return canonicalizeProductUrl(retailer, deepLink);
   }
-  if (url && isProductPageUrl(retailer, url)) return url;
-  if (url && !isGenericStoreUrl(url) && !isRetailerSearchUrl(retailer, url)) return url;
-
-  // Never send users to search pages from "View product".
-  return "";
+  if (url && isProductPageUrl(retailer, url)) {
+    return canonicalizeProductUrl(retailer, url);
+  }
+  if (url && !isGenericStoreUrl(url) && !isRetailerSearchUrl(retailer, url)) {
+    return url;
+  }
+  return buildRetailerProductUrl(retailer, productName);
 }
 
-/** Empty URL is allowed while a direct PDP is pending verification. */
+export function getOfferLinkKind(retailer: Retailer, url: string): OfferLinkKind {
+  if (!url || isGenericStoreUrl(url)) return "none";
+  if (isProductPageUrl(retailer, url)) return "pdp";
+  if (isRetailerSearchUrl(retailer, url)) return "search";
+  return "pdp";
+}
+
+/** Catalog URLs must be direct PDPs or product-scoped retailer search — not homepages. */
 export function isVerifiedOfferUrl(retailer: Retailer, url: string): boolean {
-  if (!url) return true;
-  if (isGenericStoreUrl(url) || isRetailerSearchUrl(retailer, url)) return false;
-  return isProductPageUrl(retailer, url);
+  return getOfferLinkKind(retailer, url) !== "none";
 }
 
 function isRetailerSearchUrl(retailer: Retailer, url: string): boolean {

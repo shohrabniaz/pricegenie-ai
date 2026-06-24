@@ -1,6 +1,6 @@
 "use client";
 
-import { use } from "react";
+import { use, useEffect } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { getProductById } from "@/data/products";
@@ -28,6 +28,10 @@ export default function ProductPage({
   );
   const { studentMode } = useStudentMode();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   if (!catalogProduct || !product) {
     return (
       <div className="mx-auto max-w-6xl px-4 py-16 text-center">
@@ -42,7 +46,7 @@ export default function ProductPage({
   const best = getBestOffer(product.offers, studentMode, product);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
+    <div className="mx-auto min-w-0 max-w-6xl overflow-x-hidden px-4 py-6 sm:py-8">
       <Link
         href="/search"
         className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-teal-400"
@@ -58,7 +62,7 @@ export default function ProductPage({
             <p className="mt-4 text-xs font-medium uppercase tracking-wide text-slate-500">
               {product.brand} · {product.category}
             </p>
-            <h1 className="mt-1 text-2xl font-bold text-white">
+            <h1 className="mt-1 text-xl font-bold text-white sm:text-2xl">
               {product.name}
             </h1>
             <p className="mt-3 text-sm text-slate-400">{product.description}</p>

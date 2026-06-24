@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  canonicalizeProductUrl,
   isProductPageUrl,
   scoreTitleMatch,
 } from "@/lib/offer-deep-links";
@@ -33,5 +34,14 @@ describe("offer-deep-links", () => {
     expect(scoreTitleMatch("Random USB Cable", "iPhone 17 Pro 256GB")).toBeLessThan(
       0.25
     );
+  });
+
+  it("canonicalizes embedded Amazon PDP URLs", () => {
+    expect(
+      canonicalizeProductUrl(
+        "amazon-au",
+        "https://aax-fe.amazon.com.au/x/c/abc/https://www.amazon.com.au/dp/B0D7HB7M1N/?ref=foo"
+      )
+    ).toBe("https://www.amazon.com.au/dp/B0D7HB7M1N");
   });
 });

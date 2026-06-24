@@ -3,6 +3,7 @@ import {
   buildRetailerProductUrl,
   isGenericStoreUrl,
   isVerifiedOfferUrl,
+  getOfferLinkKind,
   resolveOfferUrl,
 } from "@/lib/retailer-urls";
 
@@ -40,13 +41,24 @@ describe("resolveOfferUrl", () => {
   });
 
   it("blocks generic store URLs when no direct product page is known", () => {
-    expect(resolveOfferUrl("kmart", "Bluetooth Speaker", "https://www.kmart.com.au")).toBe("");
+    expect(resolveOfferUrl("kmart", "Bluetooth Speaker", "https://www.kmart.com.au")).toContain(
+      "kmart.com.au/search"
+    );
+  });
+
+  it("falls back to product-scoped search for unknown PDP", () => {
+    expect(resolveOfferUrl("jb-hifi", "PS5 Slim")).toContain("jbhifi.com.au/search");
   });
 });
 
 describe("isVerifiedOfferUrl", () => {
-  it("allows empty URLs while PDP verification is pending", () => {
-    expect(isVerifiedOfferUrl("jb-hifi", "")).toBe(true);
+  it("allows product-scoped search URLs", () => {
+    expect(
+      isVerifiedOfferUrl(
+        "jb-hifi",
+        "https://www.jbhifi.com.au/search?query=PS5+Slim"
+      )
+    ).toBe(true);
   });
 
   it("allows direct product pages", () => {
@@ -58,12 +70,21 @@ describe("isVerifiedOfferUrl", () => {
     ).toBe(true);
   });
 
-  it("rejects retailer search URLs", () => {
+  it("rejects retailer homepages", () => {
+    expect(isVerifiedOfferUrl("jb-hifi", "https://www.jbhifi.com.au")).toBe(false);
+  });
+});
+
+describe("getOfferLinkKind", () => {
+  it("classifies PDP and search links", () => {
     expect(
-      isVerifiedOfferUrl(
-        "jb-hifi",
-        "https://www.jbhifi.com.au/search?query=iphone"
+      getOfferLinkKind(
+        "amazon-au",
+        "https://www.amazon.com.au/dp/B0CX23V2ZK"
       )
-    ).toBe(false);
+    ).toBe("pdp");
+    expect(
+      getOfferLinkKind("amazon-au", "https://www.amazon.com.au/s?k=ps5")
+    ).toBe("search");
   });
 });

@@ -32,6 +32,34 @@ export function isProductPageUrl(retailer: Retailer, url: string): boolean {
   }
 }
 
+/** Normalize affiliate wrappers and tracking params to a stable product URL. */
+export function canonicalizeProductUrl(retailer: Retailer, url: string): string {
+  if (!url) return url;
+
+  try {
+    const href = new URL(url).href;
+
+    if (retailer === "amazon-au") {
+      const embedded = href.match(
+        /https?:\/\/(?:www\.)?amazon\.com\.au\/(?:dp|gp\/product)\/[A-Z0-9]+/i
+      );
+      if (embedded) {
+        const parsed = new URL(embedded[0]);
+        return `https://www.amazon.com.au${parsed.pathname}`;
+      }
+    }
+
+    if (isProductPageUrl(retailer, href)) {
+      const parsed = new URL(href);
+      return `${parsed.origin}${parsed.pathname}`;
+    }
+
+    return href;
+  } catch {
+    return url;
+  }
+}
+
 export function scoreTitleMatch(title: string, productName: string): number {
   const words = productName
     .toLowerCase()
