@@ -28,7 +28,7 @@ export interface UnifiedSearchResult {
   retailerLinks: RetailerSearchLink[];
   pricesUpdatedAt: string;
   fromSnapshots: number;
-  mode: "catalog-snapshot";
+  mode: "hybrid";
 }
 
 /**
@@ -70,6 +70,6 @@ export function unifiedSearch(
     retailerLinks,
     pricesUpdatedAt,
     fromSnapshots,
-    mode: "catalog-snapshot",
+    mode: "hybrid",
   };
 }

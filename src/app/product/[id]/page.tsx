@@ -13,7 +13,9 @@ import { TruePriceExplainer } from "@/components/TruePriceExplainer";
 import { OfferBreakdownList } from "@/components/OfferBreakdownList";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { PriceUpdatedBadge } from "@/components/PriceUpdatedBadge";
+import { PriceEstimateBanner } from "@/components/PriceEstimateBanner";
 import { useProductPrices } from "@/hooks/useProductPrices";
+import { countVerifiedOffers } from "@/lib/offer-price-status";
 import { formatAud, getBestOffer, getTotalSavings } from "@/lib/pricing";
 
 export default function ProductPage({
@@ -44,6 +46,10 @@ export default function ProductPage({
   }
 
   const best = getBestOffer(product.offers, studentMode, product);
+  const verifiedCount = countVerifiedOffers(
+    product.id,
+    product.offers.map((o) => o.retailer)
+  );
 
   return (
     <div className="mx-auto min-w-0 max-w-6xl overflow-x-hidden px-4 py-6 sm:py-8">
@@ -135,6 +141,11 @@ export default function ProductPage({
                 className="sm:text-right"
               />
             </div>
+            <PriceEstimateBanner
+              className="mb-4"
+              verifiedCount={verifiedCount}
+              totalOffers={product.offers.length}
+            />
             <PriceTable product={product} />
           </div>
 

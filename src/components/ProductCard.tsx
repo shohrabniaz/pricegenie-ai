@@ -10,6 +10,8 @@ import { formatAud, getBestOffer, hasActiveDeals } from "@/lib/pricing";
 import { ProductImage } from "@/components/ProductImage";
 import { PriceFreshnessBadge } from "@/components/PriceFreshnessBadge";
 import { getPriceFreshness } from "@/lib/price-freshness";
+import { countVerifiedOffers } from "@/lib/offer-price-status";
+import { OfferPriceStatusBadge } from "@/components/OfferPriceStatusBadge";
 
 interface ProductCardProps {
   product: Product;
@@ -20,6 +22,10 @@ export function ProductCard({ product }: ProductCardProps) {
   const { pricesUpdatedAt, source } = applyPriceSnapshots(product);
   const freshness = getPriceFreshness(pricesUpdatedAt, source);
   const best = getBestOffer(product.offers, studentMode, product);
+  const verifiedCount = countVerifiedOffers(
+    product.id,
+    product.offers.map((o) => o.retailer)
+  );
 
   if (!best) return null;
 
@@ -67,10 +73,17 @@ export function ProductCard({ product }: ProductCardProps) {
             )}
             {pricesUpdatedAt && (
               <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                <OfferPriceStatusBadge
+                  status={verifiedCount > 0 ? "verified" : "estimate"}
+                />
                 <p className="text-[10px] text-slate-600">
-                  Prices as of {formatPriceDate(pricesUpdatedAt)}
+                  {verifiedCount > 0
+                    ? `${verifiedCount} store${verifiedCount === 1 ? "" : "s"} verified`
+                    : `As of ${formatPriceDate(pricesUpdatedAt)}`}
                 </p>
-                <PriceFreshnessBadge freshness={freshness} />
+                {verifiedCount > 0 && (
+                  <PriceFreshnessBadge freshness={freshness} />
+                )}
               </div>
             )}
           </div>

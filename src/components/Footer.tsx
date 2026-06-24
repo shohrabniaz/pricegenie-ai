@@ -39,7 +39,8 @@ export function Footer() {
         </div>
         <p className="mt-6 text-xs text-slate-700">
           Affiliate disclosure: {APP_NAME} may earn commission when you purchase
-          through retailer links. Prices are indicative for MVP demo purposes.
+          through retailer links. Guide prices are estimates unless marked
+          Verified — use Analyze for a live price from the retailer page.
         </p>
       </div>
     </footer>

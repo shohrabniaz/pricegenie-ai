@@ -4,8 +4,9 @@ import { ExternalLink } from "lucide-react";
 import type { Product, StoreOffer } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { withAffiliateLink } from "@/lib/affiliate";
-import { getSnapshotForProduct } from "@/lib/price-feed";
 import { getOfferLinkKind } from "@/lib/retailer-urls";
+import { getOfferPriceStatus } from "@/lib/offer-price-status";
+import { OfferPriceStatusBadge } from "@/components/OfferPriceStatusBadge";
 import { formatAud, rankOffers } from "@/lib/pricing";
 import type { TruePriceBreakdown } from "@/types";
 import { RETAILER_COLORS } from "@/data/retailers";
@@ -48,12 +49,13 @@ function StoreLinkButton({
 function OfferBadges({
   offer,
   index,
-  hasSnapshot,
+  productId,
 }: {
   offer: StoreOffer;
   index: number;
-  hasSnapshot: boolean;
+  productId: string;
 }) {
+  const priceStatus = getOfferPriceStatus(productId, offer.retailer);
   return (
     <div className="flex flex-wrap items-center gap-2">
       <span
@@ -61,14 +63,7 @@ function OfferBadges({
         style={{ background: RETAILER_COLORS[offer.retailer] }}
       />
       <span className="font-medium text-white">{offer.retailerName}</span>
-      {hasSnapshot && (
-        <span
-          className="rounded bg-teal-500/15 px-1.5 py-0.5 text-[9px] font-medium text-teal-400"
-          title="Price verified by daily scrape"
-        >
-          verified
-        </span>
-      )}
+      <OfferPriceStatusBadge status={priceStatus} />
       {index === 0 && (
         <span className="rounded-full bg-teal-500/20 px-2 py-0.5 text-[10px] font-bold text-teal-300">
           BEST
@@ -112,7 +107,6 @@ function DealsList({ breakdown }: { breakdown: TruePriceBreakdown }) {
 export function PriceTable({ product }: PriceTableProps) {
   const { studentMode } = useStudentMode();
   const ranked = rankOffers(product.offers, studentMode, product);
-  const snapshot = getSnapshotForProduct(product.id);
 
   return (
     <div data-testid="price-table" className="min-w-0">
@@ -129,7 +123,7 @@ export function PriceTable({ product }: PriceTableProps) {
               <OfferBadges
                 offer={offer}
                 index={i}
-                hasSnapshot={snapshot?.offers[offer.retailer] !== undefined}
+                productId={product.id}
               />
               <span
                 className={`rounded-full px-2 py-0.5 text-xs font-medium ${
@@ -199,7 +193,7 @@ export function PriceTable({ product }: PriceTableProps) {
                   <OfferBadges
                     offer={offer}
                     index={i}
-                    hasSnapshot={snapshot?.offers[offer.retailer] !== undefined}
+                    productId={product.id}
                   />
                 </td>
                 <td className="px-4 py-3 text-slate-400">

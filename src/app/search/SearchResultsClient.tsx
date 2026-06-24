@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { SearchBar } from "@/components/SearchBar";
+import { AnalyzeUrlBar } from "@/components/AnalyzeUrlBar";
 import { ProductCard } from "@/components/ProductCard";
 import { RetailerSearchLinks } from "@/components/RetailerSearchLinks";
+import { PriceEstimateBanner } from "@/components/PriceEstimateBanner";
 import { useStudentMode } from "@/context/StudentModeContext";
-import { PRODUCTS } from "@/data/products";
-import { getCategories } from "@/lib/search";
+import { getCategories, getFeaturedProducts } from "@/lib/search";
 import type { UnifiedSearchResult } from "@/lib/live-search";
 
 interface SearchResultsClientProps {
@@ -61,84 +63,126 @@ export function SearchResultsClient({
   );
   const results = query ? (data?.products ?? []) : [];
   const categories = getCategories();
+  const featured = getFeaturedProducts(studentMode).slice(0, 6);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <SearchBar defaultValue={query} autoFocus />
+      <SearchBar defaultValue={query} autoFocus={Boolean(query)} />
 
-      {query && (
-        <p className="mt-4 text-sm text-slate-500">
-          {loading ? (
-            "Searching…"
-          ) : (
-            <>
-              {results.length} result{results.length !== 1 ? "s" : ""} for
-              &ldquo;{query}&rdquo;
-              {data && data.fromSnapshots > 0 && (
-                <span className="ml-2 text-emerald-400/90">
-                  · {data.fromSnapshots} with daily price refresh
-                </span>
-              )}
-            </>
-          )}
-          {studentMode && (
-            <span className="ml-2 text-amber-400">· Student Mode ON</span>
-          )}
-        </p>
-      )}
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {categories.map((cat) => (
-          <a
-            key={cat}
-            href={`/search?q=${encodeURIComponent(query || cat)}&category=${encodeURIComponent(cat)}`}
-            className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
-              category === cat
-                ? "border-teal-500/50 bg-teal-500/15 text-teal-300"
-                : "border-white/10 text-slate-500 hover:border-white/20"
-            }`}
-          >
-            {cat}
-          </a>
-        ))}
-      </div>
-
-      {query && !loading && results.length === 0 && (
-        <div className="mt-12 text-center">
-          <p className="text-lg text-slate-400">No catalog matches</p>
-          <p className="mt-2 text-sm text-slate-600">
-            Try retailer links below, paste a URL on{" "}
-            <a href="/analyze" className="text-teal-400 hover:underline">
-              Analyze
-            </a>
-            , or ask{" "}
-            <a href="/advisor" className="text-teal-400 hover:underline">
-              Genie
-            </a>
+      {!query && (
+        <div className="mt-6 space-y-6">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-wide text-violet-300">
+              Live price check
+            </p>
+            <AnalyzeUrlBar className="mt-2" />
+          </div>
+          <p className="text-sm text-slate-500">
+            Search any product name above, or try a popular query below.
           </p>
+          <div className="flex flex-wrap gap-2">
+            {["ps5", "macbook", "airpods", "student laptop", "oled tv"].map(
+              (term) => (
+                <Link
+                  key={term}
+                  href={`/search?q=${encodeURIComponent(term)}`}
+                  className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-400 transition hover:border-teal-500/30 hover:text-teal-300"
+                >
+                  {term}
+                </Link>
+              )
+            )}
+          </div>
+          <div>
+            <h2 className="text-sm font-semibold text-white">Sample guides</h2>
+            <p className="mt-1 text-xs text-slate-500">
+              Curated comparisons — prices may be estimates
+            </p>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {featured.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
         </div>
       )}
 
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {results.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-
-      {data && query && (
-        <RetailerSearchLinks links={data.retailerLinks} query={query} />
-      )}
-
-      {!query && (
+      {query && (
         <>
-          <p className="mt-8 text-sm text-slate-500">
-            Browse all {PRODUCTS.length} products or search above
+          <p className="mt-4 text-sm text-slate-500">
+            {loading ? (
+              "Searching…"
+            ) : (
+              <>
+                Results for &ldquo;{query}&rdquo;
+                {studentMode && (
+                  <span className="ml-2 text-amber-400">· Student Mode ON</span>
+                )}
+              </>
+            )}
           </p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {PRODUCTS.map((product) => (
-              <ProductCard key={product.id} product={product} />
+
+          {data && !loading && (
+            <RetailerSearchLinks
+              links={data.retailerLinks}
+              query={query}
+              prominent
+            />
+          )}
+
+          {data && results.length > 0 && !loading && (
+            <PriceEstimateBanner
+              className="mt-6"
+              verifiedCount={data.fromSnapshots}
+              totalOffers={results.reduce((n, p) => n + p.offers.length, 0)}
+            />
+          )}
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <a
+                key={cat}
+                href={`/search?q=${encodeURIComponent(query || cat)}&category=${encodeURIComponent(cat)}`}
+                className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+                  category === cat
+                    ? "border-teal-500/50 bg-teal-500/15 text-teal-300"
+                    : "border-white/10 text-slate-500 hover:border-white/20"
+                }`}
+              >
+                {cat}
+              </a>
             ))}
           </div>
+
+          {!loading && results.length === 0 && (
+            <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-center">
+              <p className="text-lg text-slate-300">No guide matches yet</p>
+              <p className="mt-2 text-sm text-slate-500">
+                Use the retailer links above for live listings, or paste a product
+                URL on{" "}
+                <Link href="/analyze" className="text-teal-400 hover:underline">
+                  Analyze
+                </Link>{" "}
+                for the most accurate price.
+              </p>
+            </div>
+          )}
+
+          {results.length > 0 && (
+            <div className="mt-8">
+              <h2 className="text-sm font-semibold text-white">
+                Similar items in our buying guides
+              </h2>
+              <p className="mt-1 text-xs text-slate-500">
+                Coupons and true-price math — confirm shelf price on the store
+              </p>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {results.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            </div>
+          )}
         </>
       )}
     </div>

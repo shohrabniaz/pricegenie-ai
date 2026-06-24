@@ -6,22 +6,32 @@ import { RETAILER_COLORS } from "@/data/retailers";
 interface RetailerSearchLinksProps {
   links: RetailerSearchLink[];
   query: string;
+  prominent?: boolean;
 }
 
-export function RetailerSearchLinks({ links, query }: RetailerSearchLinksProps) {
+export function RetailerSearchLinks({
+  links,
+  query,
+  prominent = false,
+}: RetailerSearchLinksProps) {
   if (!query.trim()) return null;
 
   return (
     <section
       data-testid="retailer-search-links"
-      className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-5"
+      className={`mt-6 rounded-2xl border p-5 ${
+        prominent
+          ? "border-teal-500/25 bg-teal-500/5"
+          : "border-white/10 bg-white/[0.02]"
+      }`}
     >
       <h2 className="text-sm font-semibold text-white">
-        Search live on Australian retailers
+        {prominent ? "Check live prices on retailers" : "Search on retailers"}
       </h2>
       <p className="mt-1 text-xs text-slate-500">
-        {APP_NAME} matches our catalog + daily price snapshots. Open a retailer
-        to compare live listings for &ldquo;{query}&rdquo;.
+        {prominent
+          ? `Open each store to see today's listings for "${query}". For one-click live price from a product page, use Analyze.`
+          : `${APP_NAME} surfaces retailer search for "${query}" — confirm price on the store.`}
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         {links.map(({ retailer, retailerName, searchUrl }) => (

@@ -1,22 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { ExternalLink, Link2, Loader2 } from "lucide-react";
 import { APP_NAME } from "@/lib/brand";
+import { PriceEstimateBanner } from "@/components/PriceEstimateBanner";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { formatAud } from "@/lib/pricing";
 import type { UrlAnalysisResult } from "@/lib/url-analyzer";
 
-export default function AnalyzePage() {
+function AnalyzePageContent({ defaultUrl = "" }: { defaultUrl?: string }) {
   const { studentMode } = useStudentMode();
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(defaultUrl);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<UrlAnalysisResult | null>(null);
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  async function runAnalysis(targetUrl: string) {
     setError(null);
     setResult(null);
     setLoading(true);
@@ -25,7 +26,7 @@ export default function AnalyzePage() {
       const res = await fetch("/api/analyze-url", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: url.trim(), studentMode }),
+        body: JSON.stringify({ url: targetUrl, studentMode }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -40,6 +41,13 @@ export default function AnalyzePage() {
     }
   }
 
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const trimmed = url.trim();
+    if (!trimmed) return;
+    await runAnalysis(trimmed);
+  }
+
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
       <div className="flex items-center gap-3">
@@ -49,12 +57,14 @@ export default function AnalyzePage() {
         <div>
           <h1 className="text-2xl font-bold text-white">Paste any product URL</h1>
           <p className="text-sm text-slate-500">
-            JB Hi-Fi, Amazon AU, Harvey Norman, eBay AU & more
+            Most accurate prices — read live from the retailer page
           </p>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+      <PriceEstimateBanner className="mt-6" />
+
+      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <label className="block text-sm font-medium text-slate-400">
           Product link
           <input
@@ -123,8 +133,11 @@ export default function AnalyzePage() {
           {result.alternatives.length > 0 && (
             <div>
               <h3 className="text-sm font-semibold text-white">
-                Cheaper alternatives in {APP_NAME}
+                Similar items in {APP_NAME} guides
               </h3>
+              <p className="mt-1 text-xs text-slate-500">
+                Catalog comparisons with coupons — confirm final price on the store.
+              </p>
               <ul className="mt-3 space-y-2">
                 {result.alternatives.map((alt) => (
                   <li
@@ -163,5 +176,25 @@ export default function AnalyzePage() {
         </div>
       )}
     </div>
+  );
+}
+
+function AnalyzePageWithParams() {
+  const searchParams = useSearchParams();
+  const defaultUrl = searchParams.get("url")?.trim() ?? "";
+  return <AnalyzePageContent key={defaultUrl} defaultUrl={defaultUrl} />;
+}
+
+export default function AnalyzePage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="mx-auto max-w-3xl px-4 py-16 text-center text-slate-500">
+          Loading…
+        </div>
+      }
+    >
+      <AnalyzePageWithParams />
+    </Suspense>
   );
 }

@@ -20,8 +20,8 @@ import { AI_ASSISTANT_NAME, APP_NAME } from "@/lib/brand";
 
 const NAV = [
   { href: "/", label: "Home", icon: Home },
-  { href: "/search", label: "Search", icon: Search },
   { href: "/analyze", label: "Analyze", icon: Link2 },
+  { href: "/search", label: "Search", icon: Search },
   { href: "/coupons", label: "Coupons", icon: Tag },
   { href: "/student", label: "Student", icon: GraduationCap },
   { href: "/advisor", label: AI_ASSISTANT_NAME, icon: Sparkles },

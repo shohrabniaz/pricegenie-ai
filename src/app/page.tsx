@@ -11,6 +11,7 @@ import {
   Zap,
 } from "lucide-react";
 import { HeroBadge } from "@/components/Header";
+import { AnalyzeUrlBar } from "@/components/AnalyzeUrlBar";
 import { SearchBar } from "@/components/SearchBar";
 import { ProductCard } from "@/components/ProductCard";
 import { useStudentMode } from "@/context/StudentModeContext";
@@ -52,11 +53,11 @@ const FEATURES = [
 
 export default function HomePage() {
   const { studentMode } = useStudentMode();
-  const featured = getFeaturedProducts(studentMode);
+  const featured = getFeaturedProducts(studentMode).slice(0, 4);
 
   return (
     <>
-      <section className="relative overflow-hidden px-4 pb-16 pt-10">
+      <section className="relative overflow-hidden px-4 pb-12 pt-10">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-teal-500/10 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-3xl text-center">
           <HeroBadge />
@@ -70,20 +71,24 @@ export default function HomePage() {
             </span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base text-slate-400 sm:text-lg">
-            {APP_NAME} compares Australian retailers and grants you the true
-            lowest price — with coupons, student discounts, cashback & shipping
-            included.
+            Paste any product link for a live price check, or search to compare
+            coupons and true checkout cost across Australian retailers.
           </p>
-          <div className="mx-auto mt-8 max-w-2xl">
+
+          <div className="mx-auto mt-8 max-w-2xl text-left">
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-violet-300">
+              Best accuracy — analyze a URL
+            </p>
+            <AnalyzeUrlBar size="large" />
+          </div>
+
+          <div className="mx-auto mt-6 max-w-2xl text-left">
+            <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">
+              Or search any product
+            </p>
             <SearchBar size="large" />
           </div>
-          <p className="mt-3 text-sm text-slate-500">
-            Already have a link?{" "}
-            <Link href="/analyze" className="text-teal-400 hover:underline">
-              Paste any product URL
-            </Link>{" "}
-            for live price + cheaper alternatives.
-          </p>
+
           <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs text-slate-600">
             {["iPhone 17 Pro", "gaming laptop", "MacBook Air", "OLED TV"].map(
               (term) => (
@@ -101,13 +106,18 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-16">
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-white">Top Deals Today</h2>
+        <div className="mb-2 flex items-center justify-between gap-4">
+          <div>
+            <h2 className="text-lg font-bold text-white">Sample comparisons</h2>
+            <p className="mt-1 text-xs text-slate-500">
+              Buying-guide picks — prices may be estimates until verified
+            </p>
+          </div>
           <Link
             href="/search"
-            className="flex items-center gap-1 text-sm text-teal-400 hover:text-teal-300"
+            className="flex shrink-0 items-center gap-1 text-sm text-teal-400 hover:text-teal-300"
           >
-            View all <ArrowRight className="h-4 w-4" />
+            Search <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -123,8 +133,8 @@ export default function HomePage() {
             Why {APP_NAME} beats manual searching
           </h2>
           <p className="mx-auto mt-2 max-w-lg text-center text-sm text-slate-500">
-            Most apps do one thing. We combine everything into one AI shopping
-            agent.
+            Paste a link, search any product, or ask Genie — coupons and true
+            price in one place.
           </p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map(({ icon: Icon, title, desc }) => (
