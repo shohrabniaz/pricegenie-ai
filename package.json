@@ -9,7 +9,8 @@
     "node": ">=22"
   },
   "overrides": {
-    "picomatch": "^4.0.4"
+    "picomatch": "^4.0.4",
+    "eslint": "^9.39.0"
   },
   "scripts": {
     "dev": "next dev",

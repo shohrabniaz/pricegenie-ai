@@ -229,8 +229,6 @@ export async function scrapeRetailPrice(
   catalogPrice: number,
   cachedProductUrl?: string
 ): Promise<ScrapeResult> {
-  const selectors = RETAILER_PRICE_SELECTORS[retailer] ?? [".price"];
-
   if (cachedProductUrl && isProductPageUrl(retailer, cachedProductUrl)) {
     try {
       const price = await scrapeProductPage(

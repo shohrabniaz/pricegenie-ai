@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   buildRetailerProductUrl,
   isGenericStoreUrl,
+  isVerifiedOfferUrl,
   resolveOfferUrl,
 } from "@/lib/retailer-urls";
 
@@ -40,5 +41,29 @@ describe("resolveOfferUrl", () => {
 
   it("blocks generic store URLs when no direct product page is known", () => {
     expect(resolveOfferUrl("kmart", "Bluetooth Speaker", "https://www.kmart.com.au")).toBe("");
+  });
+});
+
+describe("isVerifiedOfferUrl", () => {
+  it("allows empty URLs while PDP verification is pending", () => {
+    expect(isVerifiedOfferUrl("jb-hifi", "")).toBe(true);
+  });
+
+  it("allows direct product pages", () => {
+    expect(
+      isVerifiedOfferUrl(
+        "jb-hifi",
+        "https://www.jbhifi.com.au/products/apple-iphone-17-pro-256gb"
+      )
+    ).toBe(true);
+  });
+
+  it("rejects retailer search URLs", () => {
+    expect(
+      isVerifiedOfferUrl(
+        "jb-hifi",
+        "https://www.jbhifi.com.au/search?query=iphone"
+      )
+    ).toBe(false);
   });
 });

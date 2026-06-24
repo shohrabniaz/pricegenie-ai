@@ -9,7 +9,7 @@ import { calculateTruePrice, getBestOffer } from "../src/lib/pricing";
 import { resolveDiscounts } from "../src/lib/coupon-rules";
 import { getWaitOrBuyAdvice } from "../src/lib/wait-or-buy";
 import { generateAiResponse, generateAiReply } from "../src/lib/ai-advisor";
-import { isGenericStoreUrl } from "../src/lib/retailer-urls";
+import { isVerifiedOfferUrl } from "../src/lib/retailer-urls";
 
 let passed = 0;
 let failed = 0;
@@ -103,12 +103,10 @@ for (const product of PRODUCTS) {
   assert(Boolean(product.imageUrl), `${product.id} missing imageUrl`);
   for (const offer of product.offers) {
     assert(
-      !isGenericStoreUrl(offer.url),
-      `${product.id} @ ${offer.retailer} still uses a store homepage URL`
-    );
-    assert(
-      offer.url.length > 30,
-      `${product.id} @ ${offer.retailer} URL looks too short: ${offer.url}`
+      isVerifiedOfferUrl(offer.retailer, offer.url),
+      `${product.id} @ ${offer.retailer} has invalid offer URL: ${
+        offer.url || "(pending PDP verification)"
+      }`
     );
   }
 }

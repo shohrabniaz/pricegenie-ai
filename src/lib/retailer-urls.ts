@@ -72,6 +72,13 @@ export function resolveOfferUrl(
   return "";
 }
 
+/** Empty URL is allowed while a direct PDP is pending verification. */
+export function isVerifiedOfferUrl(retailer: Retailer, url: string): boolean {
+  if (!url) return true;
+  if (isGenericStoreUrl(url) || isRetailerSearchUrl(retailer, url)) return false;
+  return isProductPageUrl(retailer, url);
+}
+
 function isRetailerSearchUrl(retailer: Retailer, url: string): boolean {
   try {
     const parsed = new URL(url);
