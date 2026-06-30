@@ -24,7 +24,10 @@ export function ProductCard({ product }: ProductCardProps) {
   const best = getBestOffer(product.offers, studentMode, product);
   const verifiedCount = countVerifiedOffers(
     product.id,
-    product.offers.map((o) => o.retailer)
+    product.offers.map((o) => ({
+      retailer: o.retailer,
+      listPrice: o.listPrice,
+    }))
   );
 
   if (!best) return null;

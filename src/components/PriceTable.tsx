@@ -1,7 +1,7 @@
 "use client";
 
 import { ExternalLink } from "lucide-react";
-import type { Product, StoreOffer } from "@/types";
+import type { Product, Retailer, StoreOffer } from "@/types";
 import { useStudentMode } from "@/context/StudentModeContext";
 import { withAffiliateLink } from "@/lib/affiliate";
 import { getOfferLinkKind } from "@/lib/retailer-urls";
@@ -10,9 +10,11 @@ import { OfferPriceStatusBadge } from "@/components/OfferPriceStatusBadge";
 import { formatAud, rankOffers } from "@/lib/pricing";
 import type { TruePriceBreakdown } from "@/types";
 import { RETAILER_COLORS } from "@/data/retailers";
+import { getProductById } from "@/data/products";
 
 interface PriceTableProps {
   product: Product;
+  runtimeVerifiedRetailers?: readonly Retailer[];
 }
 
 function StoreLinkButton({
@@ -50,12 +52,21 @@ function OfferBadges({
   offer,
   index,
   productId,
+  catalogListPrice,
+  runtimeVerifiedRetailers,
 }: {
   offer: StoreOffer;
   index: number;
   productId: string;
+  catalogListPrice?: number;
+  runtimeVerifiedRetailers?: readonly Retailer[];
 }) {
-  const priceStatus = getOfferPriceStatus(productId, offer.retailer);
+  const priceStatus = getOfferPriceStatus(
+    productId,
+    offer.retailer,
+    catalogListPrice,
+    runtimeVerifiedRetailers
+  );
   return (
     <div className="flex flex-wrap items-center gap-2">
       <span
@@ -104,9 +115,13 @@ function DealsList({ breakdown }: { breakdown: TruePriceBreakdown }) {
   );
 }
 
-export function PriceTable({ product }: PriceTableProps) {
+export function PriceTable({
+  product,
+  runtimeVerifiedRetailers,
+}: PriceTableProps) {
   const { studentMode } = useStudentMode();
   const ranked = rankOffers(product.offers, studentMode, product);
+  const catalogOffers = getProductById(product.id)?.offers;
 
   return (
     <div data-testid="price-table" className="min-w-0">
@@ -124,6 +139,10 @@ export function PriceTable({ product }: PriceTableProps) {
                 offer={offer}
                 index={i}
                 productId={product.id}
+                catalogListPrice={catalogOffers?.find(
+                  (o) => o.retailer === offer.retailer
+                )?.listPrice}
+                runtimeVerifiedRetailers={runtimeVerifiedRetailers}
               />
               <span
                 className={`rounded-full px-2 py-0.5 text-xs font-medium ${
@@ -194,6 +213,10 @@ export function PriceTable({ product }: PriceTableProps) {
                     offer={offer}
                     index={i}
                     productId={product.id}
+                    catalogListPrice={catalogOffers?.find(
+                      (o) => o.retailer === offer.retailer
+                    )?.listPrice}
+                    runtimeVerifiedRetailers={runtimeVerifiedRetailers}
                   />
                 </td>
                 <td className="px-4 py-3 text-slate-400">

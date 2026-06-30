@@ -161,6 +161,9 @@ async function main() {
       const offers: PriceSnapshot["offers"] = {
         ...(existing[product.id]?.offers ?? {}),
       };
+      const verified: NonNullable<PriceSnapshot["verified"]> = {
+        ...(existing[product.id]?.verified ?? {}),
+      };
 
       console.log(`→ ${product.name}`);
 
@@ -215,6 +218,7 @@ async function main() {
         let resolved = catalogPrice;
         if (scraped && isPlausiblePrice(scraped, catalogPrice)) {
           resolved = scraped;
+          verified[retailer] = true;
           stats.success += 1;
           retailerStats(retailer).ok += 1;
           const delta = scraped - catalogPrice;
@@ -225,6 +229,9 @@ async function main() {
           );
         } else if (isPlausiblePrice(previous, catalogPrice)) {
           resolved = previous;
+          if (verified[retailer] !== true) {
+            verified[retailer] = false;
+          }
           retailerStats(retailer).kept += 1;
           if (scraped) {
             stats.skipped += 1;
@@ -241,6 +248,7 @@ async function main() {
           }
         } else {
           resolved = catalogPrice;
+          verified[retailer] = false;
           stats.skipped += 1;
           retailerStats(retailer).skipped += 1;
           console.log(
@@ -253,7 +261,7 @@ async function main() {
         await sleep(DELAY_MS);
       }
 
-      snapshots[product.id] = { updatedAt: today, offers };
+      snapshots[product.id] = { updatedAt: today, offers, verified };
 
       const inStockPrices = product.offers
         .filter((o) => o.inStock)

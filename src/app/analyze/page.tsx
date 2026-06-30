@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ExternalLink, Link2, Loader2 } from "lucide-react";
@@ -10,14 +10,21 @@ import { useStudentMode } from "@/context/StudentModeContext";
 import { formatAud } from "@/lib/pricing";
 import type { UrlAnalysisResult } from "@/lib/url-analyzer";
 
-function AnalyzePageContent({ defaultUrl = "" }: { defaultUrl?: string }) {
+function AnalyzePageContent({
+  defaultUrl = "",
+  autoRun = false,
+}: {
+  defaultUrl?: string;
+  autoRun?: boolean;
+}) {
   const { studentMode } = useStudentMode();
   const [url, setUrl] = useState(defaultUrl);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<UrlAnalysisResult | null>(null);
+  const autoRunStarted = useRef(false);
 
-  async function runAnalysis(targetUrl: string) {
+  const runAnalysis = useCallback(async (targetUrl: string) => {
     setError(null);
     setResult(null);
     setLoading(true);
@@ -39,7 +46,7 @@ function AnalyzePageContent({ defaultUrl = "" }: { defaultUrl?: string }) {
     } finally {
       setLoading(false);
     }
-  }
+  }, [studentMode]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -47,6 +54,13 @@ function AnalyzePageContent({ defaultUrl = "" }: { defaultUrl?: string }) {
     if (!trimmed) return;
     await runAnalysis(trimmed);
   }
+
+  useEffect(() => {
+    const trimmed = defaultUrl.trim();
+    if (!autoRun || !trimmed || autoRunStarted.current) return;
+    autoRunStarted.current = true;
+    void runAnalysis(trimmed);
+  }, [autoRun, defaultUrl, runAnalysis]);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -182,7 +196,14 @@ function AnalyzePageContent({ defaultUrl = "" }: { defaultUrl?: string }) {
 function AnalyzePageWithParams() {
   const searchParams = useSearchParams();
   const defaultUrl = searchParams.get("url")?.trim() ?? "";
-  return <AnalyzePageContent key={defaultUrl} defaultUrl={defaultUrl} />;
+  const autoRun = searchParams.get("run") === "1";
+  return (
+    <AnalyzePageContent
+      key={`${defaultUrl}:${autoRun}`}
+      defaultUrl={defaultUrl}
+      autoRun={autoRun}
+    />
+  );
 }
 
 export default function AnalyzePage() {

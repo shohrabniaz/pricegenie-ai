@@ -2,7 +2,7 @@
 
 import { use, useEffect } from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Link2 } from "lucide-react";
 import { getProductById } from "@/data/products";
 import { PriceTable } from "@/components/PriceTable";
 import { WaitOrBuyCard } from "@/components/WaitOrBuyCard";
@@ -17,6 +17,7 @@ import { PriceEstimateBanner } from "@/components/PriceEstimateBanner";
 import { useProductPrices } from "@/hooks/useProductPrices";
 import { countVerifiedOffers } from "@/lib/offer-price-status";
 import { formatAud, getBestOffer, getTotalSavings } from "@/lib/pricing";
+import { resolveOfferUrl } from "@/lib/retailer-urls";
 
 export default function ProductPage({
   params,
@@ -25,7 +26,7 @@ export default function ProductPage({
 }) {
   const { id } = use(params);
   const catalogProduct = getProductById(id);
-  const { product, pricesUpdatedAt, source, liveOfferCount } = useProductPrices(
+  const { product, pricesUpdatedAt, source, liveOfferCount, liveVerifiedRetailers, liveFetching } = useProductPrices(
     catalogProduct
   );
   const { studentMode } = useStudentMode();
@@ -48,8 +49,20 @@ export default function ProductPage({
   const best = getBestOffer(product.offers, studentMode, product);
   const verifiedCount = countVerifiedOffers(
     product.id,
-    product.offers.map((o) => o.retailer)
+    catalogProduct.offers.map((o) => ({
+      retailer: o.retailer,
+      listPrice: o.listPrice,
+    })),
+    liveVerifiedRetailers
   );
+  const liveCheckUrl = best
+    ? resolveOfferUrl(
+        best.offer.retailer,
+        product.name,
+        best.offer.url,
+        product.id
+      )
+    : null;
 
   return (
     <div className="mx-auto min-w-0 max-w-6xl overflow-x-hidden px-4 py-6 sm:py-8">
@@ -79,6 +92,14 @@ export default function ProductPage({
               source={source}
               liveOfferCount={liveOfferCount}
             />
+            {liveFetching && (
+              <p
+                className="mt-2 text-xs text-violet-300"
+                data-testid="live-price-fetching"
+              >
+                Checking live store prices…
+              </p>
+            )}
 
             {best && (
               <div className="mt-6 rounded-xl border border-teal-500/30 bg-teal-500/10 p-4">
@@ -100,6 +121,16 @@ export default function ProductPage({
                   <p className="mt-1 text-xs font-medium text-emerald-400">
                     Up to {formatAud(getTotalSavings(best.breakdown))} total savings
                   </p>
+                )}
+                {liveCheckUrl && (
+                  <Link
+                    href={`/analyze?url=${encodeURIComponent(liveCheckUrl)}&run=1`}
+                    className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-violet-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-violet-500"
+                    data-testid="check-live-price"
+                  >
+                    <Link2 className="h-4 w-4" />
+                    Check live price on {best.offer.retailerName}
+                  </Link>
                 )}
               </div>
             )}
@@ -146,7 +177,10 @@ export default function ProductPage({
               verifiedCount={verifiedCount}
               totalOffers={product.offers.length}
             />
-            <PriceTable product={product} />
+            <PriceTable
+              product={product}
+              runtimeVerifiedRetailers={liveVerifiedRetailers}
+            />
           </div>
 
           <OfferBreakdownList product={product} />

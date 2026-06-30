@@ -2,6 +2,7 @@ import type { Product, Retailer, StoreOffer } from "@/types";
 import { CATALOG_PRICE_UPDATED_AT } from "@/data/catalog-meta";
 import { PRICE_SNAPSHOTS, type PriceSnapshot } from "@/data/price-snapshots";
 import { stripLegacyDiscountFields } from "@/lib/coupon-rules";
+import { countVerifiedOffers } from "@/lib/offer-price-status";
 import { mergeLoggedPriceHistory } from "@/lib/price-history";
 
 export type PriceSource = "catalog" | "snapshot" | "live";
@@ -24,15 +25,11 @@ export function getSnapshotForProduct(productId: string): PriceSnapshot | undefi
 /** Merge snapshot store prices into catalog offers when a snapshot exists. */
 export function applyPriceSnapshots(product: Product): ProductPriceResult {
   const snapshot = PRICE_SNAPSHOTS[product.id];
-  let liveOfferCount = 0;
 
   const offers: StoreOffer[] = product.offers.map((offer) => {
     const liveList = snapshot?.offers[offer.retailer];
     if (liveList === undefined || liveList <= 0) {
       return offer;
-    }
-    if (liveList !== offer.listPrice) {
-      liveOfferCount += 1;
     }
     return stripLegacyDiscountFields({
       ...offer,
@@ -44,8 +41,13 @@ export function applyPriceSnapshots(product: Product): ProductPriceResult {
     ? latestDate(product.pricesUpdatedAt ?? CATALOG_PRICE_UPDATED_AT, snapshot.updatedAt)
     : product.pricesUpdatedAt ?? CATALOG_PRICE_UPDATED_AT;
 
-  const hasSnapshot = Boolean(snapshot && Object.keys(snapshot.offers).length > 0);
-  const verifiedCount = hasSnapshot ? Object.keys(snapshot!.offers).length : 0;
+  const verifiedCount = countVerifiedOffers(
+    product.id,
+    product.offers.map((offer) => ({
+      retailer: offer.retailer,
+      listPrice: offer.listPrice,
+    }))
+  );
 
   const mergedProduct = mergeLoggedPriceHistory({
     ...product,
@@ -56,8 +58,8 @@ export function applyPriceSnapshots(product: Product): ProductPriceResult {
   return {
     product: mergedProduct,
     pricesUpdatedAt: mergedProduct.pricesUpdatedAt!,
-    source: hasSnapshot ? "snapshot" : "catalog",
-    liveOfferCount: hasSnapshot ? verifiedCount : liveOfferCount,
+    source: verifiedCount > 0 ? "snapshot" : "catalog",
+    liveOfferCount: verifiedCount,
   };
 }
 

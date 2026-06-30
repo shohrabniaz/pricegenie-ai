@@ -21,7 +21,9 @@ export function AnalyzeUrlBar({
     e.preventDefault();
     const trimmed = url.trim();
     if (!trimmed) return;
-    router.push(`/analyze?url=${encodeURIComponent(trimmed)}`);
+    router.push(
+      `/analyze?url=${encodeURIComponent(trimmed)}&run=1`
+    );
   }
 
   return (

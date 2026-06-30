@@ -34,7 +34,7 @@ export function PriceEstimateBanner({
   const message =
     verifiedCount > 0
       ? `${verifiedCount} of ${totalOffers ?? "some"} store prices verified today. Others are catalog estimates — paste a product URL on Analyze for a live check.`
-      : `Prices shown are catalog estimates until verified by our daily refresh. For the most accurate price, paste the retailer link on Analyze.`;
+      : `Guide prices are estimates — retailers change prices often. Paste a product page URL on Analyze for a live read from the store.`;
 
   if (variant === "compact") {
     return (

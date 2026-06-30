@@ -2,6 +2,7 @@ import type { Product, Retailer } from "@/types";
 import { CATALOG_PRICE_UPDATED_AT } from "@/data/catalog-meta";
 import { RETAILER_LABELS } from "@/data/retailers";
 import { applyPriceSnapshots } from "@/lib/price-feed";
+import { countVerifiedOffers } from "@/lib/offer-price-status";
 import { affiliateRetailerSearchUrl } from "@/lib/affiliate";
 import { searchProducts } from "@/lib/search";
 
@@ -49,7 +50,13 @@ export function unifiedSearch(
   let fromSnapshots = 0;
   const products = catalogHits.map((product) => {
     const merged = applyPriceSnapshots(product);
-    if (merged.source === "snapshot") fromSnapshots += 1;
+    fromSnapshots += countVerifiedOffers(
+      product.id,
+      product.offers.map((offer) => ({
+        retailer: offer.retailer,
+        listPrice: offer.listPrice,
+      }))
+    );
     return merged.product;
   });
 
