@@ -1,648 +1,1054 @@
 {
   "iphone-17-pro-256": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 1769,
       "the-good-guys": 1997,
       "harvey-norman": 1849,
       "jb-hifi": 1999
+    },
+    "verified": {
+      "amazon-au": false,
+      "the-good-guys": false,
+      "harvey-norman": false,
+      "jb-hifi": false
     }
   },
   "macbook-air-m4": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 1697,
       "jb-hifi": 1529,
       "officeworks": 1749
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "officeworks": false
     }
   },
   "asus-rog-g16": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kogan": 1999,
       "the-good-guys": 2099,
       "jb-hifi": 2099,
       "harvey-norman": 2149
+    },
+    "verified": {
+      "kogan": false,
+      "the-good-guys": false,
+      "jb-hifi": false,
+      "harvey-norman": false
     }
   },
   "samsung-s25-ultra": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 1649,
       "jb-hifi": 1749,
       "the-good-guys": 1699
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "the-good-guys": false
     }
   },
   "sony-wh1000xm6": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 329,
       "jb-hifi": 449,
       "harvey-norman": 429
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "harvey-norman": false
     }
   },
   "lg-65-c4-oled": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "the-good-guys": 2299,
       "harvey-norman": 2399,
       "jb-hifi": 2499
+    },
+    "verified": {
+      "the-good-guys": false,
+      "harvey-norman": false,
+      "jb-hifi": false
     }
   },
   "dell-xps-15": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "officeworks": 2399,
       "harvey-norman": 2499,
       "jb-hifi": 2499
+    },
+    "verified": {
+      "officeworks": false,
+      "harvey-norman": false,
+      "jb-hifi": false
     }
   },
   "ipad-air-m3": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 849,
       "jb-hifi": 849,
       "officeworks": 899
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "officeworks": false
     }
   },
   "ps5-slim": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 599,
       "jb-hifi": 649,
       "big-w": 629,
       "the-good-guys": 649
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "big-w": false,
+      "the-good-guys": false
     }
   },
   "xbox-series-x": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 699,
       "harvey-norman": 749,
       "amazon-au": 679
+    },
+    "verified": {
+      "jb-hifi": false,
+      "harvey-norman": false,
+      "amazon-au": false
     }
   },
   "nintendo-switch-oled": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 449,
       "big-w": 459,
       "amazon-au": 439
+    },
+    "verified": {
+      "jb-hifi": false,
+      "big-w": false,
+      "amazon-au": false
     }
   },
   "airpods-pro-3": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 349,
       "jb-hifi": 331,
       "officeworks": 379
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "officeworks": false
     }
   },
   "samsung-galaxy-buds3-pro": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 299,
       "harvey-norman": 329,
-      "amazon-au": 258
+      "amazon-au": 302
+    },
+    "verified": {
+      "jb-hifi": false,
+      "harvey-norman": false,
+      "amazon-au": true
     }
   },
   "lg-27-4k-monitor": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "officeworks": 499,
       "jb-hifi": 529,
       "amazon-au": 479,
       "kogan": 469
+    },
+    "verified": {
+      "officeworks": false,
+      "jb-hifi": false,
+      "amazon-au": false,
+      "kogan": false
     }
   },
   "dell-27-monitor": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "harvey-norman": 449,
       "officeworks": 429,
       "amazon-au": 419
+    },
+    "verified": {
+      "harvey-norman": false,
+      "officeworks": false,
+      "amazon-au": false
     }
   },
   "lenovo-ideapad-slim-5": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "harvey-norman": 999,
       "jb-hifi": 1199,
       "kogan": 949,
       "officeworks": 1029
+    },
+    "verified": {
+      "harvey-norman": false,
+      "jb-hifi": false,
+      "kogan": false,
+      "officeworks": false
     }
   },
   "hp-pavilion-15": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "harvey-norman": 899,
       "jb-hifi": 875,
       "officeworks": 879
+    },
+    "verified": {
+      "harvey-norman": false,
+      "jb-hifi": false,
+      "officeworks": false
     }
   },
   "google-pixel-9": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 1099,
       "harvey-norman": 1149,
       "amazon-au": 1049
+    },
+    "verified": {
+      "jb-hifi": false,
+      "harvey-norman": false,
+      "amazon-au": false
     }
   },
   "iphone-16": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 1249,
       "jb-hifi": 1249,
       "the-good-guys": 1279
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "the-good-guys": false
     }
   },
   "samsung-galaxy-a55": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 549,
       "harvey-norman": 579,
       "kogan": 529
+    },
+    "verified": {
+      "jb-hifi": false,
+      "harvey-norman": false,
+      "kogan": false
     }
   },
   "samsung-55-qled": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "the-good-guys": 1399,
       "harvey-norman": 1499,
       "jb-hifi": 1391
+    },
+    "verified": {
+      "the-good-guys": false,
+      "harvey-norman": false,
+      "jb-hifi": false
     }
   },
   "tcl-65-miniled": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "the-good-guys": 1299,
       "harvey-norman": 1349,
       "kogan": 1249
+    },
+    "verified": {
+      "the-good-guys": false,
+      "harvey-norman": false,
+      "kogan": false
     }
   },
   "apple-watch-series-10": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 649,
       "amazon-au": 629,
       "officeworks": 659
+    },
+    "verified": {
+      "jb-hifi": false,
+      "amazon-au": false,
+      "officeworks": false
     }
   },
   "samsung-galaxy-watch-7": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 429,
       "harvey-norman": 449,
       "amazon-au": 419
+    },
+    "verified": {
+      "jb-hifi": false,
+      "harvey-norman": false,
+      "amazon-au": false
     }
   },
   "canon-eos-r50": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 999,
       "harvey-norman": 1049,
       "amazon-au": 949
+    },
+    "verified": {
+      "jb-hifi": false,
+      "harvey-norman": false,
+      "amazon-au": false
     }
   },
   "gopro-hero-13": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 499,
       "amazon-au": 479,
       "the-good-guys": 519
+    },
+    "verified": {
+      "jb-hifi": false,
+      "amazon-au": false,
+      "the-good-guys": false
     }
   },
   "samsung-990-pro-2tb": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 279,
       "officeworks": 299,
       "jb-hifi": 289,
       "kogan": 269
+    },
+    "verified": {
+      "amazon-au": false,
+      "officeworks": false,
+      "jb-hifi": false,
+      "kogan": false
     }
   },
   "wd-my-passport-2tb": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "officeworks": 99,
       "jb-hifi": 109,
       "amazon-au": 95,
       "big-w": 99
+    },
+    "verified": {
+      "officeworks": false,
+      "jb-hifi": false,
+      "amazon-au": false,
+      "big-w": false
     }
   },
   "logitech-mx-keys": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "officeworks": 169,
       "amazon-au": 172,
       "jb-hifi": 159
+    },
+    "verified": {
+      "officeworks": false,
+      "amazon-au": false,
+      "jb-hifi": true
     }
   },
   "logitech-mx-master-3s": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "officeworks": 129,
       "amazon-au": 125,
-      "jb-hifi": 109
+      "jb-hifi": 159
+    },
+    "verified": {
+      "officeworks": false,
+      "amazon-au": false,
+      "jb-hifi": true
     }
   },
   "hp-laserjet-printer": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "officeworks": 379,
       "harvey-norman": 399,
       "jb-hifi": 389
+    },
+    "verified": {
+      "officeworks": false,
+      "harvey-norman": false,
+      "jb-hifi": false
     }
   },
   "epson-ecotank-et-2850": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "officeworks": 429,
       "harvey-norman": 449,
       "jb-hifi": 439
+    },
+    "verified": {
+      "officeworks": false,
+      "harvey-norman": false,
+      "jb-hifi": false
     }
   },
   "casio-fx-cg50": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "officeworks": 199,
       "jb-hifi": 159,
       "big-w": 205
+    },
+    "verified": {
+      "officeworks": false,
+      "jb-hifi": true,
+      "big-w": false
     }
   },
   "dyson-v15-detect": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "harvey-norman": 999,
       "the-good-guys": 1049,
       "jb-hifi": 1029
+    },
+    "verified": {
+      "harvey-norman": false,
+      "the-good-guys": false,
+      "jb-hifi": false
     }
   },
   "bosch-serie-6-dishwasher": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "the-good-guys": 1199,
       "harvey-norman": 1249,
       "jb-hifi": 1229
+    },
+    "verified": {
+      "the-good-guys": false,
+      "harvey-norman": false,
+      "jb-hifi": false
     }
   },
   "breville-barista-express": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "harvey-norman": 699,
       "the-good-guys": 729,
       "jb-hifi": 598
+    },
+    "verified": {
+      "harvey-norman": false,
+      "the-good-guys": false,
+      "jb-hifi": false
     }
   },
   "meta-quest-3": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 749,
       "jb-hifi": 799,
       "harvey-norman": 779
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "harvey-norman": false
     }
   },
   "steam-deck-oled": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 849,
       "amazon-au": 829,
       "ebay-au": 819
+    },
+    "verified": {
+      "jb-hifi": false,
+      "amazon-au": false,
+      "ebay-au": false
     }
   },
   "kindle-paperwhite": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 219,
       "jb-hifi": 229,
       "officeworks": 225
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "officeworks": false
     }
   },
   "samsung-galaxy-tab-s10": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 1299,
       "harvey-norman": 1349,
       "amazon-au": 1249
+    },
+    "verified": {
+      "jb-hifi": false,
+      "harvey-norman": false,
+      "amazon-au": false
     }
   },
   "bose-soundlink-flex": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 159,
       "harvey-norman": 179,
       "amazon-au": 159
+    },
+    "verified": {
+      "jb-hifi": true,
+      "harvey-norman": false,
+      "amazon-au": false
     }
   },
   "jbl-flip-6": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
-      "jb-hifi": 109,
+      "jb-hifi": 159,
       "big-w": 145,
       "amazon-au": 135
+    },
+    "verified": {
+      "jb-hifi": true,
+      "big-w": false,
+      "amazon-au": false
     }
   },
   "sonos-era-100": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 319,
       "harvey-norman": 349,
       "the-good-guys": 339
+    },
+    "verified": {
+      "jb-hifi": false,
+      "harvey-norman": false,
+      "the-good-guys": false
     }
   },
   "asus-zenbook-14-oled": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "harvey-norman": 1599,
       "jb-hifi": 1649,
       "officeworks": 1629
+    },
+    "verified": {
+      "harvey-norman": false,
+      "jb-hifi": false,
+      "officeworks": false
     }
   },
   "msi-katana-15": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kogan": 1449,
       "jb-hifi": 1499,
       "harvey-norman": 1549
+    },
+    "verified": {
+      "kogan": false,
+      "jb-hifi": false,
+      "harvey-norman": false
     }
   },
   "aoc-24g4": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kogan": 209,
       "jb-hifi": 179,
       "amazon-au": 199
+    },
+    "verified": {
+      "kogan": false,
+      "jb-hifi": false,
+      "amazon-au": false
     }
   },
   "philips-hue-starter": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 159,
       "the-good-guys": 209,
       "amazon-au": 157
+    },
+    "verified": {
+      "jb-hifi": true,
+      "the-good-guys": false,
+      "amazon-au": false
     }
   },
   "ring-doorbell": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
-      "amazon-au": 229,
+      "amazon-au": 193,
       "jb-hifi": 279,
       "harvey-norman": 239
+    },
+    "verified": {
+      "amazon-au": true,
+      "jb-hifi": false,
+      "harvey-norman": false
     }
   },
   "dji-mini-4-pro": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 1199,
       "harvey-norman": 1249,
       "amazon-au": 1149
+    },
+    "verified": {
+      "jb-hifi": false,
+      "harvey-norman": false,
+      "amazon-au": false
     }
   },
   "fitbit-charge-6": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 219,
       "harvey-norman": 229,
       "amazon-au": 176
+    },
+    "verified": {
+      "jb-hifi": false,
+      "harvey-norman": false,
+      "amazon-au": false
     }
   },
   "ninja-air-fryer": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "the-good-guys": 279,
       "harvey-norman": 299,
       "jb-hifi": 289,
       "big-w": 285
+    },
+    "verified": {
+      "the-good-guys": false,
+      "harvey-norman": false,
+      "jb-hifi": false,
+      "big-w": false
     }
   },
   "oral-b-io-series-9": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "harvey-norman": 379,
       "the-good-guys": 399,
       "amazon-au": 360
+    },
+    "verified": {
+      "harvey-norman": false,
+      "the-good-guys": false,
+      "amazon-au": false
     }
   },
   "sim-plan-belong": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "big-w": 25,
       "officeworks": 25,
       "jb-hifi": 25
+    },
+    "verified": {
+      "big-w": false,
+      "officeworks": false,
+      "jb-hifi": false
     }
   },
   "kmart-anko-bluetooth-speaker": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 19,
       "big-w": 25,
       "amazon-au": 22
+    },
+    "verified": {
+      "kmart": false,
+      "big-w": false,
+      "amazon-au": false
     }
   },
   "kmart-55-smart-tv": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 499,
       "big-w": 549,
       "harvey-norman": 599
+    },
+    "verified": {
+      "kmart": false,
+      "big-w": false,
+      "harvey-norman": false
     }
   },
   "kmart-wireless-earbuds": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 25,
       "big-w": 29,
       "amazon-au": 27
+    },
+    "verified": {
+      "kmart": false,
+      "big-w": false,
+      "amazon-au": false
     }
   },
   "kmart-10-tablet": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 99,
       "big-w": 109,
       "kogan": 95
+    },
+    "verified": {
+      "kmart": false,
+      "big-w": false,
+      "kogan": false
     }
   },
   "kmart-gaming-headset": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 29,
       "jb-hifi": 49,
       "amazon-au": 35
+    },
+    "verified": {
+      "kmart": false,
+      "jb-hifi": false,
+      "amazon-au": false
     }
   },
   "kmart-power-board": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 15,
       "big-w": 18,
       "officeworks": 19
+    },
+    "verified": {
+      "kmart": false,
+      "big-w": false,
+      "officeworks": false
     }
   },
   "kmart-10000mah-powerbank": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 19,
       "officeworks": 25,
       "amazon-au": 22
+    },
+    "verified": {
+      "kmart": false,
+      "officeworks": false,
+      "amazon-au": false
     }
   },
   "kmart-desk-fan": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 12,
       "big-w": 15
+    },
+    "verified": {
+      "kmart": false,
+      "big-w": false
     }
   },
   "kmart-hdmi-cable-2m": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 10,
       "officeworks": 14,
       "jb-hifi": 19
+    },
+    "verified": {
+      "kmart": false,
+      "officeworks": false,
+      "jb-hifi": false
     }
   },
   "kmart-led-desk-lamp": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 19,
       "big-w": 22,
       "officeworks": 25
+    },
+    "verified": {
+      "kmart": false,
+      "big-w": false,
+      "officeworks": false
     }
   },
   "kmart-mini-fridge": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 169,
       "the-good-guys": 199,
       "harvey-norman": 189
+    },
+    "verified": {
+      "kmart": false,
+      "the-good-guys": false,
+      "harvey-norman": false
     }
   },
   "kmart-anko-blender": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 25,
       "big-w": 29,
       "kogan": 27
+    },
+    "verified": {
+      "kmart": false,
+      "big-w": false,
+      "kogan": false
     }
   },
   "kmart-webcam-hd": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 29,
       "officeworks": 39,
       "amazon-au": 39
+    },
+    "verified": {
+      "kmart": false,
+      "officeworks": false,
+      "amazon-au": false
     }
   },
   "kmart-switch-joycon-charger": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 19,
       "jb-hifi": 29,
       "amazon-au": 24
+    },
+    "verified": {
+      "kmart": false,
+      "jb-hifi": false,
+      "amazon-au": false
     }
   },
   "kmart-robot-vacuum": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kmart": 129,
       "kogan": 149,
       "amazon-au": 139
+    },
+    "verified": {
+      "kmart": false,
+      "kogan": false,
+      "amazon-au": false
     }
   },
   "logitech-c920-webcam": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 89,
       "jb-hifi": 109,
       "officeworks": 95
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "officeworks": false
     }
   },
   "blue-yeti-nano": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 109,
       "amazon-au": 105,
       "officeworks": 119
+    },
+    "verified": {
+      "jb-hifi": false,
+      "amazon-au": false,
+      "officeworks": false
     }
   },
   "tp-link-wifi6-router": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "officeworks": 99,
       "jb-hifi": 109,
       "amazon-au": 95
+    },
+    "verified": {
+      "officeworks": false,
+      "jb-hifi": false,
+      "amazon-au": false
     }
   },
   "samsung-t7-1tb-ssd": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 129,
-      "jb-hifi": 109,
+      "jb-hifi": 159,
       "officeworks": 135
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": true,
+      "officeworks": false
     }
   },
   "anker-735-charger": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 73,
       "jb-hifi": 79,
       "officeworks": 75
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "officeworks": false
     }
   },
   "elgato-stream-deck-mk2": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 199,
       "jb-hifi": 209,
-      "ebay-au": 209
+      "ebay-au": 206
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": false,
+      "ebay-au": true
     }
   },
   "razer-deathadder-v3": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 109,
       "amazon-au": 120,
       "kogan": 125
+    },
+    "verified": {
+      "jb-hifi": false,
+      "amazon-au": false,
+      "kogan": false
     }
   },
   "corsair-k70-keyboard": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 178,
       "jb-hifi": 159,
       "kogan": 179
+    },
+    "verified": {
+      "amazon-au": false,
+      "jb-hifi": true,
+      "kogan": false
     }
   },
   "ring-light-10": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "amazon-au": 45,
       "kogan": 49
+    },
+    "verified": {
+      "amazon-au": false,
+      "kogan": false
     }
   },
   "sandisk-ultra-128gb-usb": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "officeworks": 22,
       "jb-hifi": 25,
       "kmart": 18,
       "amazon-au": 20
+    },
+    "verified": {
+      "officeworks": false,
+      "jb-hifi": false,
+      "kmart": false,
+      "amazon-au": false
     }
   },
   "google-nest-mini": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "jb-hifi": 59,
       "harvey-norman": 69,
       "the-good-guys": 65
+    },
+    "verified": {
+      "jb-hifi": false,
+      "harvey-norman": false,
+      "the-good-guys": false
     }
   },
   "xiaomi-electric-scooter": {
-    "updatedAt": "2026-06-24",
+    "updatedAt": "2026-07-04",
     "offers": {
       "kogan": 449,
       "amazon-au": 429
+    },
+    "verified": {
+      "kogan": false,
+      "amazon-au": false
     }
   }
 }

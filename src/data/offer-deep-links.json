@@ -1,1 +1,68 @@
-{}
+{
+  "samsung-galaxy-buds3-pro": {
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B0F7M3HPBD",
+      "discoveredAt": "2026-07-04"
+    }
+  },
+  "logitech-mx-keys": {
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-07-04"
+    }
+  },
+  "logitech-mx-master-3s": {
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-07-04"
+    }
+  },
+  "casio-fx-cg50": {
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-07-04"
+    }
+  },
+  "bose-soundlink-flex": {
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-07-04"
+    }
+  },
+  "jbl-flip-6": {
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-07-04"
+    }
+  },
+  "philips-hue-starter": {
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-07-04"
+    }
+  },
+  "ring-doorbell": {
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B0CYGVPLLT",
+      "discoveredAt": "2026-07-04"
+    }
+  },
+  "samsung-t7-1tb-ssd": {
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-07-04"
+    }
+  },
+  "elgato-stream-deck-mk2": {
+    "ebay-au": {
+      "url": "https://www.ebay.com.au/itm/116383250674",
+      "discoveredAt": "2026-07-04"
+    }
+  },
+  "corsair-k70-keyboard": {
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-07-04"
+    }
+  }
+}
