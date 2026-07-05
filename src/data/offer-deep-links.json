@@ -27,6 +27,10 @@
     "jb-hifi": {
       "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
       "discoveredAt": "2026-07-04"
+    },
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B0CW933QSJ",
+      "discoveredAt": "2026-07-05"
     }
   },
   "jbl-flip-6": {
@@ -63,6 +67,12 @@
     "jb-hifi": {
       "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
       "discoveredAt": "2026-07-04"
+    }
+  },
+  "meta-quest-3": {
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B0CDFGCRW6",
+      "discoveredAt": "2026-07-05"
     }
   }
 }
