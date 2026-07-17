@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-07-16",
+  "generatedAt": "2026-07-17",
   "productsScraped": 80,
   "totals": {
-    "ok": 10,
-    "failed": 236,
+    "ok": 3,
+    "failed": 243,
     "skipped": 0,
     "linksDiscovered": 0
   },
   "byRetailer": {
     "amazon-au": {
-      "ok": 1,
-      "failed": 51,
-      "kept": 51,
+      "ok": 2,
+      "failed": 50,
+      "kept": 50,
       "skipped": 0
     },
     "the-good-guys": {
@@ -27,9 +27,9 @@
       "skipped": 0
     },
     "jb-hifi": {
-      "ok": 8,
-      "failed": 55,
-      "kept": 55,
+      "ok": 0,
+      "failed": 63,
+      "kept": 63,
       "skipped": 0
     },
     "officeworks": {
