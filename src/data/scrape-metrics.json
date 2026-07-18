@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-17",
+  "generatedAt": "2026-07-18",
   "productsScraped": 80,
   "totals": {
-    "ok": 3,
-    "failed": 243,
+    "ok": 11,
+    "failed": 235,
     "skipped": 0,
     "linksDiscovered": 0
   },
@@ -27,9 +27,9 @@
       "skipped": 0
     },
     "jb-hifi": {
-      "ok": 0,
-      "failed": 63,
-      "kept": 63,
+      "ok": 8,
+      "failed": 55,
+      "kept": 55,
       "skipped": 0
     },
     "officeworks": {
