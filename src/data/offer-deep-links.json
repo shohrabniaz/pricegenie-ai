@@ -84,5 +84,11 @@
       "url": "https://www.amazon.com.au/dp/B07M6Y7355",
       "discoveredAt": "2026-07-06"
     }
+  },
+  "kindle-paperwhite": {
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B0CZY1LRT4",
+      "discoveredAt": "2026-07-22"
+    }
   }
 }
