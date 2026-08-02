@@ -96,5 +96,11 @@
       "url": "https://www.amazon.com.au/dp/B0D7HB7M1N",
       "discoveredAt": "2026-07-29"
     }
+  },
+  "sony-wh1000xm6": {
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B0CCZ26B5V",
+      "discoveredAt": "2026-08-02"
+    }
   }
 }
