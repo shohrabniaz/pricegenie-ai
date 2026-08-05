@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-02",
+  "generatedAt": "2026-08-05",
   "productsScraped": 80,
   "totals": {
-    "ok": 4,
-    "failed": 242,
+    "ok": 12,
+    "failed": 234,
     "skipped": 0,
-    "linksDiscovered": 1
+    "linksDiscovered": 0
   },
   "byRetailer": {
     "amazon-au": {
@@ -27,9 +27,9 @@
       "skipped": 0
     },
     "jb-hifi": {
-      "ok": 0,
-      "failed": 63,
-      "kept": 63,
+      "ok": 8,
+      "failed": 55,
+      "kept": 55,
       "skipped": 0
     },
     "officeworks": {
