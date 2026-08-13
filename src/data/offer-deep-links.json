@@ -102,5 +102,11 @@
       "url": "https://www.amazon.com.au/dp/B0CCZ26B5V",
       "discoveredAt": "2026-08-02"
     }
+  },
+  "fitbit-charge-6": {
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B0H93Y497R",
+      "discoveredAt": "2026-08-13"
+    }
   }
 }
