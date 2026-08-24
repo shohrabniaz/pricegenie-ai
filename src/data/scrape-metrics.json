@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-23",
+  "generatedAt": "2026-08-24",
   "productsScraped": 80,
   "totals": {
     "ok": 12,
     "failed": 234,
     "skipped": 0,
-    "linksDiscovered": 1
+    "linksDiscovered": 0
   },
   "byRetailer": {
     "amazon-au": {
