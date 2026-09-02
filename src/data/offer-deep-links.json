@@ -114,5 +114,11 @@
       "url": "https://www.amazon.com.au/dp/B0CL6FJ755",
       "discoveredAt": "2026-08-16"
     }
+  },
+  "google-pixel-9": {
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B09YTK49Q4",
+      "discoveredAt": "2026-09-02"
+    }
   }
 }
