@@ -120,5 +120,11 @@
       "url": "https://www.amazon.com.au/dp/B09YTK49Q4",
       "discoveredAt": "2026-09-02"
     }
+  },
+  "iphone-17-pro-256": {
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B0HDNQ73VY",
+      "discoveredAt": "2026-09-24"
+    }
   }
 }
