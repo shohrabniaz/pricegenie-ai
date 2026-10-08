@@ -126,5 +126,17 @@
       "url": "https://www.amazon.com.au/dp/B0HDNQ73VY",
       "discoveredAt": "2026-09-24"
     }
+  },
+  "iphone-16": {
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B0HDNQ73VY",
+      "discoveredAt": "2026-10-08"
+    }
+  },
+  "samsung-galaxy-tab-s10": {
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B0HDNQ73VY",
+      "discoveredAt": "2026-10-08"
+    }
   }
 }
