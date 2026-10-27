@@ -53,6 +53,10 @@
     "amazon-au": {
       "url": "https://www.amazon.com.au/dp/B0CYGVPLLT",
       "discoveredAt": "2026-07-04"
+    },
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-10-27"
     }
   },
   "samsung-t7-1tb-ssd": {
@@ -65,6 +69,10 @@
     "ebay-au": {
       "url": "https://www.ebay.com.au/itm/116383250674",
       "discoveredAt": "2026-07-04"
+    },
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-10-27"
     }
   },
   "corsair-k70-keyboard": {
@@ -89,6 +97,10 @@
     "amazon-au": {
       "url": "https://www.amazon.com.au/dp/B0CZY1LRT4",
       "discoveredAt": "2026-07-22"
+    },
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-10-27"
     }
   },
   "anker-735-charger": {
@@ -107,6 +119,10 @@
     "amazon-au": {
       "url": "https://www.amazon.com.au/dp/B0H93Y497R",
       "discoveredAt": "2026-08-13"
+    },
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-10-27"
     }
   },
   "gopro-hero-13": {
@@ -143,6 +159,24 @@
     "amazon-au": {
       "url": "https://www.amazon.com.au/dp/B0HDNQ73VY",
       "discoveredAt": "2026-10-11"
+    }
+  },
+  "samsung-990-pro-2tb": {
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-10-27"
+    }
+  },
+  "aoc-24g4": {
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-10-27"
+    }
+  },
+  "ninja-air-fryer": {
+    "jb-hifi": {
+      "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
+      "discoveredAt": "2026-10-27"
     }
   }
 }
