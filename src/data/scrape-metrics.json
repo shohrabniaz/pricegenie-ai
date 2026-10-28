@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-10-27",
+  "generatedAt": "2026-10-28",
   "productsScraped": 80,
   "totals": {
     "ok": 12,
     "failed": 234,
     "skipped": 0,
-    "linksDiscovered": 7
+    "linksDiscovered": 0
   },
   "byRetailer": {
     "amazon-au": {
-      "ok": 1,
-      "failed": 51,
-      "kept": 51,
+      "ok": 2,
+      "failed": 50,
+      "kept": 50,
       "skipped": 0
     },
     "the-good-guys": {
@@ -51,9 +51,9 @@
       "skipped": 0
     },
     "ebay-au": {
-      "ok": 1,
-      "failed": 1,
-      "kept": 1,
+      "ok": 0,
+      "failed": 2,
+      "kept": 2,
       "skipped": 0
     },
     "kmart": {
