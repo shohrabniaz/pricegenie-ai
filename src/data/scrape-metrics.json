@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03",
+  "generatedAt": "2026-11-04",
   "productsScraped": 80,
   "totals": {
     "ok": 10,
@@ -9,9 +9,9 @@
   },
   "byRetailer": {
     "amazon-au": {
-      "ok": 0,
-      "failed": 52,
-      "kept": 52,
+      "ok": 1,
+      "failed": 51,
+      "kept": 51,
       "skipped": 0
     },
     "the-good-guys": {
@@ -27,9 +27,9 @@
       "skipped": 0
     },
     "jb-hifi": {
-      "ok": 10,
-      "failed": 53,
-      "kept": 53,
+      "ok": 9,
+      "failed": 54,
+      "kept": 54,
       "skipped": 0
     },
     "officeworks": {
