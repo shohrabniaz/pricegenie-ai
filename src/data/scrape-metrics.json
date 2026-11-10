@@ -2,16 +2,16 @@
   "generatedAt": "2026-11-10",
   "productsScraped": 80,
   "totals": {
-    "ok": 11,
-    "failed": 235,
+    "ok": 12,
+    "failed": 234,
     "skipped": 0,
     "linksDiscovered": 0
   },
   "byRetailer": {
     "amazon-au": {
-      "ok": 1,
-      "failed": 51,
-      "kept": 51,
+      "ok": 2,
+      "failed": 50,
+      "kept": 50,
       "skipped": 0
     },
     "the-good-guys": {
