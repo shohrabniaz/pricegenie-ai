@@ -178,5 +178,11 @@
       "url": "https://www.jbhifi.com.au/products/google-tv-streamer-4k",
       "discoveredAt": "2026-10-27"
     }
+  },
+  "macbook-air-m4": {
+    "amazon-au": {
+      "url": "https://www.amazon.com.au/dp/B0B7H3V2V7",
+      "discoveredAt": "2026-11-19"
+    }
   }
 }

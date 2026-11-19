@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18",
+  "generatedAt": "2026-11-19",
   "productsScraped": 80,
   "totals": {
     "ok": 18,
@@ -9,9 +9,9 @@
   },
   "byRetailer": {
     "amazon-au": {
-      "ok": 2,
-      "failed": 50,
-      "kept": 50,
+      "ok": 4,
+      "failed": 48,
+      "kept": 48,
       "skipped": 0
     },
     "the-good-guys": {
@@ -27,9 +27,9 @@
       "skipped": 0
     },
     "jb-hifi": {
-      "ok": 15,
-      "failed": 48,
-      "kept": 48,
+      "ok": 14,
+      "failed": 49,
+      "kept": 49,
       "skipped": 0
     },
     "officeworks": {
@@ -51,9 +51,9 @@
       "skipped": 0
     },
     "ebay-au": {
-      "ok": 1,
-      "failed": 1,
-      "kept": 1,
+      "ok": 0,
+      "failed": 2,
+      "kept": 2,
       "skipped": 0
     },
     "kmart": {
